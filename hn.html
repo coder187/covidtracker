@@ -1,0 +1,48 @@
+﻿<!--Hussein Nasser-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>IGeometry-Head</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
+</head>
+<body>
+    <button id="mapSelect">Toggle Maps</button>
+    <div id="mapview" style="width:500px;height:500px;">my map</div>
+
+    <script>
+        let map1;
+        let map2;
+        let map3;
+        let mapView;
+        let sceneView;
+
+        require(["esri/Map", "esri/views/MapView", "esri/views/SceneView"], function (Map, MapView, SceneView) {
+            map1 = new Map({ basemap: "topo" });
+            map2 = new Map({ basemap: "satellite" });
+            map3 = new Map({ basemap: "streets" });
+
+            let viewOptions = {
+                container: "mapview", map: map1, zoom: 6,
+                center: [-6.266155, 53.350140]
+            }
+            //mapView = new MapView(viewOptions);
+            sceneView = new SceneView(viewOptions);
+        }
+        );
+
+        document.getElementById("mapSelect").addEventListener("click", function () {
+            if (sceneView.map === map1) {
+                sceneView.map = map3;
+            } else {
+                sceneView.map = map1;
+            }
+            
+        })
+    </script>
+    
+</body>
+</html>
