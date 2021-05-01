@@ -88,6 +88,7 @@
     <Content Include="assets\js\o.min.js" />
     <Content Include="covidtracker.html" />
     <Content Include="data_tutorial.html" />
+    <Content Include="hn.html" />
     <Content Include="odata.html" />
     <Content Include="tutorial_1.html" />
     <Content Include="tutorial_rest_api.html" />
