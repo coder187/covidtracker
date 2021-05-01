@@ -20,25 +20,55 @@
         let mapView;
         let sceneView;
 
-        require(["esri/Map", "esri/views/MapView", "esri/views/SceneView"], function (Map, MapView, SceneView) {
+        //NOTE CANNOT HAVE SceneView & request together - an undefined error is thrown when calling the request
+        //require(["esri/Map", "esri/views/MapView", "esri/views/SceneView", "esri/request","esri/layers/MapImageLayer" ],
+        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer"],
+            function (Map, MapView, esriRequest,MapLayer) {
             map1 = new Map({ basemap: "topo" });
             map2 = new Map({ basemap: "satellite" });
             map3 = new Map({ basemap: "streets" });
 
             let viewOptions = {
-                container: "mapview", map: map1, zoom: 6,
-                center: [-6.266155, 53.350140]
+                container: "mapview", map: map3,
+                center: [-117.16139, 32.71274],
+                scale: 10000
             }
-            //mapView = new MapView(viewOptions);
-            sceneView = new SceneView(viewOptions);
+           
+
+                let url = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer";
+                
+                var options = {
+                    query: {
+                        f: "json"
+                    },
+                    responseType: "json"
+                };
+               
+                console.log("about to create promise");
+           
+                esriRequest(url, options).then(function (response) {
+                    console.log("response", response);
+                    alert(response.data.currentVersion);
+                });
+
+                mapView = new MapView(viewOptions);
+                //sceneView = new SceneView(viewOptions);
+
+                let layer = new MapLayer({ url: "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer" })
+                map3.add(layer);
+
+                layer.when(function () {
+                    mapView.goTo(layer.fullExtent);
+                })
+
         }
         );
 
         document.getElementById("mapSelect").addEventListener("click", function () {
-            if (sceneView.map === map1) {
-                sceneView.map = map3;
+            if (mapView.map === map1) {
+                mapView.map = map3;
             } else {
-                sceneView.map = map1;
+                mapView.map = map1;
             }
             
         })

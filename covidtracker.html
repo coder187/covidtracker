@@ -1,24 +1,81 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!--COVID TRACKER-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>CI MS2 Covid-19 Tracker</title>
+    <title>IGeometry-Head</title>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.19/"></script>
-
-    <script>
-        var trailheadLayerId = "7b68b1d869f04dae9ca0cb9a18095c80";
-        var trailheadLayerUrl = "https://services3.arcgis.com/dxUc94URcSRoitoZ/arcgis/rest/services/trailheads/FeatureServer/0";
-    
-        var trailLayerID = "04bc1ccd91fa4b608f72b81e3befaa59";
-        var trailLayerURL = "https://services3.arcgis.com/dxUc94URcSRoitoZ/arcgis/rest/services/trails/FeatureServer/0";
-        
-        var trailLayerID = "4398f3f2c2234f9ebea34e298bf014b8";
-        var trailLayerURL = "https://services3.arcgis.com/dxUc94URcSRoitoZ/arcgis/rest/services/parks_and_open_space/FeatureServer/0";
-    </script>
 </head>
 <body>
+    <button id="mapSelect">Toggle Maps</button>
+    <div id="mapview" style="width:500px;height:500px;">my map</div>
+
+    <script>
+        let map1;
+        let mapView;
+
+
+        //NOTE CANNOT HAVE SceneView & request together - an undefined error is thrown when calling the request
+        //require(["esri/Map", "esri/views/MapView", "esri/views/SceneView", "esri/request","esri/layers/MapImageLayer" ],
+        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer"],
+            function (Map, MapView, esriRequest, MapLayer, FeatureLayer) {
+          
+                map1 = new Map({ basemap: "streets" });
+
+                let viewOptions = {
+                    container: "mapview", map: map1,
+                    center: [-117.16139, 32.71274],
+                    scale: 10000
+                }
+
+
+                let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0?f=json"
+
+                var options = {
+                    
+                    responseType: "json"
+                };
+
+                console.log("about to create promise");
+
+                esriRequest(url, options).then(function (response) {
+                    console.log("response", response);
+                    console.log(response.data.currentVersion);
+                    let myFields=[];
+                    myFields = response.data.fields;
+                    for (let i = 0; i <= myFields.length; i++) {
+                        console.log(myFields[i]);
+                    }
+
+                    var layer = new FeatureLayer({
+                        url: url
+                    });
+
+                    //let layer = new MapLayer({ url: url })
+                    map1.add(layer);
+
+                    layer.when(function () {
+                        mapView.goTo(layer.fullExtent);
+                        console.log("load complete");
+                    })
+                    
+
+                });
+
+                mapView = new MapView(viewOptions);
+                //sceneView = new SceneView(viewOptions);
+
+               
+
+                
+            }
+        );
+
+       
+    </script>
 
 </body>
 </html>
