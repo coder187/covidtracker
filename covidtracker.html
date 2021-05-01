@@ -51,7 +51,7 @@
                     }
 
                     var layer = new FeatureLayer({
-                        url: url
+                        url: "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0"
                     });
 
                     //let layer = new MapLayer({ url: url })
@@ -59,6 +59,7 @@
 
                     layer.when(function () {
                         mapView.goTo(layer.fullExtent);
+                        
                         console.log("load complete");
                     })
                     
