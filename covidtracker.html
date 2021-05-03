@@ -11,7 +11,7 @@
 </head>
 <body>
     <button id="mapSelect">Toggle Maps</button>
-    <div id="mapview" style="width:500px;height:500px;">my map</div>
+    <div id="mapview" style="width:1000px;height:1000px;">my map</div>
 
     <script>
         let map1;
@@ -20,19 +20,29 @@
 
         //NOTE CANNOT HAVE SceneView & request together - an undefined error is thrown when calling the request
         //require(["esri/Map", "esri/views/MapView", "esri/views/SceneView", "esri/request","esri/layers/MapImageLayer" ],
-        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer"],
-            function (Map, MapView, esriRequest, MapLayer, FeatureLayer) {
+        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer", "esri/widgets/Legend"],
+            function (Map, MapView, esriRequest, MapLayer, FeatureLayer,Legend) {
           
                 map1 = new Map({ basemap: "streets" });
 
                 let viewOptions = {
                     container: "mapview", map: map1,
-                    center: [-117.16139, 32.71274],
+                    center: [-6.24827, 53.34807],
                     scale: 10000
                 }
 
+                mapView = new MapView(viewOptions);
+                
+                let legend = new Legend({ view: mapView });
+                mapView.ui.add(legend, "bottom-right");
 
+            
                 let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0?f=json"
+                //https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson
+                url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson" //COVID 19 14 DAY INCIDENCE RATE PER 100K
+                //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19_Acute_Hospital_Current_List_Date_View/FeatureServer/layers?f=pjson"; //hospital list
+                //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19Acute_HospitalCurrentListSummarisedPublicView/FeatureServer?f=pjson";// current list summarised
+                //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19Acute_HospitalCurrentListSummarisedPublicView/FeatureServer/0?f=pjson";
 
                 var options = {
                     
@@ -43,15 +53,15 @@
 
                 esriRequest(url, options).then(function (response) {
                     console.log("response", response);
-                    console.log(response.data.currentVersion);
-                    let myFields=[];
-                    myFields = response.data.fields;
-                    for (let i = 0; i <= myFields.length; i++) {
-                        console.log(myFields[i]);
-                    }
+                    //console.log(response.data.currentVersion);
+                    //let myFields=[];
+                    //myFields = response.data.fields;
+                    //for (let i = 0; i <= myFields.length; i++) {
+                    //    console.log(myFields[i]);
+                    //}
 
                     var layer = new FeatureLayer({
-                        url: "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0"
+                        url: url    
                     });
 
                     //let layer = new MapLayer({ url: url })
@@ -60,14 +70,14 @@
                     layer.when(function () {
                         mapView.goTo(layer.fullExtent);
                         
-                        console.log("load complete");
+                        console.log("load complete");   
                     })
-                    
+
+                
 
                 });
 
-                mapView = new MapView(viewOptions);
-                //sceneView = new SceneView(viewOptions);
+                
 
                
 
