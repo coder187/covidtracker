@@ -27,23 +27,31 @@
 
                 let viewOptions = {
                     container: "mapview", map: map1,
-                    center: [-6.24827, 53.34807],
+                    center: [-6.24827, 53.34807], //DUBLIN
                     scale: 10000
                 }
 
+
+                //render map
                 mapView = new MapView(viewOptions);
-                
+
+                //render legend
                 let legend = new Legend({ view: mapView });
                 mapView.ui.add(legend, "bottom-right");
 
-            
+                //url for endpoint data host
                 let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0?f=json"
                 //https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson
-                url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson" //COVID 19 14 DAY INCIDENCE RATE PER 100K
+                
                 //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19_Acute_Hospital_Current_List_Date_View/FeatureServer/layers?f=pjson"; //hospital list
                 //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19Acute_HospitalCurrentListSummarisedPublicView/FeatureServer?f=pjson";// current list summarised
                 //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19Acute_HospitalCurrentListSummarisedPublicView/FeatureServer/0?f=pjson";
 
+                url = "https://services-eu1.arcgis.com/1#bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson";
+                url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0?f=pjson";
+                url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson" //COVID 19 14 DAY INCIDENCE RATE PER 100K PER LOCAL ELECTORAL AREA https://data.gov.ie/dataset/covid19-leacases-mapped2
+
+                //set response type (json/xml/text/document and set query statement)
                 var options = {
                     
                     responseType: "json"
@@ -51,6 +59,7 @@
 
                 console.log("about to create promise");
 
+                //pull data from endpoint
                 esriRequest(url, options).then(function (response) {
                     console.log("response", response);
                     //console.log(response.data.currentVersion);
@@ -60,28 +69,22 @@
                     //    console.log(myFields[i]);
                     //}
 
+                    //creatw new layer containing the geo spatial data
                     var layer = new FeatureLayer({
                         url: url    
                     });
 
+                    //add the layer to he map
                     //let layer = new MapLayer({ url: url })
                     map1.add(layer);
 
+                    //set scale such that all data points are visible
                     layer.when(function () {
                         mapView.goTo(layer.fullExtent);
-                        
-                        console.log("load complete");   
                     })
-
-                
-
                 });
 
-                
-
-               
-
-                
+                                
             }
         );
 
