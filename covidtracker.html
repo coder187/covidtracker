@@ -12,12 +12,13 @@
 <body>
     <button id="mapSelect">Toggle Maps</button>
     <select id="lstcounty"></select>
+    <label id="lblTot"></label>
     <div id="mapview" style="width:1000px;height:1000px;">my map</div>
 
     <script>
         let map1;
         let mapView;
-
+        let url = "";
 
         //NOTE CANNOT HAVE SceneView & request together - an undefined error is thrown when calling the request
         //require(["esri/Map", "esri/views/MapView", "esri/views/SceneView", "esri/request","esri/layers/MapImageLayer" ],
@@ -41,7 +42,7 @@
                 mapView.ui.add(legend, "bottom-right");
 
                 //url for endpoint data host
-                let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0?f=json"
+                url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0?f=json"
                 //https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson
                 
                 //url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/Covid19_Acute_Hospital_Current_List_Date_View/FeatureServer/layers?f=pjson"; //hospital list
@@ -64,6 +65,7 @@
                 url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=COUNTY%3D%27LIMERICK%27&f=geojson"
 
                 url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=Pop2016>1&f=geojson"
+
                 let whereClause = "Pop2016>1"
                 url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=" + whereClause + "&f=geojson"
 
@@ -127,7 +129,22 @@
 
                     lstCounty.addEventListener("change", function () {
                         let selectedCounty = lstCounty.options[lstCounty.selectedIndex].textContent;
-                        alert(selectedCounty);
+                       
+                        //whereClause = "COUNTY%3D%27" + selectedCounty + "%27";
+
+                        let tot = 0;
+                        for (x = 0; x < myFeatures.length; x++) {
+                            myProp = myFeatures[x   ].properties;
+                            if (selectedCounty === myProp.COUNTY) {
+                                console.log(myProp);
+                                tot = tot + myProp.P14_100k;
+                            }
+                        }
+                        let lblTot = document.getElementById("lblTot");
+                        lblTot.textContent = "14_Day_Incidence_Rate_per_100k:" + tot;
+                        
+                        
+                       
                     })
 
                 });
