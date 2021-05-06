@@ -1,0 +1,75 @@
+﻿<!--COVID TRACKER county statistics-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
+</head>
+<body>
+    <div id="mapview" style="width:750px;height:750px;">my map</div>
+    <script>
+        let map1;
+        let mapView;
+        let url = "";
+        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer", "esri/widgets/Legend"],
+            function (Map, MapView, esriRequest, MapLayer, FeatureLayer, Legend) {
+
+                map1 = new Map({ basemap: "streets" });
+
+                let viewOptions = {
+                    container: "mapview", map: map1,
+                    center: [-1.14827, 53.34807], //DUBLIN
+                    scale: 100
+                }
+
+                //render map
+                mapView = new MapView(viewOptions);
+
+                //render legend
+                let legend = new Legend({ view: mapView });
+                mapView.ui.add(legend, "bottom-right");
+
+                //url for endpoint data host
+                //COVID19 14 Day Incidence Rate per 100k LEA 
+                let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=Pop2016>1&f=geojson"; 
+
+                //Covid19CountyStatisticsHPSCIrelandOpenData
+                let url_stats = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?outFields=*&where=1%3D1"; 
+
+                //set response type (json/xml/text/document and set query statement)
+                var options = {
+                    responseType: "json"
+                };
+
+                //pull data from endpoint
+                esriRequest(url, options).then(function (response) {
+
+                    //creatw new layer containing the geo spatial data
+                    var layer = new FeatureLayer({
+                        url: url
+                    });
+
+                    var layer_stats = new FeatureLayer({
+                        url: url_stats
+                    });
+
+                    //add the layer to he map
+                    //let layer = new MapLayer({ url: url })
+                    map1.add(layer);
+                    map1.add(layer_stats);
+
+
+                    //set scale such that all data points are visible
+                    layer.when(function () {
+                        mapView.goTo(layer.fullExtent);
+                    })
+
+                });
+
+            });
+
+    </script>
+</body>
+</html>
