@@ -6,37 +6,122 @@
     <title></title>
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.19/"></script>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .docking-control {
+            position: absolute;
+            z-index: 10;    
+            top: 50%;
+            left: 50%;
+            width: 250px;
+            height: 80px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: -40px 0 0 -125px;
+            background-color: #fff;
+            color: #323232;
+            text-align: center;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+            .docking-control label {
+                display: inline-block;
+                font-weight: bold;
+                margin: 0 0 10px 0;
+                padding: 0;
+                font-size: 16px;
+            }
+    </style>
+
 </head>
 <body>
-    <div id="mapview" style="width:750px;height:750px;">my map</div>
+
+
     <script>
         let map1;
         let mapView;
         let url = "";
-        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer", "esri/widgets/Legend"],
-            function (Map, MapView, esriRequest, MapLayer, FeatureLayer, Legend) {
+        require(["esri/Map", "esri/views/MapView", "esri/request", "esri/layers/MapImageLayer", "esri/layers/FeatureLayer", "esri/widgets/Legend", "esri/WebMap"],
+            function (Map, MapView, esriRequest, MapLayer, FeatureLayer, Legend, WebMap) {
 
-                map1 = new Map({ basemap: "streets" });
+                url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=Pop2016>1&f=geojson";
+
+                map1 = new WebMap({
+                    basemap: "streets",
+                    portalItem: {
+                        // autocasts as new PortalItem()
+                        url: url
+                    }
+                });
 
                 let viewOptions = {
                     container: "mapview", map: map1,
                     center: [-1.14827, 53.34807], //DUBLIN
-                    scale: 100
-                }
+                    scale: 100,
+                    popup: {
+                        dockEnabled: true,
+                        dockOptions: {
+                            // Disables the dock button from the popup
+                            buttonEnabled: false,
+                            // Ignore the default sizes that trigger responsive docking
+                            breakpoint: false
+                        }
+                    }
+                };
+
+
 
                 //render map
                 mapView = new MapView(viewOptions);
 
-                //render legend
-                let legend = new Legend({ view: mapView });
-                mapView.ui.add(legend, "bottom-right");
+                popup = mapView.popup;
+                popup.visibleElements = {
+                    closeButton: false
+                };
+
+                mapView.when(function () {
+                    var centerPoint = mapView.center.clone();
+
+                    popup.open({
+                        title: "Popup dock positions",
+                        location: centerPoint,
+                        content: "Use the control in the center of the map to change the location where the popup will dock."
+                    });
+
+                    var selectNode = document.getElementById("dockPositionControl");
+
+                    // Let user change the position dockOptions.position property of the
+                    // popup at runtime from the drop-down list.
+                    selectNode.addEventListener("change", function (event) {
+                        popup.set("dockOptions", {
+                            breakpoint: false,
+                            buttonEnabled: false,
+                            position: event.target.value
+                        });
+                    });
+                });
+
+
+
+                ////render legend
+                //let legend = new Legend({ view: mapView });
+                //mapView.ui.add(legend, "bottom-right");
 
                 //url for endpoint data host
-                //COVID19 14 Day Incidence Rate per 100k LEA 
-                let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=Pop2016>1&f=geojson"; 
+                //COVID19 14 Day Incidence Rate per 100k LEA
+                url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query?outFields=*&where=Pop2016>1&f=geojson";
 
                 //Covid19CountyStatisticsHPSCIrelandOpenData
-                let url_stats = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?outFields=*&where=1%3D1"; 
+                let url_stats = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?outFields=*&where=1%3D1";
 
                 //set response type (json/xml/text/document and set query statement)
                 var options = {
@@ -58,7 +143,7 @@
                     //add the layer to he map
                     //let layer = new MapLayer({ url: url })
                     map1.add(layer);
-                    map1.add(layer_stats);
+                    //map1.add(layer_stats);
 
 
                     //set scale such that all data points are visible
@@ -66,10 +151,26 @@
                         mapView.goTo(layer.fullExtent);
                     })
 
+
                 });
+
 
             });
 
     </script>
+    <div id="mapview" style="width:750px;height:750px;" class="esri-widget">
+        <div class="docking-control">
+            <label for="dockPositionControl">Popup Dock Position</label>
+            <select id="dockPositionControl">
+                <option selected value="auto">Auto</option>
+                <option value="top-left">Top Left</option>
+                <option value="top-center">Top Center</option>
+                <option value="top-right">Top Right</option>
+                <option value="bottom-left">Bottom Left</option>
+                <option value="bottom-center">Bottom Center</option>
+                <option value="bottom-right">Bottom Right</option>
+            </select>
+        </div>
+    </div>
 </body>
 </html>
