@@ -88,6 +88,7 @@
     <Content Include="assets\js\o.min.js" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
+    <Content Include="covidTracker_Recovered.html" />
     <Content Include="covidTracker_DailyStats.html" />
     <Content Include="covidtracker_popup.html" />
     <Content Include="covidtracker_popup2.html" />
