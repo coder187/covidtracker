@@ -1,0 +1,74 @@
+﻿<!--
+
+This Layer contains Covid-19 Daily Statistics for Ireland by County as reported by the Health Surveillance Protection Centre. Each County is represented by a point feature.
+This service is updated daily. The latest record will always date back to two days ago.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Covid-19 Daily Statistics for Ireland by County</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
+</head>
+<body>
+    <div id="mapview" style="width:750px;height:750px;"></div>
+    <script>
+        let map1;
+        let mapView;
+        let url = "";
+        let featureLayer = "";
+        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request"],
+            function (Map, FeatureLayer, MapView, Legend, esriRequest) {
+
+                map1 = new Map({ basemap: "streets" });
+
+                let viewOptions = {
+                    container: "mapview", map: map1,
+                    center: [-6.24827, 53.34807], //DUBLIN
+                    zoom: 11
+                }
+
+                //render map
+                mapView = new MapView(viewOptions);
+
+                //render legend
+                let legend = new Legend({ view: mapView });
+                mapView.ui.add(legend, "bottom-right");
+
+
+                let templatetitle = "County: {CountyName}";
+
+                let templatecontent = "";
+                templatecontent = templatecontent + "Population: ";
+                templatecontent = templatecontent + "{PopulationCensus16}";
+                templatecontent = templatecontent + "<br>";
+                templatecontent = templatecontent + "Confirmed Cases: ";
+                templatecontent = templatecontent + "{ConfirmedCovidCases}";
+                templatecontent = templatecontent + "<br>";
+                templatecontent = templatecontent + "PopulationProportion: ";
+                templatecontent = templatecontent + "{PopulationProportionCovidCases}";
+
+                let template = {
+                    // autocasts as new PopupTemplate()
+                    title: templatetitle,
+                    content: templatecontent,
+                };
+
+                featureLayer = new FeatureLayer({
+                    url: "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0?f=pjson",
+                    outFields: ["*"],
+                    popupTemplate: template
+                });
+
+                map1.add(featureLayer);
+
+                //set scale such that all data points are visible
+                featureLayer.when(function () {
+                    mapView.goTo(featureLayer.fullExtent);
+                })
+            });
+    </script>
+</body>
+</html>
