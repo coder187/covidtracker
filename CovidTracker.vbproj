@@ -84,13 +84,16 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\gif\loading.gif" />
+    <Content Include="assets\gif\spiral.gif" />
     <Content Include="assets\js\car_obg_promise.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\o.min.js" />
     <Content Include="assets\js\promise.js" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
-    <Content Include="covidTracker_Recovered.html" />
+    <Content Include="covidTracker3.html" />
     <Content Include="covidTracker_DailyStats.html" />
     <Content Include="covidtracker_popup.html" />
     <Content Include="covidtracker_popup2.html" />

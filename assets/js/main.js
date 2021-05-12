@@ -34,3 +34,14 @@ function GetCovidStats() {
         //resolve(stats); not sure why stats cabnt be read here.
     });
 }
+
+function GetCountyStats() {
+
+    let ul = document.getElementById("county-list");
+    let county = ["Limerick", "Tipp", "Cork", "Dublin", "Galway", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"];
+    for (var i = 1; i < county.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = county[i] + " :loading...";
+        ul.appendChild(li);
+    }
+}
