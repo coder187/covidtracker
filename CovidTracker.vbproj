@@ -84,8 +84,10 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\js\car_obg_promise.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\o.min.js" />
+    <Content Include="assets\js\promise.js" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
     <Content Include="covidTracker_Recovered.html" />
@@ -95,6 +97,7 @@
     <Content Include="data_tutorial.html" />
     <Content Include="hn.html" />
     <Content Include="odata.html" />
+    <Content Include="scratch.txt" />
     <Content Include="TextFile1.txt" />
     <Content Include="tutorial_1.html" />
     <Content Include="tutorial_rest_api.html" />
