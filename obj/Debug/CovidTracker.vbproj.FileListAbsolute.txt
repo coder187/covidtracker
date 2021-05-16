@@ -9,3 +9,14 @@ C:\Projects\Learn\CodeInstitute\Projects\MS2\ARCGIS\CovidTracker\obj\Debug\Covid
 C:\Projects\Learn\CodeInstitute\Projects\MS2\ARCGIS\CovidTracker\obj\Debug\CovidTracker.dll
 C:\Projects\Learn\CodeInstitute\Projects\MS2\ARCGIS\CovidTracker\obj\Debug\CovidTracker.xml
 C:\Projects\Learn\CodeInstitute\Projects\MS2\ARCGIS\CovidTracker\obj\Debug\CovidTracker.pdb
+C:\projects\covidtracker\bin\CovidTracker.dll.config
+C:\projects\covidtracker\bin\CovidTracker.dll
+C:\projects\covidtracker\bin\CovidTracker.pdb
+C:\projects\covidtracker\bin\CovidTracker.xml
+C:\projects\covidtracker\obj\Debug\CovidTracker.vbprojAssemblyReference.cache
+C:\projects\covidtracker\obj\Debug\CovidTracker.Resources.resources
+C:\projects\covidtracker\obj\Debug\CovidTracker.vbproj.GenerateResource.cache
+C:\projects\covidtracker\obj\Debug\CovidTracker.vbproj.CoreCompileInputs.cache
+C:\projects\covidtracker\obj\Debug\CovidTracker.dll
+C:\projects\covidtracker\obj\Debug\CovidTracker.xml
+C:\projects\covidtracker\obj\Debug\CovidTracker.pdb

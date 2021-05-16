@@ -1,10 +1,8 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Covid Tracker</title>
-
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.19/"></script>
@@ -14,58 +12,65 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/main.js"></script>
 
-
-
-
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="assets/audio/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="pagetitle">Title</div>
+                <div class="pagetitle"><h3></h3>>COVID 19 Tracker</h3></div>
             </div>
         </div>
         <div class="row">
-            <div class="col md-4">
-                <div class="total-cases">
-                    Total Cases<br />
-                    <span id="Total"><img src="assets/gif/loading.gif" alt="loading"/></span>
-                </div>
-                <div class="cases-latest-reported">
-                    <table>
-                        <tr>
-                            <td>New:</td>
-                            <td><span id="Cases"><img src="assets/gif/loading.gif" alt="loading" /></span></td>
-                            <td>gify</td>
-                        </tr>
-                        <tr>
-                            <td>Deaths:</td>
-                            <td><span id="Deaths"><img src="assets/gif/loading.gif" alt="loading" /></span></td>
-                            <td>gify</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="cases-by-county">
-                    Cases By County<br />
-                    <ul id="county-list"></ul>
-                </div>
-            </div> <!-- end left col-->
-            <div class="col md-4">
-                <div id="mapview" style="width:750px;height:750px;"></div> <!-- placing style in file breaks popup-->
-            </div> <!-- end center col-->
-            <div class="col md-4">
-                <div id="legendview"></div>
-            </div><!-- end right col-->
+            <div class="col md-3 top-lvl-stats">
+                <!--date last updated-->
+                <div class="label">Last Update:</div>
+                <span id="date-last-updated"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+            <div class="col md-3 top-lvl-stats">
+                <!--total cases to date-->
+                <div class="label">Total Cases:</div>
+                <span id="Total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+            <div class="col md-3 top-lvl-stats">
+                <!--new deaths reported-->
+                <div class="label">Deaths Last Reported:</div>
+                 <span id="Deaths"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+            <div class="col md-3 top-lvl-stats">
+                <!--new cases reported-->
+                <div class="label">Cases Last Reported:</div>
+                <span id="Cases"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+
         </div>
-    </div>
-    <script> 
-        //Get Covid Stats: 
+        <div class="row">
+            <div class="col md-4">
+                <!--total cases per county-->
+                Cases By County<br />
+                <ul id="county-list"></ul>
+            </div>
+            <div class="col md-4">
+                <!--lea 14 day moving avg MAP-->
+                <div id="mapview" style="width:750px;height:750px;"></div> <!-- placing style in file breaks popup-->
+            </div>
+            <div class="col md-4">
+                <!--MAP legend-->
+                <div id="legendview"></div>
+            </div>
+        </div><!-- end row-->
+    </div> <!--end container-->
+    <script>
+        //Get Covid Stats:
         //Total Cases
         //New Cases
         //Deaths
         //Prev Day Cases
         //Prev Day Deaths
-            
+
         GetCovidStats().then(
             function (message) {
                 //console.log("Resolved: ", message);
@@ -79,29 +84,32 @@
 
         function PrintCovidStats(stats, err) {
             if (err !== 0) {
+                document.getElementById("date-last-updated").innerHTML = "?";
                 document.getElementById("Deaths").innerHTML = "?";
                 document.getElementById("Cases").innerHTML = "?";
                 document.getElementById("Total").innerHTML = "?";
             }
             else {
+                document.getElementById("date-last-updated").innerHTML = stats.DateLastUpdated.toDateString()   ;
                 document.getElementById("Deaths").innerHTML = stats.Deaths;
                 document.getElementById("Cases").innerHTML = stats.Cases;
-                document.getElementById("Total").innerHTML = stats.TotalCases;
-                console.log(stats.CasesPrevDay);
-                console.log(PrecDiff(stats.CasesPrevDay, stats.Cases));
+                document.getElementById("Total").innerHTML = stats.TotalCases.toLocaleString();
 
-                console.log(stats.DeathsPrevDay);
-                console.log(PrecDiff(stats.DeathsPrevDay, stats.Deaths));
+                //might comw back to this - to add perc inc/ dec
+                //console.log(stats.CasesPrevDay);
+                //console.log(PrecDiff(stats.CasesPrevDay, stats.Cases));
+
+                //console.log(stats.DeathsPrevDay);
+                //console.log(PrecDiff(stats.DeathsPrevDay, stats.Deaths));
 
             }
-
         }
 
-        function PrecDiff(org, newval ) {
+        function PrecDiff(org, newval) {
 
             let diff = newval - org;
-            diff = (diff / org)*100;
-            
+            diff = (diff / org) * 100;
+
             return diff;
         }
 
@@ -111,8 +119,8 @@
         GetCountyStats()
     </script>
 
-       
-    
+
+
     <script>
         //render main map
         let map1;
@@ -126,8 +134,8 @@
 
                 let viewOptions = {
                     container: "mapview", map: map1,
-                    center: [-7.912130968565811,53.096755475713266], // Birr
-                    zoom: 7 
+                    center: [-7.912130968565811, 53.096755475713266], // Birr
+                    zoom: 7
                 }
 
                 //render map
@@ -140,7 +148,7 @@
 
                 let templatetitle = "Adare-rathkeale LEA-6: 14 Day Incidence of confirmed COVID-19 cases by LEA"
 
-                let templatecontent ="<p><h3>LEA:</h3>";
+                let templatecontent = "<p><h3>LEA:</h3>";
                 templatecontent = templatecontent + "{ENGLISH}</p>";
 
                 templatecontent = templatecontent + "<p>COVID-19 - 14 Day Profile<br>";
@@ -152,7 +160,7 @@
 
                 templatecontent = templatecontent + "<p>Total Population of {ENGLISH} : {Pop2016}</p>";
 
-                 
+
                 let template = {
                     // autocasts as new PopupTemplate()
                     title: templatetitle,
@@ -169,7 +177,7 @@
 
                 //set scale such that all data points are visible
                 featureLayer.when(function () {
-                   mapView.goTo(featureLayer.fullExtent);
+                    mapView.goTo(featureLayer.fullExtent);
                 })
             });
     </script>

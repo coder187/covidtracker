@@ -1,5 +1,8 @@
 ﻿//Get Covid Statistcis Latest Reported Deaths & Cases and Total Cases todate.
 //https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/
+
+//16/5/21 - cyber attack on hse systems has stopped the date being updated.
+
 function GetCovidStats() {
     //todo: add date input param and add to sql clause
 
@@ -13,7 +16,7 @@ function GetCovidStats() {
                     query: {
                         f: "json",
                         where: "(ConfirmedCovidCases>0)",
-                        outFields: ["ConfirmedCovidCases", "ConfirmedCovidDeaths", "TotalConfirmedCovidCases"],
+                        outFields: ["ConfirmedCovidCases", "ConfirmedCovidDeaths", "TotalConfirmedCovidCases", "Date"],
                         returnGeometry: false
                     },
                     responseType: "json",
@@ -28,7 +31,8 @@ function GetCovidStats() {
                         Deaths : myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidDeaths,
                         TotalCases: myFeatures[myFeatures.length - 1].attributes.TotalConfirmedCovidCases,
                         CasesPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidCases,
-                        DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths
+                        DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths,
+                        DateLastUpdated: new Date(myFeatures[myFeatures.length - 1].attributes.Date)
                     }
                     resolve(stats); //return the stats object
                 }); 

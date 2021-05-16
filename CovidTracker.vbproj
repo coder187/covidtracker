@@ -84,6 +84,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\audio.mp3" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\gif\loading.gif" />
     <Content Include="assets\gif\spiral.gif" />
