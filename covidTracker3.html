@@ -58,7 +58,14 @@
             </div><!-- end right col-->
         </div>
     </div>
-    <script>
+    <script> 
+        //Get Covid Stats: 
+        //Total Cases
+        //New Cases
+        //Deaths
+        //Prev Day Cases
+        //Prev Day Deaths
+            
         GetCovidStats().then(
             function (message) {
                 //console.log("Resolved: ", message);
@@ -80,8 +87,22 @@
                 document.getElementById("Deaths").innerHTML = stats.Deaths;
                 document.getElementById("Cases").innerHTML = stats.Cases;
                 document.getElementById("Total").innerHTML = stats.TotalCases;
+                console.log(stats.CasesPrevDay);
+                console.log(PrecDiff(stats.CasesPrevDay, stats.Cases));
+
+                console.log(stats.DeathsPrevDay);
+                console.log(PrecDiff(stats.DeathsPrevDay, stats.Deaths));
+
             }
 
+        }
+
+        function PrecDiff(org, newval ) {
+
+            let diff = newval - org;
+            diff = (diff / org)*100;
+            
+            return diff;
         }
 
     </script>
