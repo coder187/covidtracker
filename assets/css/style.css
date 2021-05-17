@@ -1,11 +1,7 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
-.cases-by-county {
-    height: 200px;
-    border: 2px solid red;
-    overflow-y: scroll;
-}
+
 img{
     height:75px;
     width:75px;
@@ -17,13 +13,32 @@ img{
 }
 .top-lvl-stats {
     text-align: center;
-    border: 5px solid #000000;
+    border: 1.5px solid #000000;
     font-family: 'Prompt', sans-serif;
     font-size: 35px;
     color: #4B44FF;
     background-color: #222222;
-    padding:40px;
+   
+    padding:20px;
+
 }
 
 .label {
-color: grey;}
+color: grey;
+font-size:17.5px;
+}
+
+
+.cases-by-county {
+    background-color: #222222;
+    border: 1.5px solid #000000;
+    color: white;
+    font-family: 'Prompt', sans-serif;
+    height: 375px;
+    overflow-y: scroll;
+}
+.cases-by-county ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
