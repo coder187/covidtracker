@@ -104,7 +104,6 @@
 
             }
         }
-
         function PrecDiff(org, newval) {
 
             let diff = newval - org;
@@ -112,14 +111,41 @@
 
             return diff;
         }
+    </script>
+    <script>
+        GetCountyStats().then(
+            function (message) {
+                //console.log("Resolved: ", message);
+                PrintCountyStats( message, 0);
+            },
+            function (error) {
+                console.log("Print County Stats - Rejected: ", error);
+                PrintCountyStats(message, 1);
+            }
+        );
+        function PrintCountyStats(stats, err) {
+            let ul = document.getElementById("county-list");
+            
+            if (err !== 0) {
+                let li = document.createElement("li");
+                li.innerHTML = county[i] + "error ?";
+                ul.appendChild(li);
+            }
+            else {
+                for (var i = 0; i < stats.length; i++) {
+                    let li = document.createElement("li");
+                    li.innerHTML = stats[i].County + "    " + stats[i].Confirmed;
+                    ul.appendChild(li);
 
+                    //console.log(stats[i].ConfirmedRecovered);
+                }
+            }
+        }
     </script>
 
     <script>
-        GetCountyStats()
+        //GetCountyStats()
     </script>
-
-
 
     <script>
         //render main map
