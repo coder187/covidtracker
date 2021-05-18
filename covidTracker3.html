@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+ <meta charset="utf-8" />
     <title>Covid Tracker</title>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
@@ -235,6 +235,20 @@
                     mapView.goTo(featureLayer.fullExtent);
                 })
             });
+    </script>
+
+    <script>
+        //GET VACCINE STATS
+        GetVaccineStats().then(
+            function (message) {
+                console.log("Resolved: ", message);
+                //PrintCountyStats(message, 0);
+            },
+            function (error) {
+                console.log("GetVAccineStats - Rejected: ", error);
+                //PrintCountyStats(message, 1);
+            }
+        );
     </script>
 </body>
 </html>

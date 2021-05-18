@@ -116,3 +116,27 @@ function CountyExists(county, stats_array) {
         }
     }
 }
+
+
+
+function GetVaccineStats() {
+//get the total Vaccine 1st and 2nd dose.
+//https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/
+
+    return new Promise(function (resolve, reject) {
+        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/"
+        url = "data/vaccine.json";
+
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", url, false);
+            Httpreq.send(null);
+        
+
+            var json_obj = JSON.parse(Httpreq.responseText);
+            console.log(json_obj);
+
+        resolve("resolve");
+        //resolve(stats); not sure why stats cabnt be read here.
+    });
+}
+
