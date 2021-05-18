@@ -48,10 +48,20 @@
 
         </div>
         <div class="row"><!--cases-by-county-->
-            <div class="col md-4 cases-by-county">
+            <div class="col md-4 cases-by-county table-responsive">
                 <!--total cases per county-->
-                Cases By County<br />
                 <ul id="county-list"></ul>
+                <table id="county-list-table" class="">
+                    <caption>Cases By County</caption>
+                    <tr>
+                        <th scope="col">County</th>
+                        <th scope="col">Cases</th>
+                        <th scope="col">Pop Perc</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><img src="assets/gif/loading.gif" alt="loading" /></td>
+                    </tr>
+                </table>
             </div>
             <div class="col md-4">
                 <!--lea 14 day moving avg MAP-->
@@ -102,6 +112,8 @@
                 //console.log(stats.DeathsPrevDay);
                 //console.log(PrecDiff(stats.DeathsPrevDay, stats.Deaths));
 
+                
+
             }
         }
         function PrecDiff(org, newval) {
@@ -124,27 +136,44 @@
             }
         );
         function PrintCountyStats(stats, err) {
-            let ul = document.getElementById("county-list");
+            //let ul = document.getElementById("county-list");
+            let tbl = document.getElementById("county-list-table");
             
             if (err !== 0) {
-                let li = document.createElement("li");
-                li.innerHTML = county[i] + "error ?";
-                ul.appendChild(li);
+                //let li = document.createElement("li");
+                //li.innerHTML = county[i] + "error ?";
+                //ul.appendChild(li);
+
+                let tr = document.createElement("tr");
+                let td = document.createElement("td colspan=3");
+                td.innerHTML = "error ?";
+                tr.appendChild(td);
             }
             else {
                 for (var i = 0; i < stats.length; i++) {
-                    let li = document.createElement("li");
-                    li.innerHTML = stats[i].County + "    " + stats[i].Confirmed;
-                    ul.appendChild(li);
 
-                    //console.log(stats[i].ConfirmedRecovered);
+                    //let li = document.createElement("li");
+                    //li.innerHTML = stats[i].County + "    " + stats[i].Confirmed + "    " + Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100)/100;//cases as percentage of County Population    
+                    //ul.appendChild(li);
+
+                    let tr = document.createElement("tr");
+                    let td = document.createElement("td");
+                    td.innerHTML = stats[i].County;
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    td.innerHTML = stats[i].Confirmed;
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    td.innerHTML = Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100) / 100 + "%";
+                    tr.appendChild(td);
+
+                    tbl.appendChild(tr);
                 }
             }
+            tbl.deleteRow(1);//laoding gif
         }
-    </script>
-
-    <script>
-        //GetCountyStats()
     </script>
 
     <script>

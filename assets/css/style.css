@@ -37,8 +37,15 @@ font-size:17.5px;
     height: 375px;
     overflow-y: scroll;
 }
+
+
 .cases-by-county ul {
-    list-style-type: none; /* Remove bullets */
+    list-style-type: none; /* Remove bullets */ /*depreciated*/
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
+}
+
+caption {
+    caption-side: top;
+    text-align:center;
 }

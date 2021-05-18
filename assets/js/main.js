@@ -67,7 +67,7 @@ function GetCountyStats() {
                     query: {
                         f: "json",
                         where: "1=1", //seems to need a where clause to return anything - rertturn all records.
-                        outFields: ["CountyName", "ConfirmedCovidCases", "PopulationProportionCovidCases", "ConfirmedCovidDeaths", "ConfirmedCovidRecovered", "TimeStampDate"],
+                        outFields: ["CountyName", "ConfirmedCovidCases", "PopulationProportionCovidCases", "ConfirmedCovidDeaths", "ConfirmedCovidRecovered", "TimeStampDate", "PopulationCensus16"],
                         returnGeometry: false
                     },
                     responseType: "json",
@@ -89,6 +89,7 @@ function GetCountyStats() {
                                 Proportion: myFeatures[i].attributes.PopulationProportionCovidCases,
                                 ConfirmedDeaths: myFeatures[i].attributes.ConfirmedCovidDeaths,//currently null
                                 ConfirmedRecovered: myFeatures[i].attributes.ConfirmedCovidRecovered,//currently null
+                                PopulationC16: myFeatures[i].attributes.PopulationCensus16,
                                 TimeStamp: new Date(myFeatures[i].attributes.TimeStampDate)
                             }
                  
