@@ -47,7 +47,7 @@
             </div>
 
         </div>
-        <div class="row"><!--cases-by-county-->
+        <div class="row">
             <div class="col md-4 cases-by-county table-responsive">
                 <!--total cases per county-->
                 <ul id="county-list"></ul>
@@ -72,6 +72,20 @@
                 <div id="legendview"></div>
             </div>
         </div><!-- end row-->
+        <div class="row">
+            <div class="col md-4 vax-stats">
+                <div class="label">First Dose Vaccines:</div>
+                <span id="first-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+            <div class="col md-4 vax-stats">
+                <div class="label">Second Dose Vaccines:</div>
+                <span id="second-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+            <div class="col md-4 vax-stats">
+                <div class="label">Total Vaccines:</div>
+                <span id="vaccine-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+            </div>
+        </div>
     </div> <!--end container-->
     <script>
         //Get Covid Stats:
@@ -239,16 +253,31 @@
 
     <script>
         //GET VACCINE STATS
+        //console.log("begin: vaccine stats");
         GetVaccineStats().then(
             function (message) {
-                console.log("Resolved: ", message);
-                //PrintCountyStats(message, 0);
+                //console.log("Resolved: ", message);
+                PrintCovidVaccineStats(message, 0);
             },
             function (error) {
-                console.log("GetVAccineStats - Rejected: ", error);
-                //PrintCountyStats(message, 1);
+                //console.log("GetVAccineStats - Rejected: ", error);
+                PrintCovidVaccineStats(message, 1);
             }
-        );
+       );
+        //console.log("end: vaccine stats");
+
+        function PrintCovidVaccineStats(stats, err) {
+            if (err !== 0) {
+                document.getElementById("first-dose-total").innerHTML = "?";
+                document.getElementById("second-dose-total").innerHTML = "?";
+                document.getElementById("vaccine-dose-total").innerHTML = "?";
+            }
+            else {
+                document.getElementById("first-dose-total").innerHTML = stats.TotalFirstDose.toLocaleString();
+                document.getElementById("second-dose-total").innerHTML = stats.SecondDoseTotal.toLocaleString();
+                document.getElementById("vaccine-dose-total").innerHTML = (stats.SecondDoseTotal + stats.TotalFirstDose).toLocaleString();
+            }
+        }
     </script>
 </body>
 </html>

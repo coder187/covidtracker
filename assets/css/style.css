@@ -22,10 +22,19 @@ img{
     padding:20px;
 
 }
+.vax-stats {
+    text-align: center;
+    border: 1.5px solid #000000;
+    font-family: 'Prompt', sans-serif;
+    font-size: 35px;
+    color: #4B44FF;
+    background-color: #222222;
+    padding: 20px;
+}
 
 .label {
-color: grey;
-font-size:17.5px;
+    color: grey;
+    font-size: 17.5px;
 }
 
 
@@ -34,7 +43,8 @@ font-size:17.5px;
     border: 1.5px solid #000000;
     color: white;
     font-family: 'Prompt', sans-serif;
-    height: 375px;
+    /*height: 375px;*/
+    height:750px;
     overflow-y: scroll;
 }
 

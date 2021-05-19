@@ -81,7 +81,7 @@ function GetCountyStats() {
                     let stats_Array = [];
                     let stats = {};
 
-                    for (var i = 0; i < (myFeatures.length) / 2; i++) {//end point returns the data duplicted.
+                    for (var i = 0; i < myFeatures.length; i++) {//end point returns the data duplicted.
                         if (!CountyExists(myFeatures[i].attributes.CountyName,stats_Array)) {
                             stats = {
                                 County: myFeatures[i].attributes.CountyName,
@@ -108,13 +108,11 @@ function GetCountyStats() {
 //the end point returns seemingly duplicate data but we only need one copy.
 function CountyExists(county, stats_array) {
     for (let i = 0; i < stats_array.length; i++) {
-        if (stats_array[i].county === county) {
+        if (stats_array[i].County === county) { 
             return true;
         }
-        else {
-            return false;
-        }
     }
+    return false;
 }
 
 
@@ -124,18 +122,39 @@ function GetVaccineStats() {
 //https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/
 
     return new Promise(function (resolve, reject) {
-        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/"
+        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/" //CORS ERROR
         url = "data/vaccine.json";
+       // url = "http://time.jsontest.com/"; //TEST URL
+        //url = "https://opendata.ecdc.europa.eu/covid19/testing/json/";
 
-            var Httpreq = new XMLHttpRequest(); // a new request
-            Httpreq.open("GET", url, false);
-            Httpreq.send(null);
+        let Httpreq = new XMLHttpRequest(); // a new request
+        
+        Httpreq.open("GET", url, false);
+        Httpreq.send();
         
 
-            var json_obj = JSON.parse(Httpreq.responseText);
-            console.log(json_obj);
+        let obj_vaccine_data = JSON.parse(Httpreq.responseText);
+        let vaccine_data_array = obj_vaccine_data.records;
+        //console.log(obj_vaccine_data);
+            
+        let FirstDoseTotal = 0;
+        let SecondDoseTotal = 0;
 
-        resolve("resolve");
+
+        for (let i = 0; i < vaccine_data_array.length; i++) {
+            obj_vaccine_data = vaccine_data_array[i];
+            if (obj_vaccine_data.Region === "IE") {
+                if (obj_vaccine_data.TargetGroup === "ALL") {
+                    FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
+                    SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
+                }
+            }
+        }
+        console.log("First Dose Ireland Total:" + FirstDoseTotal);
+        console.log("Second Dose Ireland Total:" + SecondDoseTotal);
+
+        obj_vaccine_data ={ TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
+        resolve(obj_vaccine_data);
         //resolve(stats); not sure why stats cabnt be read here.
     });
 }
