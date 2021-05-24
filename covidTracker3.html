@@ -46,7 +46,6 @@
                 <div class="label">Cases Last Reported:</div>
                 <span id="Cases"><img src="assets/gif/loading.gif" alt="loading" /></span>
             </div>
-
         </div>
         <div class="row">
             <div class="col md-4 cases-by-county table-responsive">
@@ -73,6 +72,7 @@
                 <div id="legendview"></div>
             </div>
         </div><!-- end row-->
+        
         <div class="row">
             <div class="col md-4 vax-stats">
                 <div class="label">First Dose Vaccines:</div>
@@ -197,11 +197,12 @@
         let mapView;
         let url = "";
         let featureLayer = "";
-        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request"],
-            function (Map, FeatureLayer, MapView, Legend, esriRequest) {
+        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request","esri/widgets/Home"],
+            function (Map, FeatureLayer, MapView, Legend, esriRequest,Home) {
+                
+                map1 = new Map({ basemap: "dark-gray-vector" }); //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
 
-                map1 = new Map({ basemap: "streets" });
-
+                          
                 let viewOptions = {
                     container: "mapview", map: map1,
                     center: [-7.912130968565811, 53.096755475713266], // Birr
@@ -210,6 +211,14 @@
 
                 //render map
                 mapView = new MapView(viewOptions);
+
+                //create home button
+                let homeBtn = new Home({
+                    view: mapView
+                });
+
+                // Add the home button to the top left corner of the view
+                mapView.ui.add(homeBtn, "top-left");
 
                 //render legend
                 let legend = new Legend({ view: mapView }, "legendview");

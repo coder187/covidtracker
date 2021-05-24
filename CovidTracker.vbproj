@@ -92,6 +92,7 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\o.min.js" />
     <Content Include="assets\js\promise.js" />
+    <Content Include="assets\notes\maptypes.txt" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
     <Content Include="covidTracker3.html" />

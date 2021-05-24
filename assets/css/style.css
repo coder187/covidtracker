@@ -1,10 +1,17 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
+#mapview {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
 
-img{
-    height:75px;
-    width:75px;
+
+img {
+    height: 75px;
+    width: 75px;
 }
 
 .pagetitle {
