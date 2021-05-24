@@ -39,7 +39,7 @@
             <div class="col md-3 top-lvl-stats">
                 <!--new deaths reported-->
                 <div class="label">Deaths Last Reported:</div>
-                 <span id="Deaths"><img src="assets/gif/loading.gif" alt="loading" /></span>
+                <span id="Deaths"><img src="assets/gif/loading.gif" alt="loading" /></span>
             </div>
             <div class="col md-3 top-lvl-stats">
                 <!--new cases reported-->
@@ -64,15 +64,29 @@
                 </table>
             </div>
             <div class="col md-4">
-                <!--lea 14 day moving avg MAP-->
-                <div id="mapview" style="width:750px;height:750px;" class="esri-widget"></div> <!-- placing style in file breaks popup-->
+                <div class="row">
+                    <div class="col">
+                        <label for="maps">Choose a map:</label>
+                        <select name="maps" id="select-maps">
+                            <option value="LEA">14 Day Avg Per LEA</option>
+                            <option value="saab">Cases Per County</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!--lea 14 day moving avg MAP-->
+                        <div id="mapview" style="width:750px;height:750px;" class="esri-widget"></div> <!-- placing style in file breaks popup-->
+                    </div>
+                </div>
+
             </div>
             <div class="col md-4">
                 <!--MAP legend-->
                 <div id="legendview"></div>
             </div>
         </div><!-- end row-->
-        
+
         <div class="row">
             <div class="col md-4 vax-stats">
                 <div class="label">First Dose Vaccines:</div>
@@ -115,7 +129,7 @@
                 document.getElementById("Total").innerHTML = "?";
             }
             else {
-                document.getElementById("date-last-updated").innerHTML = stats.DateLastUpdated.toDateString()   ;
+                document.getElementById("date-last-updated").innerHTML = stats.DateLastUpdated.toDateString();
                 document.getElementById("Deaths").innerHTML = stats.Deaths;
                 document.getElementById("Cases").innerHTML = stats.Cases;
                 document.getElementById("Total").innerHTML = stats.TotalCases.toLocaleString();
@@ -127,7 +141,7 @@
                 //console.log(stats.DeathsPrevDay);
                 //console.log(PrecDiff(stats.DeathsPrevDay, stats.Deaths));
 
-                
+
 
             }
         }
@@ -143,7 +157,7 @@
         GetCountyStats().then(
             function (message) {
                 //console.log("Resolved: ", message);
-                PrintCountyStats( message, 0);
+                PrintCountyStats(message, 0);
             },
             function (error) {
                 console.log("Print County Stats - Rejected: ", error);
@@ -153,7 +167,7 @@
         function PrintCountyStats(stats, err) {
             //let ul = document.getElementById("county-list");
             let tbl = document.getElementById("county-list-table");
-            
+
             if (err !== 0) {
                 //let li = document.createElement("li");
                 //li.innerHTML = county[i] + "error ?";
@@ -168,7 +182,7 @@
                 for (var i = 0; i < stats.length; i++) {
 
                     //let li = document.createElement("li");
-                    //li.innerHTML = stats[i].County + "    " + stats[i].Confirmed + "    " + Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100)/100;//cases as percentage of County Population    
+                    //li.innerHTML = stats[i].County + "    " + stats[i].Confirmed + "    " + Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100)/100;//cases as percentage of County Population
                     //ul.appendChild(li);
 
                     let tr = document.createElement("tr");
@@ -197,12 +211,12 @@
         let mapView;
         let url = "";
         let featureLayer = "";
-        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request","esri/widgets/Home"],
-            function (Map, FeatureLayer, MapView, Legend, esriRequest,Home) {
-                
+        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request", "esri/widgets/Home"],
+            function (Map, FeatureLayer, MapView, Legend, esriRequest, Home) {
+
                 map1 = new Map({ basemap: "dark-gray-vector" }); //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
 
-                          
+
                 let viewOptions = {
                     container: "mapview", map: map1,
                     center: [-7.912130968565811, 53.096755475713266], // Birr
@@ -225,20 +239,20 @@
                 // mapView.ui.add(legend, "top-right"); legend is rendered outside map in the legendview
 
 
-                let templatetitle = "Adare-rathkeale LEA-6: 14 Day Incidence of confirmed COVID-19 cases by LEA"
+              
+                //todo format the evendate
+                let templatetitle = "{ENGLISH}: 14 Day Incidence of confirmed COVID - 19 cases by LEA <br> data last updated : {EventDate} <hr>";
 
-                let templatecontent = "<p><h3>LEA:</h3>";
-                templatecontent = templatecontent + "{ENGLISH}</p>";
-
-                templatecontent = templatecontent + "<p>COVID-19 - 14 Day Profile<br>";
-                templatecontent = templatecontent + "----<br>";
+                let templatecontent = "<h4>LEA:";
+                templatecontent = templatecontent + "{ENGLISH}</h4>";
+                templatecontent = templatecontent + "<span style='color: red;'>COVID-19 - 14 Day Profile</span>";
+                //todo:add the font family inline.
+                //templatecontent = templatecontent + "<span style='color: red; font-family: " + "'Prompt'," + "'" + "sans-serif" + "'" + "'>COVID-19 - 14 Day Profile</span>";
                 templatecontent = templatecontent + "<br>";
                 templatecontent = templatecontent + "Confirmed Cases in LEA: {C19_P14_T}<br>";
                 templatecontent = templatecontent + "LEA rate per 100k pop: {P14_100k}<br>";
-                templatecontent = templatecontent + "R.of Ireland rate per 100k: {Ire_IncP14}</p>";
-
-                templatecontent = templatecontent + "<p>Total Population of {ENGLISH} : {Pop2016}</p>";
-
+                templatecontent = templatecontent + "R.of Ireland rate per 100k: {Ire_IncP14}<br><br>";
+                templatecontent = templatecontent + "Total Population of {ENGLISH} : {Pop2016}";
 
                 let template = {
                     // autocasts as new PopupTemplate()
@@ -273,7 +287,7 @@
                 //console.log("GetVAccineStats - Rejected: ", error);
                 PrintCovidVaccineStats(message, 1);
             }
-       );
+        );
         //console.log("end: vaccine stats");
 
         function PrintCovidVaccineStats(stats, err) {
@@ -289,5 +303,17 @@
             }
         }
     </script>
+    <!--<script>
+        //get the Event Date from the LEA data source and pass it to the map popup control.
+        GetLEADateRange().then(
+            function (message) {
+                //console.log("GetLEADateRange Resolved: ", message);
+                const LEA_DATE = new Date(message.EventDate); //use this in the map pop up.
+            },
+            function (error) {
+                console.log("GetLEADateRange Rejected: ", error);
+            }
+        );
+    </script>-->
 </body>
 </html>
