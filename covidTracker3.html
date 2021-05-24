@@ -19,12 +19,21 @@
         <source src="assets/audio/audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="pagetitle">COVID 19 Tracker</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">COVID 19 Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Stay Up To Date</a>
+                <a class="nav-item nav-link" href="#">Refresh</a>
+                <a class="nav-item nav-link" href="#">Info on Data Sources</a>
             </div>
         </div>
+    </nav>
+    <div class="container-fluid">
         <div class="row">
             <div class="col md-3 top-lvl-stats">
                 <!--date last updated-->
@@ -101,6 +110,10 @@
                 <span id="vaccine-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
             </div>
         </div>
+        <div class="row"><div class="col">Fancy Graph</div></div>
+        <div class="row"><div class="col">Contact Form</div></div>
+        <div class="row"><div class="col">Footer</div></div>
+
     </div> <!--end container-->
     <script>
         //Get Covid Stats:
@@ -239,7 +252,7 @@
                 // mapView.ui.add(legend, "top-right"); legend is rendered outside map in the legendview
 
 
-              
+
                 //todo format the evendate
                 let templatetitle = "{ENGLISH}: 14 Day Incidence of confirmed COVID - 19 cases by LEA <br> data last updated : {EventDate} <hr>";
 
