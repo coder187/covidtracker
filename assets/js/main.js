@@ -152,8 +152,8 @@ function GetVaccineStats() {
                 }
             }
         }
-        console.log("First Dose Ireland Total:" + FirstDoseTotal);
-        console.log("Second Dose Ireland Total:" + SecondDoseTotal);
+        //console.log("First Dose Ireland Total:" + FirstDoseTotal);
+        //console.log("Second Dose Ireland Total:" + SecondDoseTotal);
 
         obj_vaccine_data ={ TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
         resolve(obj_vaccine_data);
