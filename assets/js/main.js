@@ -160,6 +160,31 @@ function GetVaccineStats() {
         //resolve(stats); not sure why stats cabnt be read here.
     });
 }
+function GetVaccineStats2(){
+    //https://developers.google.com/web/updates/2015/03/introduction-to-fetch
+
+    let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";
+    url = "../data/vaccine.json"; //local copy
+    
+    fetch(url)
+    .then(
+        function(response) {
+        if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            return;
+        }
+
+        // Examine the text in the response
+        response.json().then(function(data) {
+            console.log(data);
+        });
+        }
+    )
+    .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+    });
+
+}
 
 function GetLEADateRange() {
 

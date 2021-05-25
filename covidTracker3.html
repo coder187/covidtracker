@@ -325,6 +325,16 @@
             }
         }
     </script>
+    <script>
+        GetVaccineStats2().then(
+            function(message){
+                console.log("GetVaccineStats2 resolved",message);
+            },
+            function(error){
+                console.log("GetVaccineStats2 Rejected",error);
+            }
+        );
+    </script>
     <!--<script>
         //get the Event Date from the LEA data source and pass it to the map popup control.
         GetLEADateRange().then(
