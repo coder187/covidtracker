@@ -300,17 +300,46 @@
     <script>
         //GET VACCINE STATS
         //console.log("begin: vaccine stats");
-        GetVaccineStats().then(
-            function (message) {
-                //console.log("Resolved: ", message);
-                PrintCovidVaccineStats(message, 0);
-            },
-            function (error) {
-                //console.log("GetVAccineStats - Rejected: ", error);
-                PrintCovidVaccineStats(message, 1);
-            }
-        );
-        //console.log("end: vaccine stats");
+
+        ////Uses XMLHTTPRrequest Which has been depreciated
+        //GetVaccineStats().then(
+        //    function (message) {
+        //        //console.log("Resolved: ", message);
+        //        PrintCovidVaccineStats(message, 0);
+        //    },
+        //    function (error) {
+        //        //console.log("GetVAccineStats - Rejected: ", error);
+        //        PrintCovidVaccineStats(message, 1);
+        //    }
+        //);
+        ////console.log("end: vaccine stats");
+        ///////////////////////////////////////////////////////////////////////////
+    </script>
+
+    <script>
+        let vacccine_url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";
+        vacccine_url = "data/vaccine.json"; //local copy
+
+        fetch(vacccine_url)
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem loading vaccine file. Status Code: ' + response.status);
+                        PrintCovidVaccineStats(response, 1)
+                        return;
+                    }
+
+                    // Examine the text in the response
+                    response.json().then(function (data) {
+                        //console.log(data);
+                        PrintCovidVaccineStats(ExtractROIVaccineData(data),0);
+                    });
+                }
+            )
+            .catch(function (err) {
+                //console.log('Fetch Error :-S', err);
+                PrintCovidVaccineStats(err, 1);
+            });
 
         function PrintCovidVaccineStats(stats, err) {
             if (err !== 0) {
@@ -325,6 +354,7 @@
             }
         }
     </script>
+
     <!--<script>
         //get the Event Date from the LEA data source and pass it to the map popup control.
         GetLEADateRange().then(

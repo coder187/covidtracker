@@ -134,32 +134,15 @@ function GetVaccineStats() {
         Httpreq.open("GET", url, false);
         Httpreq.send();
         
+       
+        let obj_vaccine_data = ExtractROIVaccineData(JSON.parse(Httpreq.responseText));
 
-        let obj_vaccine_data = JSON.parse(Httpreq.responseText);
-        let vaccine_data_array = obj_vaccine_data.records;
-        //console.log(obj_vaccine_data);
-            
-        let FirstDoseTotal = 0;
-        let SecondDoseTotal = 0;
-
-
-        for (let i = 0; i < vaccine_data_array.length; i++) {
-            obj_vaccine_data = vaccine_data_array[i];
-            if (obj_vaccine_data.Region === "IE") {
-                if (obj_vaccine_data.TargetGroup === "ALL") {
-                    FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
-                    SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
-                }
-            }
-        }
-        //console.log("First Dose Ireland Total:" + FirstDoseTotal);
-        //console.log("Second Dose Ireland Total:" + SecondDoseTotal);
-
-        obj_vaccine_data ={ TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
         resolve(obj_vaccine_data);
         //resolve(stats); not sure why stats cabnt be read here.
     });
 }
+
+
 
 function GetLEADateRange() {
 
@@ -189,3 +172,26 @@ function GetLEADateRange() {
     });
 }
 
+function ExtractROIVaccineData(obj_vaccine_data) {
+
+    //let obj_vaccine_data = JSON.parse(Httpreq.responseText);
+
+    let vaccine_data_array = obj_vaccine_data.records;
+    
+    let FirstDoseTotal = 0;
+    let SecondDoseTotal = 0;
+
+
+    for (let i = 0; i < vaccine_data_array.length; i++) {
+        obj_vaccine_data = vaccine_data_array[i];
+        if (obj_vaccine_data.Region === "IE") {
+            if (obj_vaccine_data.TargetGroup === "ALL") {
+                FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
+                SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
+            }
+        }
+    }
+    
+    obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
+    return obj_vaccine_data;
+}
