@@ -1,6 +1,10 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
+body {
+    padding-top:10px;
+}
+
 #mapview {
     padding: 0;
     margin: 0;
@@ -21,13 +25,14 @@ img {
 .top-lvl-stats {
     text-align: center;
     border: 1.5px solid #000000;
+    border: 1.5px solid white;
     font-family: 'Prompt', sans-serif;
     font-size: 35px;
     color: #4B44FF;
     background-color: #222222;
-    padding:20px;
-
+    padding: 20px;
 }
+
 .vax-stats {
     text-align: center;
     border: 1.5px solid #000000;

@@ -3,8 +3,6 @@
 
 //16/5/21 - cyber attack on hse systems has stopped the date being updated.
 
-
-
 function GetCovidStats() {
     //todo: add date input param and add to sql clause
 
@@ -117,60 +115,7 @@ function CountyExists(county, stats_array) {
     return false;
 }
 
-function GetVaccineStats() {
-//get the total Vaccine 1st and 2nd dose.
-    //https://vaccinetracker.ecdc.europa.eu/public/extensions/COVID-19/vaccine-tracker.html
-//https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/
-    //https://covid19ireland-geohive.hub.arcgis.com/
 
-    return new Promise(function (resolve, reject) {
-        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/" //CORS ERROR
-        url = "data/vaccine.json"; //copy file to local folder
-       // url = "http://time.jsontest.com/"; //TEST URL
-        //url = "https://opendata.ecdc.europa.eu/covid19/testing/json/";
-
-        let Httpreq = new XMLHttpRequest(); // a new request
-        
-        Httpreq.open("GET", url, false);
-        Httpreq.send();
-        
-       
-        let obj_vaccine_data = ExtractROIVaccineData(JSON.parse(Httpreq.responseText));
-
-        resolve(obj_vaccine_data);
-        //resolve(stats); not sure why stats cabnt be read here.
-    });
-}
-
-
-
-function GetLEADateRange() {
-
-    return new Promise(function (resolve, reject) {
-        //let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson"?
-        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query" //not sure why but by adding "/query to the url we can specify query params below. we can also specify query params here on the url buy encoding hte string.
-        require(["esri/request"],
-            function (esriRequest) {
-                // Define the 'options' for the request
-                let options = {
-                    query: {
-                        f: "json",
-                        where:"(FID=1)", //only return one record as just need the eventdate from one record.
-                        outFields: ["EventDate"],
-                        returnGeometry: false
-                    },
-                    responseType: "json",
-                };
-                console.log("call request");
-
-                esriRequest(url, options).then(function (response) {
-
-                    resolve(response.data.features[0].attributes); //return the stats object
-                });
-            });
-
-    });
-}
 
 function ExtractROIVaccineData(obj_vaccine_data) {
 
@@ -194,4 +139,58 @@ function ExtractROIVaccineData(obj_vaccine_data) {
     
     obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
     return obj_vaccine_data;
+}
+
+function GetLEADateRange() {
+
+    return new Promise(function (resolve, reject) {
+        //let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson"?
+        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query" //not sure why but by adding "/query to the url we can specify query params below. we can also specify query params here on the url buy encoding hte string.
+        require(["esri/request"],
+            function (esriRequest) {
+                // Define the 'options' for the request
+                let options = {
+                    query: {
+                        f: "json",
+                        where: "(FID=1)", //only return one record as just need the eventdate from one record.
+                        outFields: ["EventDate"],
+                        returnGeometry: false
+                    },
+                    responseType: "json",
+                };
+                console.log("call request");
+
+                esriRequest(url, options).then(function (response) {
+
+                    resolve(response.data.features[0].attributes); //return the stats object
+                });
+            });
+
+    });
+}
+
+//depreciated
+function GetVaccineStats() {
+    //get the total Vaccine 1st and 2nd dose.
+    //https://vaccinetracker.ecdc.europa.eu/public/extensions/COVID-19/vaccine-tracker.html
+    //https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/
+    //https://covid19ireland-geohive.hub.arcgis.com/
+
+    return new Promise(function (resolve, reject) {
+        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/" //CORS ERROR
+        url = "data/vaccine.json"; //copy file to local folder
+        // url = "http://time.jsontest.com/"; //TEST URL
+        //url = "https://opendata.ecdc.europa.eu/covid19/testing/json/";
+
+        let Httpreq = new XMLHttpRequest(); // a new request
+
+        Httpreq.open("GET", url, false);
+        Httpreq.send();
+
+
+        let obj_vaccine_data = ExtractROIVaccineData(JSON.parse(Httpreq.responseText));
+
+        resolve(obj_vaccine_data);
+        //resolve(stats); not sure why stats cabnt be read here.
+    });
 }

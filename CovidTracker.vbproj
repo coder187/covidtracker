@@ -86,7 +86,12 @@
   <ItemGroup>
     <Content Include="assets\audio\audio.mp3" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\gif\arcgis-online-icon.png" />
+    <Content Include="assets\gif\dgi-logo-new.png" />
+    <Content Include="assets\gif\dgi-logo-new_logo.png" />
+    <Content Include="assets\gif\dgi-logo-new_sm.png" />
     <Content Include="assets\gif\loading.gif" />
+    <Content Include="assets\gif\logo-ecdc.png" />
     <Content Include="assets\gif\spiral.gif" />
     <Content Include="assets\js\car_obg_promise.js" />
     <Content Include="assets\js\main.js" />
@@ -149,6 +154,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

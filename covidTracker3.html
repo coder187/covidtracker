@@ -6,21 +6,20 @@
     <title>Covid Tracker</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
-    
+
 
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/main.js"></script>
 
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="assets/audio/audio.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+
     <!-- navbar code from https://getbootstrap.com/docs/4.0/components/navbar/ -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">--> <!-- org --> -->
+    <!--<nav class="navbar navbar-default sticky-top navbar-expand-lg navbar-light bg-light">--> <!--sticky works but not supported in all browsers -->
+    <nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-light bg-light">
+
         <a href="#" class="navbar-brand">Covid Tracker</a>
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,12 +34,12 @@
                 <li class="nav-item"><a class="nav-link" href="#">Refresh</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Data Source Info</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Audio Toggle</a></li>
-
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row"> <!-- header data-->
+        <div class="row">
+            <!-- header data-->
             <div class="col-sm-3 top-lvl-stats">
                 <!--date last updated-->
                 <div class="label">Last Update:</div>
@@ -63,7 +62,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 cases-by-county table-responsive"> <!--total cases per county-->
+            <div class="col-lg-3 cases-by-county table-responsive">
+                <!--total cases per county-->
                 <ul id="county-list"></ul>
                 <table id="county-list-table" class="">
                     <caption>Cases By County</caption>
@@ -77,7 +77,8 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-lg-4"> <!-- MAIN MAP-->
+            <div class="col-lg-6">
+                <!-- MAIN MAP-->
                 <div class="row">
                     <div class="col">
                         <label for="maps">Choose a map:</label>
@@ -94,7 +95,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4"><!--MAP legend-->
+            <div class="col-lg-3">
+                <!--MAP legend-->
                 <div id="legendview"></div>
             </div>
         </div><!-- end row-->
@@ -115,8 +117,12 @@
         </div>
         <div class="row"><div class="col">Fancy Graph</div></div>
         <div class="row"><div class="col">Contact Form</div></div>
-        <div class="row"><div class="col">Footer</div></div>
-
+        <div class="row">
+            <div class="col-md-3"><a href="https://www.arcgis.com/index.html"><img src="assets/gif/arcgis-online-icon.png" alt="Arcgis Logo" /></a></div>
+            <div class="col-md-3"><a href="https://data.gov.ie/"><img src="assets/gif/dgi-logo-new_logo.png" alt="data.gov.ie logo" /></a></div>
+            <div class="col-md-3"><a href="https://www.ecdc.europa.eu/en"><img src="assets/gif/logo-ecdc.png" alt="ECDC Logo" /></a></div>
+            <div class="col-md-3"><a href="#">Github Linked In</a></div>
+        </div>
     </div> <!--end container-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -226,78 +232,6 @@
     </script>
 
     <script>
-        //render main map
-        let map1;
-        let mapView;
-        let url = "";
-        let featureLayer = "";
-        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request", "esri/widgets/Home"],
-            function (Map, FeatureLayer, MapView, Legend, esriRequest, Home) {
-
-                map1 = new Map({ basemap: "dark-gray-vector" }); //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
-
-
-                let viewOptions = {
-                    container: "mapview", map: map1,
-                    center: [-7.912130968565811, 53.096755475713266], // Birr
-                    zoom: 7 //calling mapview.fullextent (below) overwrites the zoom but calling the Home function from mapview will read the zoom level set here.
-                    
-                }
-
-                //render map
-                mapView = new MapView(viewOptions);
-                
-
-                //create home button
-                let homeBtn = new Home({
-                    view: mapView
-                });
-
-                // Add the home button to the top left corner of the view
-                mapView.ui.add(homeBtn, "top-left");
-
-                //render legend
-                let legend = new Legend({ view: mapView }, "legendview");
-                // mapView.ui.add(legend, "top-right"); legend is rendered outside map in the legendview
-
-
-
-                //todo format the evendate
-                let templatetitle = "{ENGLISH}: 14 Day Incidence of confirmed COVID - 19 cases by LEA <br> data last updated : {EventDate} <hr>";
-
-                let templatecontent = "<h4>LEA:";
-                templatecontent = templatecontent + "{ENGLISH}</h4>";
-                templatecontent = templatecontent + "<span style='color: red;'>COVID-19 - 14 Day Profile</span>";
-                //todo:add the font family inline.
-                //templatecontent = templatecontent + "<span style='color: red; font-family: " + "'Prompt'," + "'" + "sans-serif" + "'" + "'>COVID-19 - 14 Day Profile</span>";
-                templatecontent = templatecontent + "<br>";
-                templatecontent = templatecontent + "Confirmed Cases in LEA: {C19_P14_T}<br>";
-                templatecontent = templatecontent + "LEA rate per 100k pop: {P14_100k}<br>";
-                templatecontent = templatecontent + "R.of Ireland rate per 100k: {Ire_IncP14}<br><br>";
-                templatecontent = templatecontent + "Total Population of {ENGLISH} : {Pop2016}";
-
-                let template = {
-                    // autocasts as new PopupTemplate()
-                    title: templatetitle,
-                    content: templatecontent,
-                };
-
-                featureLayer = new FeatureLayer({
-                    url: "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson",
-                    outFields: ["*"],
-                    popupTemplate: template
-                });
-
-                map1.add(featureLayer);
-
-                //set scale such that all data points are visible
-                featureLayer.when(function () {
-                    mapView.goTo(featureLayer.fullExtent);
-                })
-            });
-    </script>
-
-    <script>
         //GET VACCINE STATS
         //console.log("begin: vaccine stats");
 
@@ -314,10 +248,8 @@
         //);
         ////console.log("end: vaccine stats");
         ///////////////////////////////////////////////////////////////////////////
-    </script>
 
-    <script>
-        let vacccine_url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";
+        let vacccine_url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/"; //causes CORS error
         vacccine_url = "data/vaccine.json"; //local copy
 
         fetch(vacccine_url)
@@ -332,7 +264,7 @@
                     // Examine the text in the response
                     response.json().then(function (data) {
                         //console.log(data);
-                        PrintCovidVaccineStats(ExtractROIVaccineData(data),0);
+                        PrintCovidVaccineStats(ExtractROIVaccineData(data), 0);
                     });
                 }
             )
@@ -368,5 +300,77 @@
         );
     </script>-->
 
+    <script>
+        //render main map
+        let map1;
+        let mapView;
+        let url = "";
+        let featureLayer = "";
+        require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/widgets/Legend", "esri/request", "esri/widgets/Home"],
+            function (Map, FeatureLayer, MapView, Legend, esriRequest, Home) {
+
+                map1 = new Map({ basemap: "dark-gray-vector" }); //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
+
+                let viewOptions = {
+                    container: "mapview", map: map1,
+                    center: [-7.912130968565811, 53.096755475713266], // Birr
+                    zoom: 7 //calling mapview.fullextent (below) overwrites the zoom but calling the Home function from mapview will read the zoom level set here.
+
+                }
+
+                //render map
+                mapView = new MapView(viewOptions);
+
+
+                //create home button
+                let homeBtn = new Home({
+                    view: mapView
+                });
+
+                // Add the home button to the top left corner of the view
+                mapView.ui.add(homeBtn, "top-left");
+
+                //render legend
+                let legend = new Legend({ view: mapView }, "legendview");
+                // mapView.ui.add(legend, "top-right"); legend is rendered outside map in the legendview
+
+                //todo format the evendate
+                let templatetitle = "{ENGLISH}: 14 Day Incidence of confirmed COVID - 19 cases by LEA <br> data last updated : {EventDate} <hr>";
+
+                let templatecontent = "<h4>LEA:";
+                templatecontent = templatecontent + "{ENGLISH}</h4>";
+                templatecontent = templatecontent + "<span style='color: red;'>COVID-19 - 14 Day Profile</span>";
+                //todo:add the font family inline.
+                //templatecontent = templatecontent + "<span style='color: red; font-family: " + "'Prompt'," + "'" + "sans-serif" + "'" + "'>COVID-19 - 14 Day Profile</span>";
+                templatecontent = templatecontent + "<br>";
+                templatecontent = templatecontent + "Confirmed Cases in LEA: {C19_P14_T}<br>";
+                templatecontent = templatecontent + "LEA rate per 100k pop: {P14_100k}<br>";
+                templatecontent = templatecontent + "R.of Ireland rate per 100k: {Ire_IncP14}<br><br>";
+                templatecontent = templatecontent + "Total Population of {ENGLISH} : {Pop2016}";
+
+                let template = {
+                    // autocasts as new PopupTemplate()
+                    title: templatetitle,
+                    content: templatecontent,
+                };
+
+                featureLayer = new FeatureLayer({
+                    url: "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson",
+                    outFields: ["*"],
+                    popupTemplate: template
+                });
+
+                map1.add(featureLayer);
+
+                //set scale such that all data points are visible
+                featureLayer.when(function () {
+                    mapView.goTo(featureLayer.fullExtent);
+                })
+            });
+    </script>
+    <audio autoplay loop>
+        <source src="assets/audio/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
