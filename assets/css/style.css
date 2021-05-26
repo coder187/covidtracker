@@ -70,3 +70,8 @@ caption {
     caption-side: top;
     text-align:center;
 }
+
+.chart-container {
+    width: 100px;
+    height: 600px
+}
