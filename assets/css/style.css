@@ -71,6 +71,7 @@ caption {
     text-align:center;
 }
 
+<<<<<<< HEAD
 /*************FOOTER**********************/
 .footer {
     background-color: #525252;
@@ -107,3 +108,9 @@ caption {
         }
    
 /***********************************************/
+=======
+.chart-container {
+    width: 100px;
+    height: 600px
+}
+>>>>>>> 9d50e599ed94028a0cd6106545c8bfbf7b288f6c
