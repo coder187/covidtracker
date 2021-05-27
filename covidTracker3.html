@@ -63,97 +63,112 @@
                 <span id="Cases"><img src="assets/gif/loading.gif" alt="loading" /></span>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 cases-by-county table-responsive">
-                <!--total cases per county-->
-                <ul id="county-list"></ul>
-                <table id="county-list-table" class="">
-                    <caption>Cases By County</caption>
-                    <tr>
-                        <th scope="col">County</th>
-                        <th scope="col">Cases</th>
-                        <th scope="col">Pop Perc</th>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><img src="assets/gif/loading.gif" alt="loading" /></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-lg-6">
-                <!-- MAIN MAP-->
-                <div class="row">
-                    <div class="col">
-                        <label for="maps">Choose a map:</label>
-                        <select name="maps" id="select-maps">
-                            <option value="LEA">14 Day Avg Per LEA</option>
-                            <option value="saab">Cases Per County</option>
-                        </select>
-                    </div>
+        <covid19-cases-by-county>
+            <div class="row">
+                <div class="col-lg-3 cases-by-county table-responsive">
+                    <!--total cases per county-->
+                    <ul id="county-list"></ul>
+                    <table id="county-list-table" class="">
+                        <caption>Cases By County</caption>
+                        <tr>
+                            <th scope="col">County</th>
+                            <th scope="col">Cases</th>
+                            <th scope="col">Pop Perc</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><img src="assets/gif/loading.gif" alt="loading" /></td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <!--lea 14 day moving avg MAP-->
-                        <div id="mapview" style="height:750px;" class="esri-widget"></div> <!-- placing style in file breaks popup-->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <!--MAP legend-->
-                <div id="legendview"></div>
-            </div>
-        </div><!-- end row-->
 
-        <div class="row">
-            <div class="col-md-4 vax-stats">
-                <div class="label">First Dose Vaccines:</div>
-                <span id="first-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+                <div class="col-lg-6">
+                    <!-- MAIN MAP-->
+                    <div class="row">
+                        <div class="col">
+                            <label for="maps">Choose a map:</label>
+                            <select name="maps" id="select-maps">
+                                <option value="LEA">14 Day Avg Per LEA</option>
+                                <option value="saab">Cases Per County</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <!--lea 14 day moving avg MAP-->
+                            <div id="mapview" style="height:750px;" class="esri-widget"></div> <!-- placing style in file breaks popup-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <!--MAP legend-->
+                    <div id="legendview"></div>
+                </div>
+            </div><!-- end row-->
+        </covid19-cases-by-county>
+        <vaccination-data>
+            <div class="row">
+                <div class="col-md-4 vax-stats">
+                    <div class="label">First Dose Vaccines:</div>
+                    <span id="first-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+                </div>
+                <div class="col-md-4 vax-stats">
+                    <div class="label">Second Dose Vaccines:</div>
+                    <span id="second-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+                </div>
+                <div class="col-md-4 vax-stats">
+                    <div class="label">Total Vaccines:</div>
+                    <span id="vaccine-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+                </div>
             </div>
-            <div class="col-md-4 vax-stats">
-                <div class="label">Second Dose Vaccines:</div>
-                <span id="second-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
+        </vaccination-data>
+
+        <vaccintation-chart>
+            <div class="row">
+                <div class="col vaccination-chart-container">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
             </div>
-            <div class="col-md-4 vax-stats">
-                <div class="label">Total Vaccines:</div>
-                <span id="vaccine-dose-total"><img src="assets/gif/loading.gif" alt="loading" /></span>
-            </div>
-        </div>
-        <div class="row"><div class="col chart-container"><canvas id="myChart" width="400" height="400"></canvas></div></div>
+        </vaccintation-chart>
+        
+
         <div class="row"><div class="col">Contact Form</div></div>
 
-        <div class="row footer">
-            <div class="col-md-3"><h5 class="uppercase general-sub">arcgis.com</h5><a href="https://www.arcgis.com/index.html"><img src="assets/gif/arcgis-online-icon.png" alt="Arcgis Logo" /></a></div>
-            <div class="col-md-3"><h5 class="uppercase general-sub">data.gov.ie</h5><a href="https://data.gov.ie/"><img src="assets/gif/dgi-logo-new_logo.png" alt="data.gov.ie logo" /></a></div>
-            <div class="col-md-3"><h5 class="uppercase general-sub">ecdc.europa.eu</h5><a href="https://www.ecdc.europa.eu/en"><img src="assets/gif/logo-ecdc.png" alt="ECDC Logo" /></a></div>
-            <div class="col-md-3">
-                <h5 class="uppercase general-sub">Website For Code Institute Course Work Only</h5>
-                <ul class="list-inline social-links">
-                    <li class="list-inline-item">
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                            <span class="sr-only">Facebook</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.twitter.com/" target="_blank">
-                            <i class="fab fa-twitter" aria-hidden="true"></i>
-                            <span class="sr-only">Twitter</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.github.com/coder187" target="_blank">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://buslifeirl.tumblr.com/likes" target="_blank">
-                            <i class="fab fa-tumblr" aria-hidden="true"></i>
-                            <span class="sr-only">Tumblr</span>
-                        </a>
-                    </li>
-                </ul>
+        <footer>
+            <div class="row">
+                <div class="col-md-3"><h5 class="uppercase general-sub">arcgis.com</h5><a href="https://www.arcgis.com/index.html"><img src="assets/gif/arcgis-online-icon.png" alt="Arcgis Logo" /></a></div>
+                <div class="col-md-3"><h5 class="uppercase general-sub">data.gov.ie</h5><a href="https://data.gov.ie/"><img src="assets/gif/dgi-logo-new_logo.png" alt="data.gov.ie logo" /></a></div>
+                <div class="col-md-3"><h5 class="uppercase general-sub">ecdc.europa.eu</h5><a href="https://www.ecdc.europa.eu/en"><img src="assets/gif/logo-ecdc.png" alt="ECDC Logo" /></a></div>
+                <div class="col-md-3">
+                    <h5 class="uppercase general-sub">Website For Code Institute Course Work Only</h5>
+                    <ul class="list-inline social-links">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.twitter.com/" target="_blank">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">Twitter</span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.github.com/coder187" target="_blank">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://buslifeirl.tumblr.com/likes" target="_blank">
+                                <i class="fab fa-tumblr" aria-hidden="true"></i>
+                                <span class="sr-only">Tumblr</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </footer>
     </div> <!--end container-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

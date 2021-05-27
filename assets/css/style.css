@@ -71,16 +71,24 @@ caption {
     text-align:center;
 }
 
-<<<<<<< HEAD
+
+/*************chart container**********************/
+.vaccination-chart-container {
+    width: 100px;
+    height: 600px
+}
+/***********************************/
+
+
+
 /*************FOOTER**********************/
-.footer {
+footer {
     background-color: #525252;
     color: #fafafa;
     min-height: 120px;
     padding: 20px;
     text-align: center;
 }
-
 
 .social-links {
     padding-bottom: 15px;
@@ -108,9 +116,3 @@ caption {
         }
    
 /***********************************************/
-=======
-.chart-container {
-    width: 100px;
-    height: 600px
-}
->>>>>>> 9d50e599ed94028a0cd6106545c8bfbf7b288f6c
