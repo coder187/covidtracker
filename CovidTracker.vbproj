@@ -107,6 +107,7 @@
     <Content Include="data_tutorial.html" />
     <Content Include="hn.html" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="HtmlPage2.html" />
     <Content Include="odata.html" />
     <Content Include="scratch.txt" />
     <Content Include="TextFile1.txt" />

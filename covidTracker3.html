@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
     <script src="assets/js/main.js"></script>
 
 </head>
@@ -333,55 +334,82 @@
 
                 //start render vaccine chart
                 let vaccine_chart_labels = [];
-                let vaccine_chart_values = [];
+                let vaccine_chart_values_fd = [];
+                let vaccine_chart_values_sd = [];
                 for (let i = 0; i < stats.TotalByType.length; i++) {
                     vaccine_chart_labels.push(stats.TotalByType[i].type);
-                    vaccine_chart_values.push(stats.TotalByType[i].firstDose + stats.TotalByType[i].secondDose); 
+                    vaccine_chart_values_fd.push(stats.TotalByType[i].firstDose); 
+                    vaccine_chart_values_sd.push(stats.TotalByType[i].secondDose);
                 }
-                
+
+                //https://www.chartjs.org/docs/
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myChart = new Chart(ctx, {
-                    type: 'doughnut',
+                    type: 'doughnut',   
                     data: {
-                        //labels: ['Pfizer', 'Johnson & Johnson', 'Astrazeneca ', 'Moderna', 'Sputnik', 'Other'],
                         labels: vaccine_chart_labels,
                         datasets: [{
-                            label: '# of Vaccinces',
-                            //data: [120000, 19000, 300000, 5000, 200, 40000],
-                            data: vaccine_chart_values,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
+                                    label: 'First Dose',
+                                    data: vaccine_chart_values_fd,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                        }, {
+                                label: 'Second Dose',
+                                data: vaccine_chart_values_sd,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }
+
+                        ]
                     },
                     options: {
                         maintainAspectRatio: false,
                         responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                        //https://stackoverflow.com/questions/45182635/how-to-use-two-datasets-in-chart-js-doughnut-chart
+                        //get the tooltip to show the datasetname:item:value
+                        tooltips: { 
+                            callbacks: {
+                                label: function (item, data) {
+                                    console.log(data.labels, item);
+                                    return data.datasets[item.datasetIndex].label + ": " + data.labels[item.index] + ": " + data.datasets[item.datasetIndex].data[item.index];
+                                }
                             }
                         }
                     }
                 });
                 //end chart
-                
             }
-         }
+        }
     </script>
 
     <!--<script>
