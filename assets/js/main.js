@@ -125,22 +125,63 @@ function ExtractROIVaccineData(obj_vaccine_data) {
     
     let FirstDoseTotal = 0;
     let SecondDoseTotal = 0;
-
+    let VaccineType_Total = [];
+    let vax_array = [];
 
     for (let i = 0; i < vaccine_data_array.length; i++) {
         obj_vaccine_data = vaccine_data_array[i];
         if (obj_vaccine_data.Region === "IE") {
             if (obj_vaccine_data.TargetGroup === "ALL") {
-                FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
-                SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
+                vax_array.push({ type: obj_vaccine_data.Vaccine, firstDose: obj_vaccine_data.FirstDose, secondDose: obj_vaccine_data.SecondDose });
             }
         }
     }
-    
-    obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal };
+
+    //for (let i = 0; i < vaccine_data_array.length; i++) {
+    //    obj_vaccine_data = vaccine_data_array[i];
+    //    if (obj_vaccine_data.Region === "IE") {
+    //        if (obj_vaccine_data.TargetGroup === "ALL") {
+    //            FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
+    //            SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
+    //        }
+    //    }
+    //}
+
+    //1. get total first and second dose over all for all vaccines in dataset
+    //2. get total first and second dose per vaccine type
+    //   loop through the dataset and build a distinct list of vaccine types VaccineType_Total[{type,0,0}]
+    //   for eacg recors in dataset loop over each distinct records add increment total values. todo:note I expect there is much more efficent 
+    //   method to acheive this and I may come back o this later if schedule allows. xpath for json maybe or similar.
+    for (let i = 0; i < vax_array.length; i++) {
+        FirstDoseTotal = FirstDoseTotal + vax_array[i].firstDose;
+        SecondDoseTotal = SecondDoseTotal + vax_array[i].secondDose;
+        if (!VaccineTypeExists(VaccineType_Total, vax_array[i].type)) {
+            VaccineType_Total.push({ type: vax_array[i].type, firstDose: 0, secondDose: 0 });
+        } else {
+            x = 0;
+            for (x = 0; x < VaccineType_Total.length; x++) {
+                if (VaccineType_Total[x].type === vax_array[i].type) {
+                    VaccineType_Total[x].firstDose = VaccineType_Total[x].firstDose + vax_array[i].firstDose;
+                    VaccineType_Total[x].secondDose = VaccineType_Total[x].secondDose + vax_array[i].secondDose;
+                }
+            }
+        }
+    }
+
+   
+    obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal, TotalByType: VaccineType_Total};
     return obj_vaccine_data;
 }
 
+function VaccineTypeExists(arr, vaxtype) {
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].type === vaxtype) {
+            return true;
+        } 
+    }
+    return false;
+}
 function GetLEADateRange() {
 
     return new Promise(function (resolve, reject) {
