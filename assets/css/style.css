@@ -3,6 +3,8 @@
 
 body {
     padding-top:50px;
+   border:0;
+   margin:0;
 }
 
 #mapview {
@@ -120,12 +122,13 @@ footer {
             background-color: #185F42;
         }
    
-/*******Contact Form***********/
+/*******Signup Form***********/
 signup {
     display: block;
     padding-top: 50px;
-    background: url("../gif/Covid19_bgr.png");
     font-family: 'Prompt', sans-serif;
+    background: url(../gif/Covid19_bgr.png) no-repeat center center fixed;
+    background-size: cover;
 }
 
 .signup-text {
@@ -173,6 +176,41 @@ signup {
         font-size: 25px;
     }
 }
+
+/*small screen*/
+ @media only screen and (max-width: 576px) {
+    signup {
+        text-align: center;
+        font-size: 10px;
+        background: url(../gif/Covid19_425x476.png);
+    }
+
+    .signup-form {
+        width: 300px;
+        padding: 5px;
+        margin: 0 auto;
+    }
+
+    .signup-text {
+        width: 300px;
+        padding: 5px;
+        margin: 0 auto;
+    }
+    h2 {
+        font-size: 15px;
+    }
+ }
+
+@media only screen and (max-width: 360px) {
+
+    .signup-text {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        font-size: 8px;
+    }
+}
+
+
 
 
 

@@ -87,6 +87,7 @@
     <Content Include="assets\audio\audio.mp3" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\gif\arcgis-online-icon.png" />
+    <Content Include="assets\gif\Covid19_425x476.png" />
     <Content Include="assets\gif\Covid19_bgr.png" />
     <Content Include="assets\gif\dgi-logo-new.png" />
     <Content Include="assets\gif\dgi-logo-new_logo.png" />
