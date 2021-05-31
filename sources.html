@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid Tracker - Data Sources</title>
-
-    
+    <title>COVID-19 Tracker - Data Sources</title>
+ 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    
+
     <!-- Font Aswesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     <!--Hover JS-->
@@ -22,7 +21,7 @@
 
     <nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-light bg-light">
 
-        <a href="#" class="navbar-brand">Covid Tracker</a>
+        <a href="index.html" class="navbar-brand">COVID-19 Tracker</a>
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +41,41 @@
         <div class="row">
             <div class="col">
                 <data-sources>
-                    data source
+                    <h2><a href="https://covid-19.geohive.ie/" target="_blank">Ireland's COVID-19 Data Hub</a></h2>
+                    <ul>
+                        <li class="list-header">Total Covid-19 Cases</li>
+                        <li>Daily Cases</li>
+                        <li>Daily Deaths</li>
+                        <li>Statistics for Ireland as reported by the Health Surveillance Protection Centre.</li>
+                        <li>Updated on a daily basis reporting the counts recorded at 1pm the same day</li>
+                        <li><a href="https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/" target="_blank"><i class="fas fa-database"></i> Data Source</a></li>
+                    </ul></p>
+
+                    <ul>
+                        <li class="list-header">County Cases</li>
+                        <li>Proportion of Population</li>
+                        <li>Statistics for Ireland by County as reported by the Health Surveillance Protection Centre</li>
+                        <li>This service is updated daily. The latest record will always date back to two days ago.</li>
+                        <li><a href="https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/" target="_blank"><i class="fas fa-database"></i> Data Source</a></li>
+                    </ul>
+
+
+                    <ul>
+                        <li class="list-header">14 Day Incidence Rate Per 100k per Local Electoral Area</li>
+                        <li>This data is updated on a weekly basis and contains data for a two week period.</li>
+                        <li><a href="https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/" target="_blank"><i class="fas fa-database"></i> Data Source</a></li>
+                    </ul>
+
+                    <h2><a href="https://opendata.ecdc.europa.eu" target="_blank">European Centre for Disease Prevention and Control (ECDC)</a></h2>
+                    <ul>
+                        <li class="list-header">Vaccines Available</li>
+                        <li>Total first dose administered per Vaccine</li>
+                        <li>Total second dose administered per vaccine</li>
+                        <li>Collected through The European Surveillance System (TESSy). EU/EEA Member States are requested to report basic indicators 
+                        and data by target groups at national level twice a week (every Tuesday and Friday).</li>
+                        <li><a href="https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/" target="_blank"><i class="fas fa-database"></i> Data Source</a></li>
+                    </ul>
+
                 </data-sources>
             </div>
         </div>

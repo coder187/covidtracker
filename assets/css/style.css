@@ -54,7 +54,6 @@ img {
 
 
 /*************cases by county**********************/
-
 .cases-by-county {
     background-color: #222222;
     border: 1.5px solid #000000;
@@ -165,6 +164,18 @@ signup {
     }
 
 
+/*******Data Sources Page***********/
+
+data-sources h2 {
+
+    font-family: 'Prompt', sans-serif;
+}
+h2 {
+    padding-top: 10px;
+}
+.list-header {
+    font-weight:600;    
+}
 /*******Media Queries***********/
 
 @media only screen and (max-width: 360px) {
@@ -206,7 +217,7 @@ signup {
     .signup-text {
         overflow-wrap: break-word;
         word-wrap: break-word;
-        font-size: 8px;
+        font-size: 10px;
     }
 }
 
