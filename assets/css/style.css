@@ -22,6 +22,8 @@ img {
     font-family: 'Prompt', sans-serif;
     letter-spacing:4px;
 }
+/*************statistics**********************/
+
 .top-lvl-stats {
     text-align: center;
     border: 1.5px solid #000000;
@@ -49,13 +51,15 @@ img {
 }
 
 
+/*************cases by county**********************/
+
 .cases-by-county {
     background-color: #222222;
     border: 1.5px solid #000000;
     color: white;
     font-family: 'Prompt', sans-serif;
     /*height: 375px;*/
-    height:750px;
+    height:500px;
     overflow-y: scroll;
 }
 
@@ -67,17 +71,18 @@ img {
 }
 
 caption {
-    caption-side: top;
+    caption-side: top;  
     text-align:center;
 }
-
-
+.table-cell-align-right{
+    text-align:right;
+    padding-right:5px;
+}
 /*************chart container**********************/
 .vaccination-chart-container {
     width: 100px;
-    height: 600px
+    height: 500px
 }
-/***********************************/
 
 
 
@@ -155,3 +160,20 @@ signup {
     .text-input:hover {
         border-color: #f16c6b;
     }
+
+
+/*******Media Queries***********/
+
+@media only screen and (max-width: 360px) {
+    .top-lvl-stats {
+        font-size: 25px;
+    }
+
+    .vax-stats {
+        font-size: 25px;
+    }
+}
+
+
+
+
