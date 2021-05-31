@@ -6,13 +6,12 @@
     <title>Covid Tracker</title>
 
     <!-- note order of Lib includes is important-->
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    
+
     <!--ARGCGIS Lib-->
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
-    
+
     <!-- Font Aswesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     <!--Hover JS-->
@@ -27,7 +26,7 @@
 
 </head>
 <body>
-    
+
 
     <!-- navbar code from https://getbootstrap.com/docs/4.0/components/navbar/ -->
     <!--<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">  org -->
@@ -178,9 +177,8 @@
             </div>
         </footer>
     </div> <!--end container-->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
     <script src="https://js.arcgis.com/4.19/"></script> <!-- must load bootstrap js before arcgis -->
     <script>
         //Get Covid Stats:
@@ -196,7 +194,7 @@
                 PrintCovidStats(message, 0);
             },
             function (error) {
-                console.log("Rejected: ", error);
+                //console.log("Rejected: ", error);
                 PrintCovidStats(message, 1);
             }
         );
@@ -240,7 +238,7 @@
                 PrintCountyStats(message, 0);
             },
             function (error) {
-                console.log("Print County Stats - Rejected: ", error);
+                //console.log("Print County Stats - Rejected: ", error);
                 PrintCountyStats(message, 1);
             }
         );
@@ -344,57 +342,57 @@
                 let vaccine_chart_values_sd = [];
                 for (let i = 0; i < stats.TotalByType.length; i++) {
                     vaccine_chart_labels.push(stats.TotalByType[i].type);
-                    vaccine_chart_values_fd.push(stats.TotalByType[i].firstDose); 
+                    vaccine_chart_values_fd.push(stats.TotalByType[i].firstDose);
                     vaccine_chart_values_sd.push(stats.TotalByType[i].secondDose);
                 }
 
                 //https://www.chartjs.org/docs/
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myChart = new Chart(ctx, {
-                    type: 'doughnut',   
+                    type: 'doughnut',
                     data: {
                         labels: vaccine_chart_labels,
                         datasets: [{
-                                    label: 'First Dose',
-                                    data: vaccine_chart_values_fd,
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 0.2)',
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 206, 86, 0.2)',
-                                        'rgba(75, 192, 192, 0.2)',
-                                        'rgba(153, 102, 255, 0.2)',
-                                        'rgba(255, 159, 64, 0.2)'
-                                    ],
-                                    borderColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
-                                    ],
-                                    borderWidth: 1
+                            label: 'First Dose',
+                            data: vaccine_chart_values_fd,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
                         }, {
-                                label: 'Second Dose',
-                                data: vaccine_chart_values_sd,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }
+                            label: 'Second Dose',
+                            data: vaccine_chart_values_sd,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }
 
                         ]
                     },
@@ -403,7 +401,7 @@
                         responsive: true,
                         //https://stackoverflow.com/questions/45182635/how-to-use-two-datasets-in-chart-js-doughnut-chart
                         //get the tooltip to show the datasetname:item:value
-                        tooltips: { 
+                        tooltips: {
                             callbacks: {
                                 label: function (item, data) {
                                     console.log(data.labels, item);
@@ -539,9 +537,9 @@
         });
         //end chart
     </script>-->
-    <audio autoplay loop>
+    <!--<audio autoplay loop>
         <source src="assets/audio/audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-    </audio>
+    </audio>-->
 </body>
 </html>

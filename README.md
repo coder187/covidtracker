@@ -27,5 +27,22 @@ ICU Numbers
 current / admitted / discharged
 https://covid-19.geohive.ie/datasets/c8208a0a8ff04a45b2922ae69e9b2206_0?page=27
 
+## bug nota bug?
+after adding the emaik js functionality the arcgis api calls started failing with "Error in Promise k line 1 idnex.html"
+to troubleshoot I removed the api calls from the page one by one to narrow down but the error affected all calls to arcgis.
+re building the page did not fix the error.
+I verified my github code was error free by running the last commit which ran without error.
+I then used the fc command to compare the github copy wiht my development copy but other than the first line reportung as different eventhough visually looked the same
+there were no other diffs. 
+I changted the dirst line
+<!DOCTYPE html>
+to just 
+<html> but no fix.
+
+I then ran the page on MS Edge and it ran fine. Then ran it on inCongnito on Chrime and again ran fine.
+I shutdown and restarted my chrome session and reran but again the error until I issued a Hard Refresh.
+I can only surmmize tha either chrome has a cached non working version or some quirky bug between chrome, promise api functionality and the arcgus library.
+One change of underware later and we back up and runnning!
+
 ## ACK
 Hussein Nasser Arcgis Tutorials

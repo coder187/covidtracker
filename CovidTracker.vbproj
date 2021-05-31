@@ -95,6 +95,8 @@
     <Content Include="assets\gif\logo-ecdc.png" />
     <Content Include="assets\gif\spiral.gif" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\sendEmail.js" />
+    <Content Include="fail.html" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
     <Content Include="index.html" />
