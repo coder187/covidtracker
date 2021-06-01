@@ -44,5 +44,9 @@ I shutdown and restarted my chrome session and reran but again the error until I
 I can only surmmize tha either chrome has a cached non working version or some quirky bug between chrome, promise api functionality and the arcgus library.
 One change of underware later and we back up and runnning!
 
+
+## bug
+ Element signup not allowed as child of element div in this context. (Suppressing further errors from this subtree.)
+ had to re organise signup layout
 ## ACK
 Hussein Nasser Arcgis Tutorials
