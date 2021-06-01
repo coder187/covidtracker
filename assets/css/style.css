@@ -125,7 +125,7 @@ footer {
         }
    
 /*******Signup Form***********/
-signup {
+section {
     display: block;
     padding-top: 50px;
     font-family: 'Prompt', sans-serif;
@@ -194,7 +194,7 @@ h2 {
 
 /*small screen*/
  @media only screen and (max-width: 576px) {
-    signup {
+    section {
         text-align: center;
         font-size: 10px;
         background: url(../gif/Covid19_425x476.png);
