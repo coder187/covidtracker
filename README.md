@@ -13,52 +13,52 @@ This application can be extended in future to add data streams as they become av
 The end user of the system would potentially be all persons with access to the internet. This obviously includes a very wide range of people,
 so a mobile first approch with a modern & engaging UX are of key importance.
 
-## USer Experience (UX)
+## User Experience (UX)
 * User stories
   * First Time Visitor Goals
     * As a First Time Visitor, I want to easily understand the main purpose of the site.
     * As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
     * As a First Time Visitor, I want to look for COVID-19 data for Ireland.
+  
+  * Frequent\Returning Visitor Goals
+    * As a Returning Visitor, I want to verify where the data is sourced from.
+    * As a Returning Visitor, I want to signup for the daily update summary.
 
+* Design
+  * Colour Scheme	
+    * The two main colours used are black background with blue text.
+    * The map is based on a dark gret vector
+    * In contrast the Vaccine Chart uses lighter colors with shades of light shades of pink,blue,red,purple and orange to represent the various vaccine types.
 
-#### Frequent\Returning Visitor Goals
-	- As a Returning Visitor, I want to verify where the data is sourced from.
-	- As a Returning Visitor, I want to signup for the daily update summary.
+  * Typography
+    * The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font 
+			in case for any reason the font isn't being imported into the site correctly. Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
 
-### Design
-#### Colour Scheme	
-	- The two main colours used are black background with blue text.
-	- The map is based on a dark gret vector
-	- In contrast the Vaccine Chart uses lighter colors with shades of light shades of pink,blue,red,purple and orange to represent the various vaccine types.
-#### Typography
-		- The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font 
-			in case for any reason the font isn't being imported into the site correctly. 
-			Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
+  * Imagery
+    * The large background hero image on the signup page is of the COVID-19 virus taken from the [ECDC](https://www.ecdc.europa.eu/en) website. 
+    The image is now synonymous with the COVD-19 pandemic so fits the site very well.
 
-#### Imagery
-		- The large background hero image on the signup page is of the COVID-19 virus taken from the [ECDC](https://www.ecdc.europa.eu/en) website.
-		The image is now synonymous with the COVD-19 pandemic so fits the site very well.
-
-### Wireframes
-- Home Page Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Mobile.png)
-- Home Page Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Desktop.png)
-- Signup Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20-%20Mobile.png)
-- Signup Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20Page%20-%20Desktop.png)
+* Wireframes
+  * Home Page Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Mobile.png)
+  * Home Page Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Desktop.png)
+  * Signup Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20-%20Mobile.png)
+  * Signup Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20Page%20-%20Desktop.png)
 
 
 ## Features
-	- Responsive on all devices.
-	- Covid county totals, total cases, daily cases\deaths & interactive map source is read from the [COVID 19 Data Gub](https://covid-19.geohive.ie/)
-	- Vaccine data and interactive chart source is read from the [ECDC Vaccine Tracker](https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/)
-	- Subscription Sign Up Page powered by [Email JS](https://www.emailjs.com/)
-	- Background soundtrack from [Defcon PC Game](https://www.introversion.co.uk/introversion/)
+  * Responsive on all devices.
+  * Covid county totals, total cases, daily cases\deaths & interactive map source is read from the [COVID 19 Data Gub](https://covid-19.geohive.ie/)
+  *	Vaccine data and interactive chart source is read from the [ECDC Vaccine Tracker](https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/)
+  *	Subscription Sign Up Page powered by [Email JS](https://www.emailjs.com/)
+  * Background soundtrack from [Defcon PC Game](https://www.introversion.co.uk/introversion/)
 
 
 ## Technologies
+
 ### Languages Used
-	- HTML5
-	- CSS3
-	- Javascript
+  * HTML5
+  * CSS3
+  * Javascript
 
 ### Frameworks, Libraries & Programs Used
 1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
