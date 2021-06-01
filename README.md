@@ -1,5 +1,65 @@
 # covid tracker
+![](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/ms2_covidtracker_air.png)
 
+# COVID-19 Tracker for Repuplic of Ireland
+[Link to live site on github pages](https://coder187.github.io/covidtracker/)
+
+Project - Interactive Frontend Development - Code Institute
+
+
+
+The project will produce a simple interactive website to display COVID-19 statistics as reported by the governemnt of Ireland.
+
+The idea behind the project is to provide a quick and mobile responsive reference for the top level data points.
+This application can be extended in future to add data streams as they become available.
+
+The end user of the system would potentially be all persons with access to the internet. This obviously includes a very wide range of people,
+so a mobile first approch with a modern & engaging UX are of key importance.
+
+# USer Experience (UX)
+* User stories
+** First Time Visitor Goals
+*** As a First Time Visitor, I want to easily understand the main purpose of the site.
+*** As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
+*** As a First Time Visitor, I want to look for COVID-19 data for Ireland.
+
+
+** Frequent\Returning Visitor Goals
+*** As a Returning Visitor, I want to verify where the data is sourced from.
+*** As a Returning Visitor, I want to signup for the daily update summary.
+
+* Design
+
+** Colour Scheme
+*** The two main colours uses are black and blue.
+
+** Typography
+*** The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. 
+Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
+
+** Imagery
+The large, background hero image on the signup page is of the COVID-19 virus taken from the https://www.ecdc.europa.eu/en website.
+The image is now synonymous with the COVD-19 pandemic so fits the site very well.
+
+* Wireframes
+** Home Page
+** Signup
+** Sources
+
+* Features
+** Responsive on all devices
+** Interactive Map showing COVId-19 cases details.
+** County totals are read from data.gov.ie json data source
+
+# Strategy
+
+## Business Goals
+
+## User Goals 
+* Easily find statistics on COVID-19 cases in the Republic Of Ireland.
+* Join a subscription list to have the top level stats emailed daily.
+
+# Structure 
 ## bugs
 ### must load bootstrap js before arcgis -- causes Multiple Define Error
 ### cannot style map html element from css file.

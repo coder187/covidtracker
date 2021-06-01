@@ -23,7 +23,6 @@
     <!--custom-->
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js"></script>
-
 </head>
 <body>
 
@@ -45,7 +44,9 @@
                 <li class="nav-item active "><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link nav-item" href="signup.html">Stay Up To Date</a></li>
                 <li class="nav-item"><a class="nav-link" href="sources.html">Data Source Info</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Audio Toggle</a></li>
+                <li class="nav-item"><a class="nav-link" onClick="togglePlay()">Audio Toggle</a></li>
+
+
             </ul>
         </div>
     </nav>
@@ -178,9 +179,17 @@
             </div>
         </footer>
     </div> <!--end container-->
+    <audio preload="auto" id="myAudio" loop>
+        <source src="assets/audio/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://js.arcgis.com/4.19/"></script> <!-- must load bootstrap js before arcgis -->
+
+    <script src="assets/js/toggleAudio.js"></script>
+
     <script>
         //Get Covid Stats:
         //Total Cases
@@ -488,10 +497,5 @@
                 })
             });
     </script>
-   
-    <!--<audio autoplay loop>
-        <source src="assets/audio/audio.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>-->
 </body>
 </html>

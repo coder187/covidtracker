@@ -97,6 +97,7 @@
     <Content Include="assets\gif\spiral.gif" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\sendEmail.js" />
+    <Content Include="assets\js\toggleAudio.js" />
     <Content Include="fail.html" />
     <Content Include="covidtracker.html" />
     <Content Include="covidtracker2.html" />
