@@ -14,11 +14,11 @@ The end user of the system would potentially be all persons with access to the i
 so a mobile first approch with a modern & engaging UX are of key importance.
 
 ## USer Experience (UX)
-### User stories
-#### First Time Visitor Goals
-	- As a First Time Visitor, I want to easily understand the main purpose of the site.
-	- As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-	- As a First Time Visitor, I want to look for COVID-19 data for Ireland.
+* User stories
+  * First Time Visitor Goals
+    * As a First Time Visitor, I want to easily understand the main purpose of the site.
+    * As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
+    * As a First Time Visitor, I want to look for COVID-19 data for Ireland.
 
 
 #### Frequent\Returning Visitor Goals
