@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Tracker - Sign Up</title>
-     
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
@@ -45,36 +45,33 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid">
-        <signup>
-            <div class="row">
-
-                <div class="col-md">
-                    <div class="signup-text">
-                        <h2>Daily Email Updates</h2>
-                        <p>Stay ahead of the news cycle with daily statistics to your inbox as soon as the data is updated! Simply add your details and we will send you a simple email with the latest data from data.gov.ie & ecdc.europa.eu</p>
-                    </div>
+    <signup class="container-fluid">
+        <!--<>-->
+        <div class="row">
+            <div class="col-md">
+                <div class="signup-text">
+                    <h2>Daily Email Updates</h2>
+                    <p>Stay ahead of the news cycle with daily statistics to your inbox as soon as the data is updated! Simply add your details and we will send you a simple email with the latest data from data.gov.ie & ecdc.europa.eu</p>
                 </div>
-                <div class="col-md">
-                    <form class="signup-form" onsubmit="return sendMail(this);">
-                        <h2>Stay up to date! <i class="fas fa-shield-virus"></i></h2>
-
-                        <label for="fname">First Name</label>
-                        <input type="text" name="first_name" id="fname" placeholder="First Name" class="text-input" required>
-
-                        <label for="lname">Last Name</label>
-                        <input type="text" name="last_name" id="lname" placeholder="Last Name" class="text-input" required>
-
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email_address" id="email" placeholder="Email Address" class="text-input" required>
-
-                        <input type="submit" value="Submit" class="btn btn-primary">
-                    </form>
-                </div>
-
             </div>
-        </signup>
+            <div class="col-md">
+                <form class="signup-form" onsubmit="return sendMail(this);">
+                    <h2>Stay up to date! <i class="fas fa-shield-virus"></i></h2>
 
+                    <label for="fname">First Name</label>
+                    <input type="text" name="first_name" id="fname" placeholder="First Name" class="text-input" required>
+
+                    <label for="lname">Last Name</label>
+                    <input type="text" name="last_name" id="lname" placeholder="Last Name" class="text-input" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email_address" id="email" placeholder="Email Address" class="text-input" required>
+
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+        </signup>
         <footer>
             <div class="row">
                 <div class="col-md-3"><h5 class="uppercase general-sub">arcgis.com</h5><a href="https://www.arcgis.com/index.html"><img src="assets/gif/arcgis-online-icon.png" alt="Arcgis Logo" /></a></div>
@@ -111,7 +108,7 @@
                 </div>
             </div>
         </footer>
-    </div> <!--end container-->
+    </signup> <!--end container-->
     <script src="assets/js/sendEmail.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
