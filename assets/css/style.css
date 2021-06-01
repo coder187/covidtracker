@@ -14,6 +14,9 @@ body {
     width: 100%;
 }
 
+.map-title {
+    text-align:center;
+}
 
 img {
     height: 75px;
