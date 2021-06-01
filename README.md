@@ -26,16 +26,17 @@ so a mobile first approch with a modern & engaging UX are of key importance.
 	- As a Returning Visitor, I want to signup for the daily update summary.
 
 ### Design
-
-	#### Colour Scheme	
-		- The two main colours uses are black and blue.
-
-	#### Typography
-		- The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. 
+#### Colour Scheme	
+	- The two main colours used are black background with blue text.
+	- The map is based on a dark gret vector
+	- In contrast the Vaccine Chart uses lighter colors with shades of light shades of pink,blue,red,purple and orange to represent the various vaccine types.
+#### Typography
+		- The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font 
+			in case for any reason the font isn't being imported into the site correctly. 
 			Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
 
-	#### Imagery
-		- The large, background hero image on the signup page is of the COVID-19 virus taken from the https://www.ecdc.europa.eu/en website.
+#### Imagery
+		- The large background hero image on the signup page is of the COVID-19 virus taken from the [ECDC](https://www.ecdc.europa.eu/en) website.
 		The image is now synonymous with the COVD-19 pandemic so fits the site very well.
 
 ### Wireframes
