@@ -92,11 +92,11 @@ so a mobile first approch with a modern & engaging UX are of key importance.
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 *   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/) 
-  * [Home Page](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_index_validation.png
-  * [Sign Up](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_signup_validation.png
-  * [Sources](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_sources_validation.png
-  * [Conf ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_conf_validation.png
-  * [Fail ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_fail_validation.png
+    * [Home Page](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_index_validation.png)
+    * [Sign Up](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_signup_validation.png)
+    * [Sources](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_sources_validation.png)
+    * [Conf ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_conf_validation.png)
+    * [Fail ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_fail_validation.png)
 *   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/CSS_VALIDATION.png)
 
 ### Testing User Stories from User Experience (UX) Section
@@ -123,10 +123,10 @@ https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Popup
 * Chart js:  Needed "bundle library rather than min.js to show tooltips for multi dataset chart. 
 * Chart js: Needed to use StackOverflow for code on how to show tooltip legend.
 * Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
-The HTML Validator showed this as error on my Signup page. To fix, I changed the "<signup>" element to "<section>". 
+The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". 
 
 * Note: strange behaviour:
-After adding the email js functionality (although I do not believe Chart JS is involved with this behaviour), the Arcgis api calls started failing with 
+After adding the Email js functionality (although I do not believe Email JS is involved with this behaviour), the Arcgis api calls started failing with 
 "Error in Promise k line 1 idnex.html".
 To troubleshoot I removed the api calls from the page one by one to narrow down the source of the error but all calls to Arcgis were affected.
 Re-building the page did not fix the error.
@@ -134,7 +134,7 @@ I verified my Github code was error free by running the last commit which ran wi
 I then used the fc command to compare the Github copy wiht my development copy but other than the first line reporting as different eventhough visually they looked the same
 there were no other differences. I assume fc could see a difference at the binary level (maybe an invisible control character.)
 For belts and braces I changted the dirst line
-"<!DOCTYPE html>"  to just "<html>" but this had no affect. 
+"!DOCTYPE html"  to just "html" but this had no affect. 
 I then ran the page on MS Edge and it ran fine. Then ran it on InCognito on Chrome and again ran fine.
 I shutdown and restarted my Chrome session and reran but again the same error until I issued a Hard Refresh.
 I can only summize tha either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
