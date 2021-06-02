@@ -91,8 +91,13 @@ so a mobile first approch with a modern & engaging UX are of key importance.
 ## Testing
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_index_validation.png)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/CSS_VALIDATION.png)
+*   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/) 
+  * [Home Page](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_index_validation.png
+  * [Sign Up](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_signup_validation.png
+  * [Sources](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_sources_validation.png
+  * [Conf ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_conf_validation.png
+  * [Fail ](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_fail_validation.png
+*   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/CSS_VALIDATION.png)
 
 ### Testing User Stories from User Experience (UX) Section
 #### First Time Visitor Goals
@@ -102,35 +107,38 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 ### Further Testing
 
 ### Known Bugs
-## bugs
-### must load bootstrap js before arcgis -- causes Multiple Define Error
-### cannot style map html element from css file.
-### //NOTE CANNOT HAVE SceneView & request together - an undefined error is thrown when calling the request
-### notabug: when the div containing hte map width hits 544 the popup autodock is set to true. I have given more width
-to the center col to avoid this on larger screena.
+* CORS Error
+    * Access to fetch at 'https://....' from origin 'http://...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...."
+        Attempting to read the json file on ecdc.europa.eu using either XMLHTTPReuest or Fetch API call raises a CORS error and stops the data being read.
+        I have consulted with tutor support (Shirley & Johann) and with my mentor (Gerry) but have been unable to read the data directly from the remote server.
+        The workaround I have implemented involves copying the json file locally and updating the code read that instead.
+        Going forward I want to rectify the error so that the data can be read directly.
+
+* Arcgis: Note: Must load bootstrap js before arcgis -- causes Multiple Define Error.
+* Arcgis: Cannot style map html element from css file.
+* Arcgis: Note: Cannot have SceneView & Request together - an undefined error is thrown when calling the request.
+* Arcgis: Note: When the div containing the map width hits 544 the popup autodock is set to true. I have given more width
+to the center col to avoid this on larger screens.
 https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Popup.html
-### chart js. needed "bundle library rather than min.js to show tooltips for multi dataset chart. needed to lookup so for code on how to show tooltipllegend"
-## bug nota bug?
-after adding the emaik js functionality the arcgis api calls started failing with "Error in Promise k line 1 idnex.html"
-to troubleshoot I removed the api calls from the page one by one to narrow down but the error affected all calls to arcgis.
-re building the page did not fix the error.
-I verified my github code was error free by running the last commit which ran without error.
-I then used the fc command to compare the github copy wiht my development copy but other than the first line reportung as different eventhough visually looked the same
-there were no other diffs. 
-I changted the dirst line
-<!DOCTYPE html>
-to just 
-<html> but no fix.
+* Chart js:  Needed "bundle library rather than min.js to show tooltips for multi dataset chart. 
+* Chart js: Needed to use StackOverflow for code on how to show tooltip legend.
+* Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
+The HTML Validator showed this as error on my Signup page. To fix, I changed the "<signup>" element to "<section>". 
 
-I then ran the page on MS Edge and it ran fine. Then ran it on inCongnito on Chrime and again ran fine.
-I shutdown and restarted my chrome session and reran but again the error until I issued a Hard Refresh.
-I can only surmmize tha either chrome has a cached non working version or some quirky bug between chrome, promise api functionality and the arcgus library.
-One change of underware later and we back up and runnning!
-
-
-## bug
- Element signup not allowed as child of element div in this context. (Suppressing further errors from this subtree.)
- had to re organise signup layout
+* Note: strange behaviour:
+After adding the email js functionality (although I do not believe Chart JS is involved with this behaviour), the Arcgis api calls started failing with 
+"Error in Promise k line 1 idnex.html".
+To troubleshoot I removed the api calls from the page one by one to narrow down the source of the error but all calls to Arcgis were affected.
+Re-building the page did not fix the error.
+I verified my Github code was error free by running the last commit which ran without error.
+I then used the fc command to compare the Github copy wiht my development copy but other than the first line reporting as different eventhough visually they looked the same
+there were no other differences. I assume fc could see a difference at the binary level (maybe an invisible control character.)
+For belts and braces I changted the dirst line
+"<!DOCTYPE html>"  to just "<html>" but this had no affect. 
+I then ran the page on MS Edge and it ran fine. Then ran it on InCognito on Chrome and again ran fine.
+I shutdown and restarted my Chrome session and reran but again the same error until I issued a Hard Refresh.
+I can only summize tha either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
+One cup of sweet tea to settle the nerves later & we are back up and runnning! One to keep an eye on maybe.
 
 
 ## Deployment
@@ -150,6 +158,7 @@ The project was deployed to GitHub Pages using the following steps...
 ## Credits
 
 ### Code
+Jonathan Kelly for Code Institute Milestone Project Two.
 
 ### Content
 
