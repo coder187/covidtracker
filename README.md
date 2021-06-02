@@ -91,8 +91,8 @@ so a mobile first approch with a modern & engaging UX are of key importance.
 ## Testing
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://github.com/)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://github.com/)
+-   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/html_index_validation.png)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/CSS_VALIDATION.png)
 
 ### Testing User Stories from User Experience (UX) Section
 #### First Time Visitor Goals
