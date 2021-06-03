@@ -52,6 +52,7 @@ so a mobile first approch with a modern & engaging UX are of key importance.
   *	Subscription Sign Up Page powered by [Email JS](https://www.emailjs.com/)
   * Background soundtrack from [Defcon PC Game](https://www.introversion.co.uk/introversion/)
 
+## Features Left To Implement In Future
 
 ## Technologies
 
@@ -107,53 +108,77 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 ### Further Testing
 
 ### Known Bugs
+* Due to the current disruption of HSE IT systems, some indicators on the GeoHive COVID-19 hub are paused until further notice.
+
 * CORS Error
-    * Access to fetch at 'https://....' from origin 'http://...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...."
-        Attempting to read the json file on ecdc.europa.eu using either XMLHTTPReuest or Fetch API call raises a CORS error and stops the data being read.
-        I have consulted with tutor support (Shirley & Johann) and with my mentor (Gerry) but have been unable to read the data directly from the remote server.
-        The workaround I have implemented involves copying the json file locally and updating the code read that instead.
+    * Access to fetch at 'https://....' from origin 'http://...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...."   
+        Attempting to read the json file on ecdc.europa.eu using either XMLHTTPReuest or Fetch API call raises a CORS error and stops the data being read.      
+        I have consulted with tutor support (Shirley & Johann) and with my mentor (Gerry) but have been unable to read the data directly from the remote server.       
+        The workaround I have implemented involves copying the json file locally and updating the code to read that instead.      
         Going forward I want to rectify the error so that the data can be read directly.
 
 * Arcgis: Note: Must load bootstrap js before arcgis -- causes Multiple Define Error.
-* Arcgis: Cannot style map html element from css file.
+* Arcgis: Cannot style map html element from css file. It seems the height and width must be styled *inline*.
 * Arcgis: Note: Cannot have SceneView & Request together - an undefined error is thrown when calling the request.
 * Arcgis: Note: When the div containing the map width hits 544 the popup autodock is set to true. I have given more width
 to the center col to avoid this on larger screens.
 https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Popup.html
-* Chart js:  Needed "bundle library rather than min.js to show tooltips for multi dataset chart. 
-* Chart js: Needed to use StackOverflow for code on how to show tooltip legend.
+* Chart js: Needs *bundle.js* library rather than *min.js* to show tooltips for multi dataset chart. This doesnt seem to be mentioned in the Chart JS Docs.
+* Chart js: Need to use StackOverflow for code on how to show tooltip legend. I couldnt get this to work from the Chart JS docs alone.
 * Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
-The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". 
+The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". Adding a class of signup would also fix but this    
+would need further udates to the css styles. I will come back to this at a later stage.
 
 * Note: strange behaviour:
-After adding the Email js functionality (although I do not believe Email JS is involved with this behaviour), the Arcgis api calls started failing with 
-"Error in Promise k line 1 idnex.html".
+After working on the Signup page, the Arcgis api calls on the Index page started failing eventhough I had not edited the code since last verifiying they were working as expected.    
+The error returned was : *Error in Promise k line 1 idnex.html.*     
 To troubleshoot I removed the api calls from the page one by one to narrow down the source of the error but all calls to Arcgis were affected.
-Re-building the page did not fix the error.
+Undoing all recent changes did not fix the error.    
 I verified my Github code was error free by running the last commit which ran without error.
-I then used the fc command to compare the Github copy wiht my development copy but other than the first line reporting as different eventhough visually they looked the same
-there were no other differences. I assume fc could see a difference at the binary level (maybe an invisible control character.)
-For belts and braces I changted the dirst line
-"!DOCTYPE html"  to just "html" but this had no affect. 
-I then ran the page on MS Edge and it ran fine. Then ran it on InCognito on Chrome and again ran fine.
-I shutdown and restarted my Chrome session and reran but again the same error until I issued a Hard Refresh.
-I can only summize tha either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
-One cup of sweet tea to settle the nerves later & we are back up and runnning! One to keep an eye on maybe.
+Running fc against the Guthub page & the local copy showed one difference at line 1, eventhough they were visually identical.
+Rebuilding the page from the Github copy also did not fix the error.
+The solutuin was to shutdown the browser and start a new session and then issue a hard-refresh.
+I can only summize that either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
+One cup of sweet tea to settle the nerves later & we were back up and runnning! One to keep an eye on maybe.
 
 
 ## Deployment
 
 ### GitHub Pages
 
-The project was deployed to GitHub Pages using the following steps...
+## Github Pages
+1. On GitHub, navigate to the site's repository @ [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
+1. Under your repository name, click **Settings**.
+![](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
+1. Under "GitHub Pages", click **Check it out here!**
+1. Under "GitHub Pages", use the **None** or **Branch** drop-down menu and select a publishing source of **Main Branch**.
+![](https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png)
+1. Optionally, use the drop-down menu to select a folder for your publishing source.
+![](https://docs.github.com/assets/images/help/pages/publishing-source-folder-drop-down.png)
+1. Click **Save**.
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/coder187/covidtracker)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://coder187.github.io/covidtracker/) in the "GitHub Pages" section.
+## Deploy Locally via GIT
+1. On GitHub, navigate to the main page of the repository [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
+2. Above the list of files, click Code.
+![](https://docs.github.com/assets/images/help/repository/code-button.png)
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link text or click the icon to right. 
+To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, 
+click **Use SSH**, then copy the link or click the icon.
+To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the link text.
+![](https://docs.github.com/assets/images/help/repository/https-url-clone.png)
+![](https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png)
+4. Open Git Bash (or command prompt on Windows. Note you will need [GIT](https://git-scm.com/download/win) for Windows
+5. Change the current working directory to the location where you want the cloned directory.
+6. Type ```git clone``` and then paste the URL you copied earlier.\
+```$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY```
+7. Press **Enter** to create your local clone.
+
+## Deploy Locally via zip file download
+1. On GitHub, navigate to the main page of the repository @ [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
+2. Above the list of files, click Code.
+![](https://docs.github.com/assets/images/help/repository/code-button.png)
+3. Click **Download Zip**
+4. Extract the downloaded file to the location where you want the cloned directory.
 
 ## Credits
 
@@ -161,16 +186,22 @@ The project was deployed to GitHub Pages using the following steps...
 Jonathan Kelly for Code Institute Milestone Project Two.
 
 ### Content
+The displays the latest COVID-19 statistics for the Republic of Ireland in a responsive and aesthetically pleasing manner.
 
 ### Media
+The hero image is from ecdc.europa.eu.
+The background audio is from the PC game Defcon produced by [](introversion.co.uk/software)
 
 ### Acknowledgements	
 -   My Mentor for continuous helpful feedback.
 
--   Tutor support at Code Institute for their support.7
+-   Tutor support at Code Institute for their support.
 
--   Hussein Nasser Arcgis Tutorials on [youtube](https://www.youtube.com/channel/UC_ML5xP23TOWKUcc-oAE_Eg)
+-   Hussein Nasser for Arcgis Tutorials on [youtube](https://www.youtube.com/channel/UC_ML5xP23TOWKUcc-oAE_Eg)
 
+**Please note : this project is for educational use only and was created for the Code Institute Module of Interactive Front End Development**
+
+**Created by Jonathan Kelly**
 
 ## NOTES
 daily and cumulative new cases and deaths for Ireland (by age included) - no county breakdown.
