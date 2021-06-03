@@ -186,11 +186,11 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 Jonathan Kelly for Code Institute Milestone Project Two.
 
 ### Content
-The displays the latest COVID-19 statistics for the Republic of Ireland in a responsive and aesthetically pleasing manner.
+The website displays the latest COVID-19 statistics for the Republic of Ireland in a responsive and aesthetically pleasing manner.
 
 ### Media
 The hero image is from ecdc.europa.eu.
-The background audio is from the PC game Defcon produced by [](introversion.co.uk/software)
+The background audio is from the PC game Defcon produced by [Introversion Software](https://www.introversion.co.uk/introversion/
 
 ### Acknowledgements	
 -   My Mentor for continuous helpful feedback.
@@ -202,21 +202,3 @@ The background audio is from the PC game Defcon produced by [](introversion.co.u
 **Please note : this project is for educational use only and was created for the Code Institute Module of Interactive Front End Development**
 
 **Created by Jonathan Kelly**
-
-## NOTES
-daily and cumulative new cases and deaths for Ireland (by age included) - no county breakdown.
-https://covid-19.geohive.ie/datasets/d8eb52d56273413b84b0187a4e9117be_0/
-
-new cases per county (latest total minus previous total)
-https://covid-19.geohive.ie/datasets/d9be85b30d7748b5b7c09450b8aede63_0/
-
-confirmed cumulative per county:
-https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0?f=pjson",
-
-moving 14 day incidenece rate per 100k by local election area
-"https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson",
-
-ICU Numbers
-current / admitted / discharged
-https://covid-19.geohive.ie/datasets/c8208a0a8ff04a45b2922ae69e9b2206_0?page=27
-
