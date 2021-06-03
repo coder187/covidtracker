@@ -99,12 +99,7 @@
     <Content Include="assets\js\sendEmail.js" />
     <Content Include="assets\js\toggleAudio.js" />
     <Content Include="fail.html" />
-    <Content Include="covidtracker.html" />
-    <Content Include="covidtracker2.html" />
     <Content Include="index.html" />
-    <Content Include="covidTracker_DailyStats.html" />
-    <Content Include="covidtracker_popup.html" />
-    <Content Include="covidtracker_popup2.html" />
     <Content Include="conf.html" />
     <Content Include="sources.html" />
     <Content Include="signup.html" />
@@ -141,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="data\vaccine.json" />
-    <None Include="data\vaccine.json.old" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

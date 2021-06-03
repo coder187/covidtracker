@@ -5,6 +5,14 @@
 
 # jonathan
 bin/
+vs/
+.vs/
+My Project/
+obj/
+*.sln
+*.vbproj
+*.user
+*.config
 
 # User-specific files
 *.rsuser
