@@ -199,28 +199,3 @@ function GetLEADateRange() {
     });
 }
 
-//depreciated
-function GetVaccineStats() {
-    //get the total Vaccine 1st and 2nd dose.
-    //https://vaccinetracker.ecdc.europa.eu/public/extensions/COVID-19/vaccine-tracker.html
-    //https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/
-    //https://covid19ireland-geohive.hub.arcgis.com/
-
-    return new Promise(function (resolve, reject) {
-        let url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/" //CORS ERROR
-        url = "data/vaccine.json"; //copy file to local folder
-        // url = "http://time.jsontest.com/"; //TEST URL
-        //url = "https://opendata.ecdc.europa.eu/covid19/testing/json/";
-
-        let Httpreq = new XMLHttpRequest(); // a new request
-
-        Httpreq.open("GET", url, false);
-        Httpreq.send();
-
-
-        let obj_vaccine_data = ExtractROIVaccineData(JSON.parse(Httpreq.responseText));
-
-        resolve(obj_vaccine_data);
-        //resolve(stats); not sure why stats cabnt be read here.
-    });
-}
