@@ -10,8 +10,17 @@ function togglePlay() {
 
 myAudio.onplaying = function () {
     isPlaying = true;
+    let e = document.getElementById("myicon");
+    e.className = "";
+    e.classList.add("fas");
+    e.classList.add("fa-volume-down")
+    
     };
 
 myAudio.onpause = function () {
     isPlaying = false;
-    };
+    let e = document.getElementById("myicon");
+    e.className = "";
+    e.classList.add("fas");
+    e.classList.add("fa-volume-mute");
+};

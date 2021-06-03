@@ -64,5 +64,10 @@ The TDD method consists of a cycle of :
 | Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass |
 | Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass |
 | Copy index page and save as signup.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass |
+| Add two centerd columns to the page. | On Mobile: the columns align vertically. | Pass |
+| Add paragraph of text to first column and a signup form to second column. | All fields on the form are required. The email field requires correct format | Pass |
+| Submit the Form. | All fields on the form are required. The email field requires correct format | Pass |
+
+
 
 

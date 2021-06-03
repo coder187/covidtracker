@@ -21,30 +21,30 @@ function GetCovidStats() {
                     },
                     responseType: "json",
                 };
-                //console.log("call request");
+                
 
                 esriRequest(url, options).then(function (response) {
-                    
+
                     let myFeatures = response.data.features;
                     let stats = {
-                        Cases : myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidCases,
-                        Deaths : myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidDeaths,
+                        Cases: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidCases,
+                        Deaths: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidDeaths,
                         TotalCases: myFeatures[myFeatures.length - 1].attributes.TotalConfirmedCovidCases,
                         CasesPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidCases,
                         DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths,
                         DateLastUpdated: new Date(myFeatures[myFeatures.length - 1].attributes.Date)
                     }
                     resolve(stats); //return the stats object
-                }); 
+                });
             });
-        
+
         //resolve(stats); not sure why stats cabnt be read here.
     });
 }
 
 function GetCountyStats() {
     //get the total cases per county.
- 
+
 
     return new Promise(function (resolve, reject) {
         let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?"
@@ -61,7 +61,7 @@ function GetCountyStats() {
                     },
                     responseType: "json",
                 };
-               
+
                 //console.log("call request");
 
                 esriRequest(url, options).then(function (response) {
@@ -71,7 +71,7 @@ function GetCountyStats() {
                     let stats = {};
 
                     for (var i = 0; i < myFeatures.length; i++) {//end point returns the data duplicted.
-                        if (!CountyExists(myFeatures[i].attributes.CountyName,stats_Array)) {
+                        if (!CountyExists(myFeatures[i].attributes.CountyName, stats_Array)) {
                             stats = {
                                 County: myFeatures[i].attributes.CountyName,
                                 Confirmed: myFeatures[i].attributes.ConfirmedCovidCases,
@@ -81,11 +81,11 @@ function GetCountyStats() {
                                 PopulationC16: myFeatures[i].attributes.PopulationCensus16,
                                 TimeStamp: new Date(myFeatures[i].attributes.TimeStampDate)
                             }
-                 
+
                             stats_Array.push(stats);
                         }
                     }
-                    
+
                     resolve(stats_Array); //return the stats array of objects
                 });
             });
@@ -97,7 +97,7 @@ function GetCountyStats() {
 //the end point returns seemingly duplicate data but we only need one copy.
 function CountyExists(county, stats_array) {
     for (let i = 0; i < stats_array.length; i++) {
-        if (stats_array[i].County === county) { 
+        if (stats_array[i].County === county) {
             return true;
         }
     }
@@ -111,7 +111,7 @@ function ExtractROIVaccineData(obj_vaccine_data) {
     //let obj_vaccine_data = JSON.parse(Httpreq.responseText);
 
     let vaccine_data_array = obj_vaccine_data.records;
-    
+
     let FirstDoseTotal = 0;
     let SecondDoseTotal = 0;
     let VaccineType_Total = [];
@@ -126,15 +126,7 @@ function ExtractROIVaccineData(obj_vaccine_data) {
         }
     }
 
-    //for (let i = 0; i < vaccine_data_array.length; i++) {
-    //    obj_vaccine_data = vaccine_data_array[i];
-    //    if (obj_vaccine_data.Region === "IE") {
-    //        if (obj_vaccine_data.TargetGroup === "ALL") {
-    //            FirstDoseTotal = FirstDoseTotal + obj_vaccine_data.FirstDose;
-    //            SecondDoseTotal = SecondDoseTotal + obj_vaccine_data.SecondDose;
-    //        }
-    //    }
-    //}
+    
 
     //1. get total first and second dose over all for all vaccines in dataset
     //2. get total first and second dose per vaccine type
@@ -157,17 +149,17 @@ function ExtractROIVaccineData(obj_vaccine_data) {
         }
     }
 
-   
-    obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal, TotalByType: VaccineType_Total};
+
+    obj_vaccine_data = { TotalFirstDose: FirstDoseTotal, SecondDoseTotal: SecondDoseTotal, TotalByType: VaccineType_Total };
     return obj_vaccine_data;
 }
 
 function VaccineTypeExists(arr, vaxtype) {
-    
+
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].type === vaxtype) {
             return true;
-        } 
+        }
     }
     return false;
 }
@@ -198,4 +190,3 @@ function GetLEADateRange() {
 
     });
 }
-
