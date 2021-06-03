@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -191,6 +190,7 @@
 
     <script src="assets/js/toggleAudio.js"></script>
 
+    
     <script>
         //Get Covid Stats:
         //Total Cases
@@ -316,9 +316,19 @@
 
         let vacccine_url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/"; //causes CORS error
         //vaccine_url = "https://cors-anywhere.herokuapp.com/https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";   //causes CORS error
-        //vacccine_url = "https://cors-proxy.htmldriven.com/?url=https://github.com/coder187/covidtracker/blob/main/data/vaccine.json"; //causes CORS error
-          vacccine_url = "data/vaccine.json"; //local copy
+        vacccine_url = "https://cors-proxy.htmldriven.com/?url=https://github.com/coder187/covidtracker/blob/main/data/vaccine.json"; //causes CORS error
+        vacccine_url = "https://cors-proxy.htmldriven.com/?url=data/vaccine.json"; //causes CORS error
+        vacccine_url = "https://cors-proxy.htmldriven.com/?url=http://ksd.ie/c/data/vaccine.json"; //causes CORS error
+        vacccine_url = "http://ksd.ie/c/data/vaccine.json";
+          
+        vacccine_url = "https://cors-proxy.htmldriven.com/?url=https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";
+        vacccine_url = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/json/";
+        vacccine_url = "data/vaccine.json"; //local copy
+        //vacccine_url = "https://github.com/coder187/covidtracker/blob/main/data/vaccine.json";
 
+        //fetch(vacccine_url, { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+        //fetch(vacccine_url, { mode:"no-cors" })
+        //fetch(vacccine_url, { mode:"cors" })
         fetch(vacccine_url)
             .then(
                 function (response) {

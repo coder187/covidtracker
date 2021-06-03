@@ -1,7 +1,8 @@
 ﻿# Covid-19 Tracker
 [Link to live site on github pages](https://coder187.github.io/covidtracker/)
 
-[Link to main README.md file](https://coder187.github.io/covidtracker/blob/main/README.md)
+[Link to main README.md file](https://github.com/coder187/covidtracker/blob/main/README.md)
+                              
 
 
 Project - Interactive Front End Development - Code Institute
@@ -58,3 +59,10 @@ The TDD method consists of a cycle of :
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass |
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Desktop View: Columns should align horizontally to fit screen. | Pass |
 | Add Vaccine Chart section which consists of a single column centered on screen below the Vaccine Data section. | Mobile & Desktop View: Columns should float directly below section above with content centered | Pass |
+| Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass |
+| Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass |
+| Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass |
+| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass |
+| Copy index page and save as signup.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass |
+
+
