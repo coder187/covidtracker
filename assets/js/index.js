@@ -108,10 +108,10 @@ function PrintICUStats(stats, err) {
         stats.reverse();
         for (var i = 0; i < 31; i++) {
 
-            console.log(new Date(stats[i].attributes.extract));
-            console.log(stats[i].attributes.ncovidconf);
-            console.log(stats[i].attributes.ndischcovidconf);
-            console.log(stats[i].attributes.adcconf);
+            //console.log(new Date(stats[i].attributes.extract));
+            //console.log(stats[i].attributes.ncovidconf);
+            //console.log(stats[i].attributes.ndischcovidconf);
+            //console.log(stats[i].attributes.adcconf);
 
             let tr = document.createElement("tr");
             let td = document.createElement("td");
