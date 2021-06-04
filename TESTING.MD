@@ -63,7 +63,7 @@ The TDD method consists of a cycle of :
 | On index page load. | Connect to endpoint, read Total Case Number & populate second column| Pass |1|
 | On index page load. | Connect to endpoint, read Death field & populate third column| Pass |1|
 | On index page load.. | Connect to endpoint, read Cases field & populate last column| Pass |1|
-| On index page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County with total cases and percentage of population.| Pass |1||
+| On index page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County with total cases and percentage of population.| Pass |1|
 | On index page load. | Connect to endpoint, retrieve Local Elactoral Area Covid Statistics | Pass |1||
 | On index page load. | Render interactive map of Rep. of Ireland in center column of second row.| Pass |1||
 | On index page load. | Render map legend third column.| Pass |1||
@@ -71,9 +71,9 @@ The TDD method consists of a cycle of :
 | On page resize. | Legend wraps and aligns below the map.| Pass |1||
 | On map left click. | A Popup loads with content from the selected Local Electoral Area | Pass |1||
 | Popup Dock.| The Popup Dock icon, when clicked docks the popup to right side of the map element.| Pass |1||
-| Popup Dock.| On smaller screens the Popup is responsive, by docking to the lower half of the map windown and only displaying the Title area. Clicking the Title opens & closes the rest of the Popup.| Pass |1||
-| On Popup Zoom.| The map zooms to the selected LEA| Pass |1||
-| On Popup Close.| The Popup closes| Pass |1||
+| Popup Dock.| On smaller screens the Popup is responsive, by docking to the lower half of the map windown and only displaying the Title area. Clicking the Title opens & closes the rest of the Popup.| Pass |1|
+| On Popup Zoom.| The map zooms to the selected LEA| Pass |1|
+| On Popup Close.| The Popup closes| Pass |1|
 | On page load. | Load & parse vaccine data.| Pass |2|
 | On page load. | Populate vaccine section, column 1 with total First Dose figure.| Pass |2|
 | On page load. | Populate vaccine section, column 2 with second Dose figure.| Pass |2|
@@ -82,6 +82,9 @@ The TDD method consists of a cycle of :
 | On page load. | Render vaccine doughnut chart legend.| Pass |2|
 | On chart left click. | Display tooltip with content from selected chart data point.| Pass |2|
 | On page resize. | Chart resizes in a responsive manner.| Pass |2|
+| On no COUNTY data. | display no data message | Pass |1|
+| On page load. | Connect to endpoint, read ICU fields and populate ICU table | Pass |1|
+| On no ICU data. | display no data message | Pass |1|
 | Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
 | Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass ||
 | Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass ||
