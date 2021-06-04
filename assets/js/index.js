@@ -105,34 +105,44 @@ function PrintICUStats(stats, err) {
         tbl.appendChild(tr);
     }
     else {
-        stats.reverse();
-        for (var i = 0; i < 31; i++) {
+        if (stats.length > 0) {
 
-            //console.log(new Date(stats[i].attributes.extract));
-            //console.log(stats[i].attributes.ncovidconf);
-            //console.log(stats[i].attributes.ndischcovidconf);
-            //console.log(stats[i].attributes.adcconf);
+            stats.reverse();
+            for (var i = 0; i < 101; i++) {
 
-            let tr = document.createElement("tr");
-            let td = document.createElement("td");
-            td.innerHTML = new Date(stats[i].attributes.extract).toDateString();
-            tr.appendChild(td);
+                //console.log(new Date(stats[i].attributes.extract));
+                //console.log(stats[i].attributes.ncovidconf);
+                //console.log(stats[i].attributes.ndischcovidconf);
+                //console.log(stats[i].attributes.adcconf);
 
-            td = document.createElement("td");
-            td.innerHTML = stats[i].attributes.ncovidconf;
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                td.innerHTML = new Date(stats[i].attributes.extract).toDateString();
+                tr.appendChild(td);
 
-            td = document.createElement("td");
-            td.innerHTML = stats[i].attributes.ndischcovidconf;
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerHTML = stats[i].attributes.ncovidconf;
+                td.classList.add("table-cell-align-right");
+                tr.appendChild(td);
 
-            td = document.createElement("td");
-            td.innerHTML = stats[i].attributes.adcconf;
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerHTML = stats[i].attributes.ndischcovidconf;
+                td.classList.add("table-cell-align-right");
+                tr.appendChild(td);
 
+                td = document.createElement("td");
+                td.innerHTML = stats[i].attributes.adcconf;
+                td.classList.add("table-cell-align-right");
+                tr.appendChild(td);
+
+                tbl.appendChild(tr);
+            }
+        }
+        else {
+              let tr = document.createElement("tr");
+              let td = document.createElement("td");
+               td.innerHTML = "No Data";
+               tr.appendChild(td);
             tbl.appendChild(tr);
         }
     }
