@@ -26,6 +26,54 @@ function PrintCovidStats(stats, err) {
     }
 }
 
+//Get Stats By  County.
+GetCountyStats().then(
+    function (message) {
+        //console.log("Resolved: ", message);
+        PrintCountyStats(message, 0);
+    },
+    function (error) {
+        //console.log("Print County Stats - Rejected: ", error);
+        PrintCountyStats(message, 1);
+    }
+);
+function PrintCountyStats(stats, err) {
+    //let ul = document.getElementById("county-list");
+    let tbl = document.getElementById("county-list-table");
+
+    if (err !== 0) {
+        //let li = document.createElement("li");
+        //li.innerHTML = county[i] + "error ?";
+        //ul.appendChild(li);
+
+        let tr = document.createElement("tr");
+        let td = document.createElement("td colspan=3");
+        td.innerHTML = "error ?";
+        tr.appendChild(td);
+    }
+    else {
+        for (var i = 0; i < stats.length; i++) {
+
+            let tr = document.createElement("tr");
+            let td = document.createElement("td");
+            td.innerHTML = stats[i].County;
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.innerHTML = stats[i].Confirmed;
+            td.classList.add("table-cell-align-right");
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.innerHTML = Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100) / 100 + "%";
+            td.classList.add("table-cell-align-right");
+            tr.appendChild(td);
+
+            tbl.appendChild(tr);
+        }
+    }
+    tbl.deleteRow(1);//laoding gif
+}
 
 //render main map
 let map1;
@@ -94,54 +142,7 @@ require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/wid
         })
     });
 
-//Get Stats By  County.
-GetCountyStats().then(
-    function (message) {
-        //console.log("Resolved: ", message);
-        PrintCountyStats(message, 0);
-    },
-    function (error) {
-        //console.log("Print County Stats - Rejected: ", error);
-        PrintCountyStats(message, 1);
-    }
-);
-function PrintCountyStats(stats, err) {
-    //let ul = document.getElementById("county-list");
-    let tbl = document.getElementById("county-list-table");
 
-    if (err !== 0) {
-        //let li = document.createElement("li");
-        //li.innerHTML = county[i] + "error ?";
-        //ul.appendChild(li);
-
-        let tr = document.createElement("tr");
-        let td = document.createElement("td colspan=3");
-        td.innerHTML = "error ?";
-        tr.appendChild(td);
-    }
-    else {
-        for (var i = 0; i < stats.length; i++) {
-
-            let tr = document.createElement("tr");
-            let td = document.createElement("td");
-            td.innerHTML = stats[i].County;
-            tr.appendChild(td);
-
-            td = document.createElement("td");
-            td.innerHTML = stats[i].Confirmed;
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
-
-            td = document.createElement("td");
-            td.innerHTML = Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100) / 100 + "%";
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
-
-            tbl.appendChild(tr);
-        }
-    }
-    tbl.deleteRow(1);//laoding gif
-}
 
 
 //get Vaccine Data

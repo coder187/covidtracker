@@ -39,35 +39,54 @@ The TDD method consists of a cycle of :
 
 ## Implementation
 
-| Action      | Expected Outcome | Result |
-| ----------- | ---------------- | -------|
-| Add new blank html page to project | blank page ready for code saved as index.htm | Pass |
-| Add Nav Bar to top of index | Nav Bar should stay at top of page at all screen sizes | Pass |
-| Add Nav Bar Items to Nav Bar | Nav Bar items should collapse to Burger Menu style at small screen sizes | Pass |
-| Add Footer Section | Four equal width columns occupying the full width of the page. | Pass |
-| Add Arcgis logo to left column | Center content within column | Pass |
+| Action      | Expected Outcome | Result | Note |
+| ----------- | ---------------- | -------| -----|
+| Add new blank html page to project | blank page ready for code saved as index.htm | Pass ||
+| Add Nav Bar to top of index | Nav Bar should stay at top of page at all screen sizes | Pass ||
+| Add Nav Bar Items to Nav Bar | Nav Bar items should collapse to Burger Menu style at small screen sizes | Pass ||
+| Add Footer Section | Four equal width columns occupying the full width of the page. | Pass ||
+| Add Arcgis logo to left column | Center content within column | Pass ||
 | Add data.gov.ie logo to second column | Center content within column | Pass |
-| Add data.gov.ie logo to second column | Center content within column | Pass |
-| Add ECDC logo to third column | Center content within column | Pass |
-| Add social links to last column | Center content within column | Pass |
-| Add hyper links to Social Media Icons | Click link opens target in new browser window | Pass |
-| Add hover effect to Social Media Icons | On mouse hover the background fades to green. On mouse out the background fades back to original colour | Pass |
-| Add Header Section which consists of four columns of equal width below Nav Bar | Mobile View: Columns should float directly below each other and align vertically | Pass |
-| Add header section which consists of two columns below Nav Bar| Desktop View: Columns should align horizontally to fit screen. | Pass |
-| Add Covid Cases section which consists of three columns below header seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass |
-| Add Covid Cases section which consists of three columns below header seaction. | Desktop View: Center column consumes two thirds of width with the remaining two columns occupying one third each| Desktop View: Columns should align horizontally to fit screen. | Pass |
-| Add Vaccine Data section which consists of three columns below Covid seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass |
-| Add Vaccine Data section which consists of three columns below Covid seaction. | Desktop View: Columns should align horizontally to fit screen. | Pass |
-| Add Vaccine Chart section which consists of a single column centered on screen below the Vaccine Data section. | Mobile & Desktop View: Columns should float directly below section above with content centered | Pass |
-| Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass |
-| Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass |
-| Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass |
-| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass |
-| Copy index page and save as signup.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass |
-| Add two centerd columns to the page. | On Mobile: the columns align vertically. | Pass |
-| Add paragraph of text to first column and a signup form to second column. | All fields on the form are required. The email field requires correct format | Pass |
-| Submit the Form. | All fields on the form are required. The email field requires correct format | Pass |
+| Add data.gov.ie logo to second column | Center content within column | Pass ||
+| Add ECDC logo to third column | Center content within column | Pass ||
+| Add social links to last column | Center content within column | Pass ||
+| Add hyper links to Social Media Icons | Click link opens target in new browser window | Pass ||
+| Add hover effect to Social Media Icons | On mouse hover the background fades to green. On mouse out the background fades back to original colour | Pass ||
+| Add Header Section which consists of four columns of equal width below Nav Bar | Mobile View: Columns should float directly below each other and align vertically | Pass ||
+| Add header section which consists of two columns below Nav Bar| Desktop View: Columns should align horizontally to fit screen. | Pass ||
+| Add Covid Cases section which consists of three columns below header seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass ||
+| Add Covid Cases section which consists of three columns below header seaction. | Desktop View: Center column consumes two thirds of width with the remaining two columns occupying one third each| Desktop View: Columns should align horizontally to fit screen. | Pass ||
+| Add Vaccine Data section which consists of three columns below Covid seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass ||
+| Add Vaccine Data section which consists of three columns below Covid seaction. | Desktop View: Columns should align horizontally to fit screen. | Pass ||
+| Add Vaccine Chart section which consists of a single column centered on screen below the Vaccine Data section. | Mobile & Desktop View: Columns should float directly below section above with content centered | Pass ||
+| On page load. | Connect to endpoint, read Last Update Field & populate first column| Pass |1|
+| On page load. | Connect to endpoint, read Total Case Number & populate second column| Pass |1|
+| On page load. | Connect to endpoint, read Death field & populate third column| Pass |1|
+| On page load. | Connect to endpoint, read Cases field & populate last column| Pass |1|
+| On page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
+
+| On page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
+
+
+| Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
+| Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass ||
+| Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass ||
+| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass ||
+| Copy index page and save as conf.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
+| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass ||
+| Add single column to Conf.html with jumbotron element contaning success message | Column is responsive to all device sizes.. | Pass ||
+| Add button to return to homepage to Conf.html | User is redirected to index.html | Pass ||
+| Copy conf.html and save as fail.html. Update nav items. | new page templated from index.html and ready for code. | Pass ||
+| Edit content of fail.html to show failure message | Column is responsive to all device sizes.. | Pass ||
+| Click button to return to homepage | User is redirected to index.html | Pass ||
+| Copy index page and save as signup.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
+| Add two centerd columns to the page. | On Mobile: the columns align vertically. | Pass ||
+| Add paragraph of text to first column and a signup form to second column. | All fields on the form are required. The email field requires correct formatting. The fields are validated before submission | Pass ||
+| Submit the Form by clicking Submit button. | Two emails are sent. One to the email address suppied and the second to the (theoretical) system administrator. | Pass |1|
+| Submit the Form by clicking Submit button. | If the email send succeeds the conf.html page loads to dispaly a sccuess message. | Pass ||
+| Submit the Form by clicking Submit button. | If the email send fails the fail.html page loads to dispaly a failure message. | Pass ||
 
 
 
 
+*1. Note: I have used my own email address as the admin address*
