@@ -55,7 +55,7 @@ The TDD method consists of a cycle of :
 | Add Header Section which consists of four columns of equal width below Nav Bar | Mobile View: Columns should float directly below each other and align vertically | Pass ||
 | Add header section which consists of two columns below Nav Bar| Desktop View: Columns should align horizontally to fit screen. | Pass ||
 | Add Covid Cases section which consists of three columns below header seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass ||
-| Add Covid Cases section which consists of three columns below header seaction. | Desktop View: Center column consumes two thirds of width with the remaining two columns occupying one third each| Desktop View: Columns should align horizontally to fit screen. | Pass ||
+| Add Covid Cases section which consists of three columns below header seaction. | Desktop View: Center column consumes two thirds of width with the remaining two columns occupying one third each| Pass ||
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass ||
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Desktop View: Columns should align horizontally to fit screen. | Pass ||
 | Add Vaccine Chart section which consists of a single column centered on screen below the Vaccine Data section. | Mobile & Desktop View: Columns should float directly below section above with content centered | Pass ||
@@ -63,7 +63,7 @@ The TDD method consists of a cycle of :
 | On index page load. | Connect to endpoint, read Total Case Number & populate second column| Pass |1|
 | On index page load. | Connect to endpoint, read Death field & populate third column| Pass |1|
 | On index page load.. | Connect to endpoint, read Cases field & populate last column| Pass |1|
-| On index page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
+| On index page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County with total cases and percentage of population.| Pass |1||
 | On index page load. | Connect to endpoint, retrieve Local Elactoral Area Covid Statistics | Pass |1||
 | On index page load. | Render interactive map of Rep. of Ireland in center column of second row.| Pass |1||
 | On index page load. | Render map legend third column.| Pass |1||
@@ -75,8 +75,8 @@ The TDD method consists of a cycle of :
 | On Popup Zoom.| The map zooms to the selected LEA| Pass |1||
 | On Popup Close.| The Popup closes| Pass |1||
 | On page load. | Load & parse vaccine data.| Pass |2|
-| On page load. | Populate vaccine section, column 1 with total Frist Dose figure.| Pass |2|
-| On page load. | Populate vaccine section, column 2 with second Frist Dose figure.| Pass |2|
+| On page load. | Populate vaccine section, column 1 with total First Dose figure.| Pass |2|
+| On page load. | Populate vaccine section, column 2 with second Dose figure.| Pass |2|
 | On page load. | Populate vaccine section, column 3 with Total Dose adminstered.| Pass |2|
 | On page load. | Render vaccine doughnut chart with two datasets, first & second dose by vaccine type.| Pass |2|
 | On page load. | Render vaccine doughnut chart legend.| Pass |2|
@@ -85,9 +85,7 @@ The TDD method consists of a cycle of :
 | Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
 | Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass ||
 | Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass ||
-| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass ||
 | Copy index page and save as conf.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
-| Add a number of un ordered lists which align vertically. | Content contains informational text and links to more info. | Pass ||
 | Add single column to Conf.html with jumbotron element contaning success message | Column is responsive to all device sizes.. | Pass ||
 | Add button to return to homepage to Conf.html | User is redirected to index.html | Pass ||
 | Copy conf.html and save as fail.html. Update nav items. | new page templated from index.html and ready for code. | Pass ||
@@ -100,6 +98,7 @@ The TDD method consists of a cycle of :
 | Submit the Form by clicking Submit button. | If the email send succeeds the conf.html page loads to dispaly a sccuess message. | Pass ||
 | Submit the Form by clicking Submit button. | If the email send fails the fail.html page loads to dispaly a failure message. | Pass ||
 
-*1. Disruption to he HSE computer systems caused by the cyber attack has resulted in some dataset updates being paused until further notice.*
-*2. Note: A CORS issue prevented me from reading the vaccine data directly from the host server so I have copied the vaccine data file locally. I will come back to this to rectify.*
-*3. Note: I have used my own email address as the admin address*
+*1. Disruption to he HSE computer systems caused by the cyber attack has resulted in some dataset updates being paused until further notice.*       
+*2. Note: A CORS issue prevented me from reading the vaccine data directly from the host server so I have copied the vaccine data file locally. I will come back to this to rectify.*        
+*3. Note: I have used my own email address as the admin address*         
+
