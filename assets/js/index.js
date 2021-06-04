@@ -29,11 +29,11 @@ function PrintCovidStats(stats, err) {
 //Get Stats By  County.
 GetCountyStats().then(
     function (message) {
-        //console.log("Resolved: ", message);
+        console.log("Resolved: ", message);
         PrintCountyStats(message, 0);
     },
     function (error) {
-        //console.log("Print County Stats - Rejected: ", error);
+        console.log("Print County Stats - Rejected: ", error);
         PrintCountyStats(message, 1);
     }
 );
@@ -47,30 +47,37 @@ function PrintCountyStats(stats, err) {
         //ul.appendChild(li);
 
         let tr = document.createElement("tr");
-        let td = document.createElement("td colspan=3");
+        let td = document.createElement("td");
         td.innerHTML = "error ?";
         tr.appendChild(td);
     }
-    else {
-        for (var i = 0; i < stats.length; i++) {
-
+    else if (stats.length === 0) {
+            console.log("zero len")
             let tr = document.createElement("tr");
             let td = document.createElement("td");
-            td.innerHTML = stats[i].County;
+            td.innerHTML = "No Data";
             tr.appendChild(td);
-
-            td = document.createElement("td");
-            td.innerHTML = stats[i].Confirmed;
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
-
-            td = document.createElement("td");
-            td.innerHTML = Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100) / 100 + "%";
-            td.classList.add("table-cell-align-right");
-            tr.appendChild(td);
-
-            tbl.appendChild(tr);
         }
+        else {
+            for (var i = 0; i < stats.length; i++) {
+
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                td.innerHTML = stats[i].County;
+                tr.appendChild(td);
+
+                td = document.createElement("td");
+                td.innerHTML = stats[i].Confirmed;
+                td.classList.add("table-cell-align-right");
+                tr.appendChild(td);
+
+                td = document.createElement("td");
+                td.innerHTML = Math.round((stats[i].Confirmed / stats[i].PopulationC16) * 100 * 100) / 100 + "%";
+                td.classList.add("table-cell-align-right");
+                tr.appendChild(td);
+
+                tbl.appendChild(tr);
+            }
     }
     tbl.deleteRow(1);//laoding gif
 }
