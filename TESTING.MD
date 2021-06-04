@@ -59,15 +59,29 @@ The TDD method consists of a cycle of :
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Mobile View: Columns should float directly below each other and align vertically | Pass ||
 | Add Vaccine Data section which consists of three columns below Covid seaction. | Desktop View: Columns should align horizontally to fit screen. | Pass ||
 | Add Vaccine Chart section which consists of a single column centered on screen below the Vaccine Data section. | Mobile & Desktop View: Columns should float directly below section above with content centered | Pass ||
-| On page load. | Connect to endpoint, read Last Update Field & populate first column| Pass |1|
-| On page load. | Connect to endpoint, read Total Case Number & populate second column| Pass |1|
-| On page load. | Connect to endpoint, read Death field & populate third column| Pass |1|
-| On page load. | Connect to endpoint, read Cases field & populate last column| Pass |1|
-| On page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
-
-| On page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
-
-
+| On index page load. | Connect to endpoint, read Last Update Field & populate first column| Pass |1|
+| On index page load. | Connect to endpoint, read Total Case Number & populate second column| Pass |1|
+| On index page load. | Connect to endpoint, read Death field & populate third column| Pass |1|
+| On index page load.. | Connect to endpoint, read Cases field & populate last column| Pass |1|
+| On index page load. | Connect to endpoint, get list of counties reported & populate second row, first column with a table wiht a row per County| Pass |1||
+| On index page load. | Connect to endpoint, retrieve Local Elactoral Area Covid Statistics | Pass |1||
+| On index page load. | Render interactive map of Rep. of Ireland in center column of second row.| Pass |1||
+| On index page load. | Render map legend third column.| Pass |1||
+| On page resize. | Map resizes to fit display. Popup docks to lower half of the map element.| Pass |1||
+| On page resize. | Legend wraps and aligns below the map.| Pass |1||
+| On map left click. | A Popup loads with content from the selected Local Electoral Area | Pass |1||
+| Popup Dock.| The Popup Dock icon, when clicked docks the popup to right side of the map element.| Pass |1||
+| Popup Dock.| On smaller screens the Popup is responsive, by docking to the lower half of the map windown and only displaying the Title area. Clicking the Title opens & closes the rest of the Popup.| Pass |1||
+| On Popup Zoom.| The map zooms to the selected LEA| Pass |1||
+| On Popup Close.| The Popup closes| Pass |1||
+| On page load. | Load & parse vaccine data.| Pass |2|
+| On page load. | Populate vaccine section, column 1 with total Frist Dose figure.| Pass |2|
+| On page load. | Populate vaccine section, column 2 with second Frist Dose figure.| Pass |2|
+| On page load. | Populate vaccine section, column 3 with Total Dose adminstered.| Pass |2|
+| On page load. | Render vaccine doughnut chart with two datasets, first & second dose by vaccine type.| Pass |2|
+| On page load. | Render vaccine doughnut chart legend.| Pass |2|
+| On chart left click. | Display tooltip with content from selected chart data point.| Pass |2|
+| On page resize. | Chart resizes in a responsive manner.| Pass |2|
 | Copy index page and save as sources.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
 | Add a Data Sources section with a single column which consumes the full screen width. | Content should align left. | Pass ||
 | Add a number of un ordered lists which align vertically. | Content contains informational text and hyperlinks to data source homepages. | Pass ||
@@ -82,11 +96,10 @@ The TDD method consists of a cycle of :
 | Copy index page and save as signup.html. Remove all content between nav and footer. Update nav items. | new page templated from index.html and ready for code. | Pass ||
 | Add two centerd columns to the page. | On Mobile: the columns align vertically. | Pass ||
 | Add paragraph of text to first column and a signup form to second column. | All fields on the form are required. The email field requires correct formatting. The fields are validated before submission | Pass ||
-| Submit the Form by clicking Submit button. | Two emails are sent. One to the email address suppied and the second to the (theoretical) system administrator. | Pass |1|
+| Submit the Form by clicking Submit button. | Two emails are sent. One to the email address suppied and the second to the (theoretical) system administrator. | Pass |3|
 | Submit the Form by clicking Submit button. | If the email send succeeds the conf.html page loads to dispaly a sccuess message. | Pass ||
 | Submit the Form by clicking Submit button. | If the email send fails the fail.html page loads to dispaly a failure message. | Pass ||
 
-
-
-
-*1. Note: I have used my own email address as the admin address*
+*1. Disruption to he HSE computer systems caused by the cyber attack has resulted in some dataset updates being paused until further notice.*
+*2. Note: A CORS issue prevented me from reading the vaccine data directly from the host server so I have copied the vaccine data file locally. I will come back to this to rectify.*
+*3. Note: I have used my own email address as the admin address*
