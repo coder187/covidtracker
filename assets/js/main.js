@@ -190,3 +190,38 @@ function GetLEADateRange() {
 
     });
 }
+
+
+function GetICUStats() {
+    //get the ICU Admissions and Discharges Per Day.
+
+
+    return new Promise(function (resolve, reject) {
+        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/ICUBISHistoricTimelinePublicView/FeatureServer/0/query?"
+
+        require(["esri/request"],
+            function (esriRequest) {
+                // Define the 'options' for the request
+                let options = {
+                    query: {
+                        f: "json",
+                        where: "1=1", //seems to need a where clause to return anything - rertturn all records.
+                        outFields: ["extract", "ncovidconf", "ndischcovidconf", "adcconf"],
+                        returnGeometry: false
+                    },
+                    responseType: "json",
+                };
+
+                
+
+                esriRequest(url, options).then(function (response) {
+                    
+                    let myFeatures = response.data.features;
+                   
+                    resolve(myFeatures); //return the stats array of objects
+                });
+            });
+
+        //resolve(stats); not sure why stats cabnt be read here.
+    });
+}

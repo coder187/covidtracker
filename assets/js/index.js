@@ -29,7 +29,7 @@ function PrintCovidStats(stats, err) {
 //Get Stats By  County.
 GetCountyStats().then(
     function (message) {
-        console.log("Resolved: ", message);
+        //console.log("Resolved: ", message);
         PrintCountyStats(message, 0);
     },
     function (error) {
@@ -50,13 +50,14 @@ function PrintCountyStats(stats, err) {
         let td = document.createElement("td");
         td.innerHTML = "error ?";
         tr.appendChild(td);
+        tbl.appendChild(tr);
     }
     else if (stats.length === 0) {
-            console.log("zero len")
             let tr = document.createElement("tr");
             let td = document.createElement("td");
             td.innerHTML = "No Data";
             tr.appendChild(td);
+            tbl.appendChild(tr);
         }
         else {
             for (var i = 0; i < stats.length; i++) {
@@ -82,6 +83,61 @@ function PrintCountyStats(stats, err) {
     tbl.deleteRow(1);//laoding gif
 }
 
+//Get ICU STATS
+GetICUStats().then(
+    function (message) {
+        //console.log("Resolved: ", message);
+        PrintICUStats(message, 0);
+    },
+    function (error) {
+        console.log("Error: ", error);
+    }
+);
+
+function PrintICUStats(stats, err) {
+    let tbl = document.getElementById("icu-list-table");
+
+    if (err !== 0) {
+        let tr = document.createElement("tr");
+        let td = document.createElement("td");
+        td.innerHTML = "error ?";
+        tr.appendChild(td);
+        tbl.appendChild(tr);
+    }
+    else {
+        stats.reverse();
+        for (var i = 0; i < 31; i++) {
+
+            console.log(new Date(stats[i].attributes.extract));
+            console.log(stats[i].attributes.ncovidconf);
+            console.log(stats[i].attributes.ndischcovidconf);
+            console.log(stats[i].attributes.adcconf);
+
+            let tr = document.createElement("tr");
+            let td = document.createElement("td");
+            td.innerHTML = new Date(stats[i].attributes.extract).toDateString();
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.innerHTML = stats[i].attributes.ncovidconf;
+            td.classList.add("table-cell-align-right");
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.innerHTML = stats[i].attributes.ndischcovidconf;
+            td.classList.add("table-cell-align-right");
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.innerHTML = stats[i].attributes.adcconf;
+            td.classList.add("table-cell-align-right");
+            tr.appendChild(td);
+
+            tbl.appendChild(tr);
+        }
+    }
+    tbl.deleteRow(1);//laoding gif
+}
 //render main map
 let map1;
 let mapView;
@@ -256,3 +312,4 @@ function PrintCovidVaccineStats(stats, err) {
         }); //end chart
     }
 }
+
