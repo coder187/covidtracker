@@ -1,62 +1,47 @@
 ![](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/ms2_covidtracker_air.png)
 
-# COVID-19 Tracker for Repuplic of Ireland
+# COVID-19 Tracker for Republic of Ireland
 [Link to live site on github pages](https://coder187.github.io/covidtracker/)
 
 Project - Interactive Frontend Development - Code Institute
 
-The project will produce a simple interactive website to display COVID-19 statistics as reported by the governemnt of Ireland.
+The project will produce a simple interactive website to display COVID-19 statistics as reported by the government of Ireland.
 
 The idea behind the project is to provide a quick and mobile responsive reference for the top level data points.
-This application can be extended in future to add data streams as they become available.
+This application can be extended in future to further add data streams as they become available.
 
 The end user of the system would potentially be all persons with access to the internet. This obviously includes a very wide range of people,
-so a mobile first approch with a modern & engaging UX are of key importance.
+so a mobile first approach with a modern & engaging UX are of key importance.
 
 ## User Experience (UX)
-* User stories
-  * First Time Visitor Goals
-    * As a First Time Visitor, I want to easily understand the main purpose of the site.
-    * As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-    * As a First Time Visitor, I want to look for COVID-19 data for Ireland.
-  
-  * Frequent\Returning Visitor Goals
-    * As a Returning Visitor, I want to verify where the data is sourced from.
-    * As a Returning Visitor, I want to signup for the daily update summary.
+### Scope
+#### User stories
+1. As a First Time Visitor, I want to easily understand the main purpose of the site.
+1. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
+1. As a Returning Visitor, I want to see the latest COVID-19 data for Ireland.
+1. As a Returning Visitor, I want to signup for the daily update summary.
+1. As a Frequent Visitor, I want to verify where the data is sourced from.
+1. As a Frequent Visitor, I want to see historic data trends.
+1. As a Frequent Visitor, I want to compare ROI data with other countries of interest.
 
-* Design
-  * Colour Scheme	
-    * The two main colours used are black background with blue text.
-    * The map is based on a dark gret vector
-    * In contrast the Vaccine Chart uses lighter colors with shades of light shades of pink,blue,red,purple and orange to represent the various vaccine types.
+## Structure
 
-  * Typography
-    * The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font 
-			in case for any reason the font isn't being imported into the site correctly. Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
+### Technical Capabilities
+HTML5 & CSS3 along with Bootstrap 4 framework and Javascript are my core strengths in regards to this project.
 
-  * Imagery
-    * The large background hero image on the signup page is of the COVID-19 virus taken from the [ECDC](https://www.ecdc.europa.eu/en) website. 
-    The image is now synonymous with the COVD-19 pandemic so fits the site very well.
-
-* Wireframes
-  * Home Page Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Mobile.png)
-  * Home Page Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Desktop.png)
-  * Signup Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20-%20Mobile.png)
-  * Signup Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20Page%20-%20Desktop.png)
-
-
-## Features
+### Features
   * Responsive on all devices.
   * Covid-19 Daily Statistics and the Profile of Covid-19 Daily Statistics for Ireland as reported by the Health Surveillance Protection Centre.
       * Total Cases to date.
       * Total New Cases
       * Total New Deaths
-      *The Covid-19 Daily Statistics are updated on a daily basis, with the latest record reporting the counts recorded at 1pm the same day.
+      * The Covid-19 Daily Statistics are updated on a daily basis, with the latest record reporting the counts recorded at 1pm the same day.
   * Covid-19 Daily Statistics for Ireland by County as reported by the Health Surveillance Protection Centre. 
     * No. of cases per County 
     * The percentage of the population affected.
     * This service is updated daily. The latest record will always date back to two days ago. 
-  * Time series dataset going back 100 days of COVID-19 patients in Intensive Care Units in Ireland. Data is provided for Confirmed COVID-19 cases and the number of new admissions and discharges.    
+  * Time series dataset going back 100 days of COVID-19 patients in Intensive Care Units in Ireland. 
+    * Data is provided for Confirmed COVID-19 cases and the number of new admissions and discharges.    
     * Data is based on an aggregate of all public and private ICU/HDU hospitals (including surge units).    
     * Data has been provided by the National Office of Clinical Audit (NOCA) ICU Bed Information System (ICU-BIS).
     * ICU statistics are updated daily at approximately 11.30am
@@ -72,21 +57,49 @@ so a mobile first approch with a modern & engaging UX are of key importance.
   * Background soundtrack from [Defcon PC Game](https://www.introversion.co.uk/introversion/)
 
    
-## Features Left To Implement In Future
+### Features Left To Implement In Future
   * Use the Where Clause of ESRI Request Options to narrow the returned dataset.
   * Improve error trapping and handling when processing rest service response.
-  * Add option to switch data feed for ineractive map.
+  * Add option to switch data feed for interactive map.
   * Add further statistics on Covid-19 testing, cases, variants, vaccines and comparisons with other geographical areas.
   * A daily email containing all the statistics from the website, tiggered on the Last Update Date. 
- 
-## Technologies
 
-### Languages Used
+## Skeleton
+
+### Wireframes
+  * Home Page Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Mobile.png)
+  * Home Page Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Home%20Page%20-%20Desktop.png)
+
+  * Signup Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20-%20Mobile.png)
+  * Signup Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20Page%20-%20Desktop.png)
+
+    Home Page: Main Page. Displays various Covid-19 statistics.
+    Sign Up Page. Allows users subscribe to mailing list.
+    Conf & Fail Page. Displays a message to user on completing the signup process
+    Data Sources Page. Simple page describing where the data is read from.
+
+## Surface
+
+### Design
+  * Colour Scheme	
+    * The two main colours used are black background with blue text. This provides a sharp contrast and matches aesthetically with the dark Gray vector map of the Rep of Ireland.
+    * The map is based on a dark Gray vector as this produced a sharp contrast to the default legend and color palete of the map layer provided by the ESRI system.
+    * In contrast the Vaccine Chart uses lighter colors with shades of pink, blue, red, purple and orange to represent the various vaccine types.
+
+  * Typography
+    * The Prompt font is the main font used throughout the whole website with Sans Serif as the fallback font 
+			in case for any reason the font isn't being imported into the site correctly. Prompt is simple, geometric & web friendly so it is both attractive and appropriate.
+  * Imagery
+    * The large background hero image on the signup page is of the COVID-19 virus taken from the [ECDC](https://www.ecdc.europa.eu/en) website. 
+    The image is now synonymous with the COVD-19 pandemic so fits the site very well.
+  
+## Technologies
+#### Languages Used
   * HTML5
   * CSS3
   * Javascript
 
-### Frameworks, Libraries & Programs Used
+#### Frameworks, Libraries & Programs Used
 1. [HTML5](https://www.w3.org/)
 1. [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
 1. [Javascript](https://www.javascript.com/) 
@@ -140,52 +153,12 @@ so a mobile first approch with a modern & engaging UX are of key importance.
 1. [Am I Responsive](http://ami.responsivedesign.is/) 
     - Screen Grab of site on various devices.
 
-## Data Licensing\Terms of Use
-[Covid-19 Geohive](https://covid-19.geohive.ie/pages/terms-of-use)
-[ECDC ](https://www.ecdc.europa.eu/en/legal-notice)
-
 ## Testing
 [Link to Testing.md file](https://github.com/coder187/covidtracker/blob/main/TESTING.MD)
                           
-### Known Bugs
-* Due to the current disruption of HSE IT systems, some indicators on the GeoHive COVID-19 hub are paused until further notice.
-* Due to the current disruption of HSE IT systems, vaccine data may not be reported to the ECDC vaccine tracker.
-* CORS Error
-    * Access to fetch at 'https://....' from origin 'http://...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...."   
-        Attempting to read the json file on ecdc.europa.eu using either XMLHTTPReuest or Fetch API call raises a CORS error and stops the data being read.      
-        I have consulted with tutor support (Shirley & Johann) and with my mentor (Gerry) but have been unable to read the data directly from the remote server.       
-        The workaround I have implemented involves copying the json file locally and updating the code to read that instead.      
-        Going forward I want to rectify the error so that the data can be read directly.
-    * A CORS plugin may be needed to run the system.
-* Arcgis: Note: Must load bootstrap js before arcgis -- causes Multiple Define Error.
-* Arcgis: Cannot style map html element from css file. It seems the height and width must be styled *inline*.
-* Arcgis: Note: Cannot have SceneView & Request together - an undefined error is thrown when calling the request.
-* Arcgis: Note: When the div containing the map width hits 544 the popup autodock is set to true. I have given more width
-to the center col to avoid this on larger screens. [](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Popup.html)
-* Chart js: Needs *bundle.js* library rather than *min.js* to show tooltips for multi dataset chart. This doesnt seem to be mentioned in the Chart JS Docs.
-* Chart js: Need to use StackOverflow for code on how to show tooltip legend. I couldnt get this to work from the Chart JS docs alone.
-* Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
-The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". Adding a class of signup would also fix but this    
-would need further udates to the css styles. I will come back to this at a later stage.
-
-* Note: strange behaviour:
-After working on the Signup page, the Arcgis api calls on the Index page started failing eventhough I had not edited the code since last verifiying they were working as expected.    
-The error returned was : *Error in Promise k line 1 idnex.html.*     
-To troubleshoot I removed the api calls from the page one by one to narrow down the source of the error but all calls to Arcgis were affected.
-Undoing all recent changes did not fix the error.    
-I verified my Github code was error free by running the last commit which ran without error.
-Running fc against the Guthub page & the local copy showed one difference at line 1, eventhough they were visually identical.
-Rebuilding the page from the Github copy also did not fix the error.
-The solutuin was to shutdown the browser and start a new session and then issue a hard-refresh.
-I can only summize that either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
-One cup of sweet tea to settle the nerves later & we were back up and runnning! One to keep an eye on maybe.
-
-
 ## Deployment
 
 ### GitHub Pages
-
-## Github Pages
 1. On GitHub, navigate to the site's repository @ [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
 1. Under your repository name, click **Settings**.
 ![](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
@@ -196,7 +169,7 @@ One cup of sweet tea to settle the nerves later & we were back up and runnning! 
 ![](https://docs.github.com/assets/images/help/pages/publishing-source-folder-drop-down.png)
 1. Click **Save**.
 
-## Deploy Locally via GIT
+### Deploy Locally via GIT
 1. On GitHub, navigate to the main page of the repository [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
 2. Above the list of files, click Code.
 ![](https://docs.github.com/assets/images/help/repository/code-button.png)
@@ -214,7 +187,7 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 8. Note: A CORS Plugin may be needed to run the system locally.
 
 
-## Deploy Locally via zip file download
+### Deploy Locally via zip file download
 1. On GitHub, navigate to the main page of the repository @ [https://github.com/coder187/covidtracker](https://github.com/coder187/covidtracker)
 2. Above the list of files, click Code.
 ![](https://docs.github.com/assets/images/help/repository/code-button.png)
@@ -222,28 +195,64 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 4. Extract the downloaded file to the location where you want the cloned directory.
 5. Note: A CORS Plugin may be needed to run the system locally.
 
+## Known Bugs
+* Due to the current disruption of HSE IT systems, some indicators on the GeoHive COVID-19 hub are paused until further notice.
+* Due to the current disruption of HSE IT systems, vaccine data may not be reported to the ECDC vaccine tracker.
+* CORS Error
+    * Access to fetch at 'https://....' from origin 'http://...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...."   
+        Attempting to read the json file on ecdc.europa.eu using either XMLHTTPReuest or Fetch API call raises a CORS error and stops the data being read.      
+        I have consulted with tutor support (Shirley & Johann) and with my mentor (Gerry) but have been unable to read the data directly from the remote server.       
+        The workaround I have implemented involves copying the json file locally and updating the code to read that instead.      
+        Going forward I want to rectify the error so that the data can be read directly.
+    * A CORS plugin may be needed to run the system.
+* Arcgis: Note: Must load bootstrap js before arcgis -- causes Multiple Define Error.
+* Arcgis: Cannot style map html element from css file. It seems the height and width must be styled *inline*.
+* Arcgis: Note: Cannot have SceneView & Request together - an undefined error is thrown when calling the request.
+* Arcgis: Note: When the div containing the map width hits 544 the popup autodock is set to true. I have given more width
+to the center col to avoid this on larger screens. [](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Popup.html)
+* Chart js: Needs *bundle.js* library rather than *min.js* to show tooltips for multi dataset chart. This doesn't seem to be mentioned in the Chart JS Docs.
+* Chart js: Need to use StackOverflow for code on how to show tooltip legend. I couldnt get this to work from the Chart JS docs alone.
+* Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
+The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". Adding a class of signup would also fix but this    
+would need further updates to the css styles. I will come back to this at a later stage.
+
+* Note: strange behaviour:
+After working on the Signup page, the Arcgis api calls on the Index page started failing eventhough I had not edited the code since last verifiying they were working as expected.    
+The error returned was : *Error in Promise k line 1 idnex.html.*     
+To troubleshoot I removed the api calls from the page one by one to narrow down the source of the error but all calls to Arcgis were affected.
+Undoing all recent changes did not fix the error.    
+I verified my Github code was error free by running the last commit which ran without error.
+Running fc against the Guthub page & the local copy showed one difference at line 1, eventhough they were visually identical.
+Rebuilding the page from the Github copy also did not fix the error.
+The solution was to shutdown the browser and start a new session and then issue a hard-refresh.
+I can only surmize that either Chrome had a cached buggy\corrupted version of the code or some quirky bug between Chrome, the Promise api & and the Arcgis library.
+One cup of sweet tea to settle the nerves later & we were back up and running! One to keep an eye on maybe.
+
 ## Credits
 ### Code
-    * Jonathan Kelly for Code Institute Milestone Project Two.
-    * Code Institute Courseware
-    * (Arcgis Documentation)[https://developers.arcgis.com/javascript/latest/]
-    * Hussein Nasser for Arcgis Tutorials on [youtube](https://www.youtube.com/channel/UC_ML5xP23TOWKUcc-oAE_Eg)
-    * [Ordnance Survey Ireland](https://covid-19.geohive.ie/search) for maintaining the [COVID-19 Data Hub] (https://covid-19.geohive.ie/)
-    * [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en) for maintianing the Vaccine Tracker.
-    * ![]((https://raw.githubusercontent.com/coder187/covidtracker/main/gif/ico/chartjs_ico.ico) [Chart JS](https://www.chartjs.org/docs/latest/)
-    * (Email JS)[https://www.emailjs.com/docs/]
-    * (Stackoverflow)[https://stackoverflow.com/] for help with debugging css and javascript.
+  * Jonathan Kelly for Code Institute Milestone Project Two.
+  * Code Institute Courseware
+  * [Arcgis Documentation](https://developers.arcgis.com/javascript/latest/)
+  * Hussein Nasser for Arcgis Tutorials on [youtube](https://www.youtube.com/channel/UC_ML5xP23TOWKUcc-oAE_Eg)
+  * [Ordnance Survey Ireland](https://covid-19.geohive.ie/search) for maintaining the [COVID-19 Data Hub] (https://covid-19.geohive.ie/)
+  * [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en) for maintaining the Vaccine Tracker.
+  * [Chart JS](https://www.chartjs.org/docs/latest/)
+  * [Email JS](https://www.emailjs.com/docs/)
+  * [Stackoverflow](https://stackoverflow.com/) for help with debugging css and javascript.
 
-    
 ### Content
 The website displays the latest COVID-19 statistics for the Republic of Ireland in a responsive and aesthetically pleasing manner.
 
 ### Media
-The hero image is from ecdc.europa.eu.
-The background audio is from the PC game Defcon produced by [Introversion Software](https://www.introversion.co.uk/introversion/
-The website icon is taken from the United Nations website. https://www.un.org/en/file/45419
+  - The hero image is from [ECDC](https://www.ecdc.europa.eu/en) website
+  - The background audio is from the PC game Defcon produced by [Introversion Software](https://www.introversion.co.uk/introversion/
+  - The website icon is taken from the United Nations website. https://www.un.org/en/file/45419
 
-### Acknowledgements	
+## Data Licensing\Terms of Use
+[Covid-19 Geohive](https://covid-19.geohive.ie/pages/terms-of-use)    
+[ECDC ](https://www.ecdc.europa.eu/en/legal-notice)
+
+## Acknowledgements	
 -   My Mentor for continuous helpful feedback.
 
 -   Tutor support at Code Institute for their support.
