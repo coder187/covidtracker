@@ -105,3 +105,9 @@ The TDD method consists of a cycle of :
 *2. Note: A CORS issue prevented me from reading the vaccine data directly from the host server so I have copied the vaccine data file locally. I will come back to this to rectify.*        
 *3. Note: I have used my own email address as the admin address*         
 
+### Testing User Stories from User Experience (UX) Section
+#### First Time Visitor Goals
+#### Returning Visitor Goals
+#### Frequent User Goals
+
+### Further Testing
