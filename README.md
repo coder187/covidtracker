@@ -73,17 +73,18 @@ HTML5 & CSS3 along with Bootstrap 4 framework and Javascript are my core strengt
   * Signup Mobile [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20-%20Mobile.png)
   * Signup Desktop [View](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/wireframes/Sign%20Up%20Page%20-%20Desktop.png)
 
-    Home Page: Main Page. Displays various Covid-19 statistics.
-    Sign Up Page. Allows users subscribe to mailing list.
-    Conf & Fail Page. Displays a message to user on completing the signup process
-    Data Sources Page. Simple page describing where the data is read from.
+    Home Page: Main Page. Displays various Covid-19 statistics.     
+    Sign Up Page. Allows users subscribe to mailing list.     
+    Conf & Fail Page. Displays a message to user on completing the signup process.   
+    Data Sources Page. Simple page describing where the data is read from.    
+
 
 ## Surface
 
 ### Design
   * Colour Scheme	
     * The two main colours used are black background with blue text. This provides a sharp contrast and matches aesthetically with the dark Gray vector map of the Rep of Ireland.
-    * The map is based on a dark Gray vector as this produced a sharp contrast to the default legend and color palete of the map layer provided by the ESRI system.
+    * I have uses the default map & legend color palete of the layer provided by the ESRI system as his works very well to show areas of contrast across the country.
     * In contrast the Vaccine Chart uses lighter colors with shades of pink, blue, red, purple and orange to represent the various vaccine types.
 
   * Typography
