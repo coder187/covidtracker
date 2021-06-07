@@ -235,7 +235,7 @@ One cup of sweet tea to settle the nerves later & we were back up and running! O
   * Code Institute Courseware
   * [Arcgis Documentation](https://developers.arcgis.com/javascript/latest/)
   * Hussein Nasser for Arcgis Tutorials on [youtube](https://www.youtube.com/channel/UC_ML5xP23TOWKUcc-oAE_Eg)
-  * [Ordnance Survey Ireland](https://covid-19.geohive.ie/search) for maintaining the [COVID-19 Data Hub] (https://covid-19.geohive.ie/)
+  * [Ordnance Survey Ireland](https://covid-19.geohive.ie/search) for maintaining the [COVID-19 Data Hub](https://covid-19.geohive.ie/)
   * [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en) for maintaining the Vaccine Tracker.
   * [Chart JS](https://www.chartjs.org/docs/latest/)
   * [Email JS](https://www.emailjs.com/docs/)
@@ -246,8 +246,8 @@ The website displays the latest COVID-19 statistics for the Republic of Ireland 
 
 ### Media
   - The hero image is from [ECDC](https://www.ecdc.europa.eu/en) website
-  - The background audio is from the PC game Defcon produced by [Introversion Software](https://www.introversion.co.uk/introversion/
-  - The website icon is taken from the United Nations website. https://www.un.org/en/file/45419
+  - The background audio is from the PC game Defcon produced by [Introversion Software](https://www.introversion.co.uk/introversion/)
+  - The website icon is taken from the [United Nations website](https://www.un.org/en/file/45419).
 
 ## Data Licensing\Terms of Use
 [Covid-19 Geohive](https://covid-19.geohive.ie/pages/terms-of-use)    
