@@ -63,6 +63,7 @@ HTML5 & CSS3 along with Bootstrap 4 framework and Javascript are my core strengt
   * Add option to switch data feed for interactive map.
   * Add further statistics on Covid-19 testing, cases, variants, vaccines and comparisons with other geographical areas.
   * A daily email containing all the statistics from the website, tiggered on the Last Update Date. 
+  * Better map controls for smaller devices.
 
 ## Skeleton
 
@@ -216,7 +217,9 @@ to the center col to avoid this on larger screens. [](https://developers.arcgis.
 * Element "Signup" not allowed as child of element Div in this context. (Suppressing further errors from this subtree.)
 The HTML Validator showed this as error on my Signup page. To fix, I changed the "signup" element to "section". Adding a class of signup would also fix but this    
 would need further updates to the css styles. I will come back to this at a later stage.
-
+* Depending on where the LEA selected is located on screen in relation to the top of the containing element, the top of the resulting popup can be chopped, removing the dock and close buttons.    
+Clicking the title area of the popup collapses the content area thereby restoring the control buttons. This is not very obvious for a new user.
+* Scrolling the map can be difficult on smaller screens as at times the map takes up the entire screen.
 * Note: strange behaviour:
 After working on the Signup page, the Arcgis api calls on the Index page started failing eventhough I had not edited the code since last verifiying they were working as expected.    
 The error returned was : *Error in Promise k line 1 idnex.html.*     
