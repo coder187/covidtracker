@@ -95,6 +95,7 @@ GetICUStats().then(
     },
     function (error) {
         console.log("ICU Stats Error: ", error);
+        PrintICUStats(error, 1);
     }
 );
 
@@ -104,7 +105,12 @@ function PrintICUStats(stats, err) {
     if (err !== 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
-        td.innerHTML = "error ?";
+        if (stats === "No Data") {
+            td.innerHTML = stats;
+        }
+        else {
+            td.innerHTML = "error ?"; 
+        }
         tr.appendChild(td);
         tbl.appendChild(tr);
     }

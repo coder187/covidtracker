@@ -211,27 +211,30 @@ function GetICUStats() {
 
         require(["esri/request"],
             function (esriRequest) {
-                // Define the 'options' for the request
-                let options = {
-                    query: {
-                        f: "json",
-                        where: "1=1", //seems to need a where clause to return anything - rertturn all records.
-                        outFields: ["extract", "ncovidconf", "ndischcovidconf", "adcconf"],
-                        returnGeometry: false
-                    },
-                    responseType: "json",
-                };
-
                 
+                    // Define the 'options' for the request
+                    let options = {
+                        query: {
+                            f: "json",
+                            where: "1=1", //seems to need a where clause to return anything - rertturn all records.
+                            outFields: ["extract", "ncovidconf", "ndischcovidconf", "adcconf"],
+                            returnGeometry: false
+                        },
+                        responseType: "json",
+                    };
 
-                esriRequest(url, options).then(function (response) {
-                    
-                    let myFeatures = response.data.features;
-                   
-                    resolve(myFeatures); //return the stats array of objects
-                });
+
+
+                    esriRequest(url, options).then(function (response) {
+                        let myFeatures = response.data.features;
+                        if (myFeatures.length === 0) {
+                            reject("No Data");
+                        }
+                        else {
+                            resolve(myFeatures); //return the stats array of objects
+                        }
+                    });
+                
             });
-
-        //resolve(stats); not sure why stats cabnt be read here.
     });
 }
