@@ -87,6 +87,9 @@ so a mobile first approch with a modern & engaging UX are of key importance.
   * Javascript
 
 ### Frameworks, Libraries & Programs Used
+1. [HTML5](https://www.w3.org/)
+1. [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+1. [Javascript](https://www.javascript.com/) 
 1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
     - Bootstrap was used to assist with the responsiveness and styling of the website.
 1. [Hover.css:](https://ianlunn.github.io/Hover/)
@@ -113,6 +116,29 @@ so a mobile first approch with a modern & engaging UX are of key importance.
     - Balsamiq was used to create the [wireframes](https://github.com/) during the design process.
 1. [Visual Studio 2019:](https://visualstudio.microsoft.com/)
     - Visual Studio was used to create & debug the html,css & javascript.
+1. [Google Chrome Dev tools](https://developers.google.com/web/tools/chrome-devtools) 
+    - for debugging.
+1. [Microsoft Edge](https://www.microsoft.com/en-us/edge) 
+    - Dev Tools for testing and debugging.
+1. [SEO CHECKUP](https://seositecheckup.com/)  
+    - verify alt tags.
+1. [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) 
+    - for debugging.
+1. [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) 
+    - for performance audit.
+1. [W3C Markup Validation Service](https://validator.w3.org/)
+1. [W3C Jigsaw CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+1. [Code Institute Course Material](https://codeinstitute.net/)
+1. [w3schools](https://www.w3schools.com/) 
+    - help with HTML, CSS & Javascript
+1. [Stackoverflow](https://stackoverflow.com/) 
+    - help with HTML, CSS & Javascript
+1. [Slack](https://slack.com/intl/en-ie/) 
+    - communication hub with mentor, tutors and fellow students.
+1. [Markdown Guide](https://www.markdownguide.org/basic-syntax/) 
+    - Markdown Guide for this readme file.
+1. [Am I Responsive](http://ami.responsivedesign.is/) 
+    - Screen Grab of site on various devices.
 
 ## Data Licensing\Terms of Use
 [Covid-19 Geohive](https://covid-19.geohive.ie/pages/terms-of-use)

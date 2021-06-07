@@ -23,7 +23,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 
 ## Check ALT Tags
-I used [SEO CHECKUP](https://www.seoptimer.com) to verify all image alt tags were present.
+I used [SEO CHECKUP](https://seositecheckup.com/) to verify all image alt tags were present.
 ![](https://raw.githubusercontent.com/coder187/covidtracker/main/supp/screenie/seositecheckup.png)
 
 ## Spelling
