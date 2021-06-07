@@ -7,16 +7,25 @@ GetCovidStats().then(
         PrintCovidStats(message, 0);
     },
     function (error) {
-        PrintCovidStats(message, 1);
+        console.log("Print Covid Stats - Error: ", error);
+        PrintCovidStats(error, 1);
     }
 );
 
 function PrintCovidStats(stats, err) {
     if (err !== 0) {
-        document.getElementById("date-last-updated").innerHTML = "?";
-        document.getElementById("Deaths").innerHTML = "?";
-        document.getElementById("Cases").innerHTML = "?";
-        document.getElementById("Total").innerHTML = "?";
+        if (stats === "No Data") {
+            document.getElementById("date-last-updated").innerHTML = "1/1/1970";
+            document.getElementById("Deaths").innerHTML = "No Data";
+            document.getElementById("Cases").innerHTML = "No Data";
+            document.getElementById("Total").innerHTML = "No Data";
+        }
+        else {
+            document.getElementById("date-last-updated").innerHTML = "error ?";
+            document.getElementById("Deaths").innerHTML = "error ?";
+            document.getElementById("Cases").innerHTML = "error ?";
+            document.getElementById("Total").innerHTML = "error ?";
+        } 
     }
     else {
         document.getElementById("date-last-updated").innerHTML = stats.DateLastUpdated.toDateString();
@@ -29,12 +38,11 @@ function PrintCovidStats(stats, err) {
 //Get Stats By  County.
 GetCountyStats().then(
     function (message) {
-        //console.log("Resolved: ", message);
         PrintCountyStats(message, 0);
     },
     function (error) {
-        console.log("Print County Stats - Rejected: ", error);
-        PrintCountyStats(message, 1);
+        console.log("Print County Stats - Error: ", error);
+        PrintCountyStats(error, 1);
     }
 );
 function PrintCountyStats(stats, err) {
@@ -42,10 +50,6 @@ function PrintCountyStats(stats, err) {
     let tbl = document.getElementById("county-list-table");
 
     if (err !== 0) {
-        //let li = document.createElement("li");
-        //li.innerHTML = county[i] + "error ?";
-        //ul.appendChild(li);
-
         let tr = document.createElement("tr");
         let td = document.createElement("td");
         td.innerHTML = "error ?";
@@ -90,7 +94,7 @@ GetICUStats().then(
         PrintICUStats(message, 0);
     },
     function (error) {
-        console.log("Error: ", error);
+        console.log("ICU Stats Error: ", error);
     }
 );
 
@@ -109,11 +113,6 @@ function PrintICUStats(stats, err) {
 
             stats.reverse();
             for (var i = 0; i < 101; i++) {
-
-                //console.log(new Date(stats[i].attributes.extract));
-                //console.log(stats[i].attributes.ncovidconf);
-                //console.log(stats[i].attributes.ndischcovidconf);
-                //console.log(stats[i].attributes.adcconf);
 
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");

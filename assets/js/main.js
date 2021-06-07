@@ -26,15 +26,25 @@ function GetCovidStats() {
                 esriRequest(url, options).then(function (response) {
 
                     let myFeatures = response.data.features;
-                    let stats = {
-                        Cases: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidCases,
-                        Deaths: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidDeaths,
-                        TotalCases: myFeatures[myFeatures.length - 1].attributes.TotalConfirmedCovidCases,
-                        CasesPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidCases,
-                        DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths,
-                        DateLastUpdated: new Date(myFeatures[myFeatures.length - 1].attributes.Date)
+                    
+                    if (myFeatures.length === 0) 
+                    {
+                        reject("No Data");
                     }
-                    resolve(stats); //return the stats object
+                    else
+                    {
+                        let stats = {
+                            Cases: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidCases,
+                            Deaths: myFeatures[myFeatures.length - 1].attributes.ConfirmedCovidDeaths,
+                            TotalCases: myFeatures[myFeatures.length - 1].attributes.TotalConfirmedCovidCases,
+                            CasesPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidCases,
+                            DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths,
+                            DateLastUpdated: new Date(myFeatures[myFeatures.length - 1].attributes.Date)
+                        }
+                        resolve(stats); //return the stats object
+                    }
+
+                    
                 });
             });
 
