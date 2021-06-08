@@ -168,7 +168,7 @@ require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/wid
             center: [-7.912130968565811, 53.096755475713266], // Birr
             zoom: 7 //calling mapview.fullextent (below) overwrites the zoom but calling the Home function from mapview will read the zoom level set here.
 
-        }
+        };
 
         //render map
         mapView = new MapView(viewOptions);
@@ -217,7 +217,7 @@ require(["esri/Map", "esri/layers/FeatureLayer", "esri/views/MapView", "esri/wid
         //set scale such that all data points are visible
         featureLayer.when(function () {
             mapView.goTo(featureLayer.fullExtent);
-        })
+        });
     });
 
 
