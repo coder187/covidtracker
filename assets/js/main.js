@@ -40,7 +40,7 @@ function GetCovidStats() {
                             CasesPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidCases,
                             DeathsPrevDay: myFeatures[myFeatures.length - 2].attributes.ConfirmedCovidDeaths,
                             DateLastUpdated: new Date(myFeatures[myFeatures.length - 1].attributes.Date)
-                        }
+                        };
                         resolve(stats); //return the stats object
                     }
 
@@ -57,7 +57,7 @@ function GetCountyStats() {
 
 
     return new Promise(function (resolve, reject) {
-        let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?"
+        let url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/ArcGIS/rest/services/Covid19CountyStatisticsHPSCIrelandOpenData/FeatureServer/0/query?";
 
         require(["esri/request"],
             function (esriRequest) {
@@ -90,7 +90,7 @@ function GetCountyStats() {
                                 ConfirmedRecovered: myFeatures[i].attributes.ConfirmedCovidRecovered,//currently null
                                 PopulationC16: myFeatures[i].attributes.PopulationCensus16,
                                 TimeStamp: new Date(myFeatures[i].attributes.TimeStampDate)
-                            }
+                            };
 
                             stats_Array.push(stats);
                         }
@@ -149,7 +149,7 @@ function ExtractROIVaccineData(obj_vaccine_data) {
         if (!VaccineTypeExists(VaccineType_Total, vax_array[i].type)) {
             VaccineType_Total.push({ type: vax_array[i].type, firstDose: 0, secondDose: 0 });
         } else {
-            x = 0;
+            let x = 0;
             for (x = 0; x < VaccineType_Total.length; x++) {
                 if (VaccineType_Total[x].type === vax_array[i].type) {
                     VaccineType_Total[x].firstDose = VaccineType_Total[x].firstDose + vax_array[i].firstDose;
@@ -177,7 +177,7 @@ function GetLEADateRange() {
 
     return new Promise(function (resolve, reject) {
         //let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0?f=pjson"?
-        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query" //not sure why but by adding "/query to the url we can specify query params below. we can also specify query params here on the url buy encoding hte string.
+        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/ArcGIS/rest/services/COVID19_14_Day_Incidence_Rate_per_100k_LEA/FeatureServer/0/query"; //not sure why but by adding "/query to the url we can specify query params below. we can also specify query params here on the url buy encoding hte string.
         require(["esri/request"],
             function (esriRequest) {
                 // Define the 'options' for the request
@@ -207,7 +207,7 @@ function GetICUStats() {
 
 
     return new Promise(function (resolve, reject) {
-        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/ICUBISHistoricTimelinePublicView/FeatureServer/0/query?"
+        let url = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/ICUBISHistoricTimelinePublicView/FeatureServer/0/query?";
 
         require(["esri/request"],
             function (esriRequest) {

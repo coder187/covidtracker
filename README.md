@@ -135,6 +135,8 @@ HTML5 & CSS3 along with Bootstrap 4 framework and Javascript are my core strengt
     - for debugging.
 1. [Microsoft Edge](https://www.microsoft.com/en-us/edge) 
     - Dev Tools for testing and debugging.
+1. [JShint](https://jshint.com/) 
+    - to analyse Javascript code.
 1. [SEO CHECKUP](https://seositecheckup.com/)  
     - verify alt tags.
 1. [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) 
