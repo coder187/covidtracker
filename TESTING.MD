@@ -106,6 +106,8 @@ The TDD method consists of a cycle of :
 | Menu button toggle background audio on/off | Toggle menu item button icon. | Pass ||
 | On page load Check for data being returned. | Display "No Data" in corresponding html elements.| Pass |4|
 | On page load Check for Error Condition. | Console Log error message and display "error ?" in corresponding html elements.| Pass |1|
+| Users who direct to a non-existent page or resource.| The user is redirected back to the main page without having to use browser navigation buttons. | Pass ||
+
 
 *1. Disruption to the HSE computer systems caused by the cyber-attack has resulted in some dataset updates being paused until further notice.*   
 *2. Note: A CORS issue prevented me from reading the vaccine data directly from the host server so I have copied the vaccine data file locally. I will come back to this to rectify.*        
