@@ -6,14 +6,14 @@ var isPlaying = false;
 
 function togglePlay() {
     isPlaying ? myAudio.pause() : myAudio.play();
-        };
+        }
 
 myAudio.onplaying = function () {
     isPlaying = true;
     let e = document.getElementById("myicon");
     e.className = "";
     e.classList.add("fas");
-    e.classList.add("fa-volume-down")
+    e.classList.add("fa-volume-down");
     
     };
 
