@@ -11,14 +11,11 @@ function sendMail(contactForm) {
     })
         .then(
             function (response) {
-                //console.log("SUCCESS", response);
                 location.replace("conf.html");
             },
             function (error) {
                 location.replace("fail.html");
-                //console.log("FAILED", error);
             }
         );
-   //console.log("send mail complete");
     return false;  // To block from loading a new page
 }
