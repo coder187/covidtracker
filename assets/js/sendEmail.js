@@ -12,10 +12,10 @@ function sendMail(contactForm) {
         .then(
             function (response) {
                 //console.log("SUCCESS", response);
-                location.replace("conf.html")
+                location.replace("conf.html");
             },
             function (error) {
-                location.replace("fail.html")
+                location.replace("fail.html");
                 //console.log("FAILED", error);
             }
         );
