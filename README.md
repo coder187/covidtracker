@@ -245,6 +245,7 @@ One cup of sweet tea to settle the nerves later & we were back up and running! O
   * [Chart JS](https://www.chartjs.org/docs/latest/)
   * [Email JS](https://www.emailjs.com/docs/)
   * [Stackoverflow](https://stackoverflow.com/) for help with debugging css and javascript.
+  * 404 redirect functionality from [Slack post](https://app.slack.com/client/T0L30B202/C7J2ZAVHB/thread/C7J2ZAVHB-1598280091.096500)
 
 ### Content
 The website displays the latest COVID-19 statistics for the Republic of Ireland in a responsive and aesthetically pleasing manner.
