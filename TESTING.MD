@@ -174,3 +174,4 @@ I tested the site layout using physical devices as follows:
 ### Further Testing
   * I want to further enhance the error trapping while processing the rest services response.
   * Further testing over slow connections.
+  * Lighthouse testing shows very poor score for Performance.

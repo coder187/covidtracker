@@ -64,6 +64,7 @@ HTML5 & CSS3 along with Bootstrap 4 framework and Javascript are my core strengt
   * Add further statistics on Covid-19 testing, cases, variants, vaccines and comparisons with other geographical areas.
   * A daily email containing all the statistics from the website, tiggered on the Last Update Date. 
   * Better map controls for smaller devices.
+  * Improved performance by reducing the data retrieved and implmenting a caching mechanism for static data.
 
 ## Skeleton
 
